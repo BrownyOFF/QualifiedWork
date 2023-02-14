@@ -8,30 +8,45 @@ public class PlayerMovement : MonoBehaviour
 {
     #region Variables
     private float horizontal;
-    private float speed = 8f;
-    private float jumpPower = 16f;
-    private float spintMult = 1.5f;
-
-    [SerializeField] private Rigidbody2D rb;
+    private float speed;
+    private float jumpPower;
+    private float spintMult;
+    public float faceDir;
+    
+    [SerializeField] public Rigidbody2D rb;
     [SerializeField] private GameObject groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
-    [SerializeField] private float dashingVelocity = 1f;
-    [SerializeField] private float dashingTime = 1f;
+    [SerializeField] private float dashingVelocity;
+    [SerializeField] private float dashingTime;
     public Vector2 dashingDir;
     private bool isDashing;
     private bool _canDash = true;
-    
-
     #endregion
 
+    #region ChillStats
+    public float speedChill = 8f;
+    public float jumpPowerChill = 16f;
+    public float dashingVelocityChill = 50f;
+    public float dashingTimeChill = 0.05f;
+    #endregion
+
+    #region CombatStats
+    public float speedBattle = 4f;
+    public float jumpPowerBattle = 16f;
+    public float dashingVelocityBattle = 120f;
+    public float dashingTimeBattle = 0.5f;
+    #endregion
+    
     [SerializeField] private PlayerChara stats;
+    [SerializeField] private FightBehaviour fight;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         stats = GetComponent<PlayerChara>();
+        fight = GetComponent<FightBehaviour>();
         groundCheck = GameObject.Find("groundCheck");
-        assignStats(8f,16f,50f,0.05f);
+        assignStats(speedChill,jumpPowerChill,dashingVelocityChill,dashingTimeChill);
     }
 
     public void assignStats(float spd,float jmppwr, float dashvel,float dashtime)
@@ -41,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
         dashingVelocity = dashvel;
         dashingTime = dashtime;
     }
-    
+
     void Update()
     {
         var inputX = Input.GetAxisRaw("Horizontal");
@@ -84,6 +99,14 @@ public class PlayerMovement : MonoBehaviour
         if (isSprinting())
         {
             rb.velocity = new Vector2(inputX * speed * spintMult, rb.velocity.y);
+        }
+
+        if (!fight.isFighting)
+        {
+            if (inputX == 1f || inputX == -1f)
+            {
+                faceDir = inputX;
+            }
         }
     }
     

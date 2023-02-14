@@ -50,7 +50,7 @@ public class PlayerChara : MonoBehaviour
         {
             if (sp < spMax)
             {
-                sp += 1;
+                sp += 4;
                 yield return new WaitForSeconds(0.5f);
             }
             else
@@ -70,5 +70,7 @@ public class PlayerChara : MonoBehaviour
         {
             StartCoroutine(RegenSP());
         }
+        if (sp > spMax)
+            sp = spMax;
     }
 }

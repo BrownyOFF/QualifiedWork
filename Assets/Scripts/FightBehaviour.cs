@@ -7,6 +7,7 @@ public class FightBehaviour : MonoBehaviour
     [SerializeField] private PlayerMovement move;
     private GameObject eye;
     private float rayDistanse = 10f;
+    public bool isFighting = false;
     void Start()
     {
         move = GetComponent<PlayerMovement>();
@@ -15,12 +16,17 @@ public class FightBehaviour : MonoBehaviour
 
     void Update()
     {
-        RaycastHit2D hit = Physics2D.Raycast(eye.transform.position, Vector2.right * move.dashingDir, rayDistanse);
-        Debug.DrawRay(eye.transform.position, Vector2.right * move.dashingDir * rayDistanse, Color.red);
-        if (hit.collider.tag == "enemy")
+        RaycastHit2D hit = Physics2D.Raycast(eye.transform.position, new Vector2(move.faceDir, 0), rayDistanse);
+        if (hit.collider == null)
         {
-            Debug.Log("Enemy detected");
+            isFighting = false;
+            move.assignStats(move.speedChill,move.jumpPowerChill,move.dashingVelocityChill,move.dashingTimeChill);
         }
-        
+        else if (hit.collider.CompareTag("Enemy"))
+        {
+            isFighting = true;
+            Debug.Log("Enemy");
+            move.assignStats(move.speedBattle,move.jumpPowerBattle,move.dashingVelocityBattle,move.dashingTimeBattle);
+        }
     }
 }
