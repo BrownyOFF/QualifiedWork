@@ -58,6 +58,7 @@
      <Compile Include="Assets\Scripts\UI.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
+     <Compile Include="Assets\Scripts\EnemyStat.cs" />
      <None Include="Assets\texture\Font.txt" />
      <None Include="Assets\Favna\License.txt" />
      <None Include="Assets\texture\License.txt" />
