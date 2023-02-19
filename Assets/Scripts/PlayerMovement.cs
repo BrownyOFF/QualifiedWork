@@ -67,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
         if (jumpInput && isGrounded() && stats.canJump())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
-            stats.sp -= stats.jumpCost;
+            stats.spCurrent -= stats.jumpCost;
         }
         
         var dashInput = Input.GetKeyDown(KeyCode.F);
@@ -81,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
                 dashingDir = new Vector2(transform.localScale.x, 0);
             }
 
-            stats.sp -= stats.dashCost;
+            stats.spCurrent -= stats.dashCost;
             StartCoroutine(StopDashing());
         }
 

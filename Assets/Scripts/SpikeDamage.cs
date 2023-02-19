@@ -39,7 +39,7 @@ public class SpikeDamage : MonoBehaviour
             {
                 chara = check.GetComponent<PlayerChara>();
                 IsTakingDamage = true;
-                chara.hp -= 10f;
+                chara.hpCurrent -= 10f;
                 StartCoroutine(Delay());
 
             }

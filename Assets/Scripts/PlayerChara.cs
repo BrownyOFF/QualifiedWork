@@ -5,12 +5,14 @@ using UnityEngine;
 public class PlayerChara : MonoBehaviour
 {
     #region BasicStats
-    [SerializeField] public float hp = 100f;
-    [SerializeField] public float hpMax = 100f;
+    public float hpCurrent = 100f;
+    public float hpBase = 100f;
+    public float hpMax;
 
-    [SerializeField] public float sp = 50f;
-    [SerializeField] public float spMax = 50f;
-
+    public float spCurrent = 50f;
+    public float spBase = 50f;
+    public float spMax;
+    
     private bool spRegenerating = false;
 
     #endregion
@@ -20,11 +22,19 @@ public class PlayerChara : MonoBehaviour
     [SerializeField] public float dashCost = 25f;
     #endregion
 
+    #region Grade Stats
+
+    public float hpPerc = 1f;
+    public float spPerc = 1f;
+    
+
+    #endregion
+
     public bool deacrese = false;
 
     public bool canJump()
     {
-        if (sp >= jumpCost)
+        if (spCurrent >= jumpCost)
             return true;
         else
             return false;
@@ -32,7 +42,7 @@ public class PlayerChara : MonoBehaviour
 
     public bool canDash()
     {
-        if (sp >= dashCost)
+        if (spCurrent >= dashCost)
             return true;
         else
             return false;
@@ -40,7 +50,13 @@ public class PlayerChara : MonoBehaviour
 
     void Start()
     {
+        hpMax = hpBase * hpPerc;
+        spMax = spBase * spPerc;
+
+        hpCurrent = hpMax;
+        spCurrent = spMax;
     }
+    
 
     private IEnumerator RegenSP()
     {
@@ -48,9 +64,9 @@ public class PlayerChara : MonoBehaviour
         yield return new WaitForSeconds(3f);
         while (true)
         {
-            if (sp < spMax)
+            if (spCurrent < spMax)
             {
-                sp += 4;
+                spCurrent += 4;
                 yield return new WaitForSeconds(0.5f);
             }
             else
@@ -64,13 +80,13 @@ public class PlayerChara : MonoBehaviour
 
     void Update()
     {
-        if (sp < 0)
-            sp = 0;
-        if (sp < spMax && !spRegenerating)
+        if (spCurrent < 0)
+            spCurrent = 0;
+        if (spCurrent < spMax && !spRegenerating)
         {
             StartCoroutine(RegenSP());
         }
-        if (sp > spMax)
-            sp = spMax;
+        if (spCurrent > spMax)
+            spCurrent = spMax;
     }
 }

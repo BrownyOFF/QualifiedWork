@@ -13742,7 +13742,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -359, y: 181}
+  m_AnchoredPosition: {x: -288.2, y: 136.8}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &344059658
@@ -15334,7 +15334,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b09412dc5f2bc674f87c07d0da1eb31c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1639332320}
+  defaultScale: 6
+  battleScale: 4
   offset: {x: 0, y: 0, z: -10}
   damping: 1
 --- !u!20 &519420031
@@ -15805,7 +15806,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -361, y: 150}
+  m_AnchoredPosition: {x: -288.2, y: 98.6}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1343114482
@@ -18151,12 +18152,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70bd70655b0030a4aa483ad4aaf1a359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 100
+  hpCurrent: 100
+  hpBase: 100
   hpMax: 100
-  sp: 50
+  spCurrent: 50
+  spBase: 50
   spMax: 50
   jumpCost: 10
   dashCost: 25
+  hpPerc: 1
+  spPerc: 1
   deacrese: 0
 --- !u!114 &1639332322
 MonoBehaviour:
@@ -18203,6 +18208,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   move: {fileID: 0}
   isFighting: 0
+  cam: {fileID: 0}
   attackRange: 1
 --- !u!1 &1816885524
 GameObject:

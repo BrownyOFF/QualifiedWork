@@ -21,7 +21,7 @@ public class UI : MonoBehaviour
     
     void Update()
     {
-        hp.text = playerStats.hp.ToString();
-        sp.text = playerStats.sp.ToString();
+        hp.text = playerStats.hpCurrent.ToString();
+        sp.text = playerStats.spCurrent.ToString();
     }
 }

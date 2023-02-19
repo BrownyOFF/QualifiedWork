@@ -11,6 +11,9 @@ public class FightBehaviour : MonoBehaviour
     private float rayDistanse = 10f;
     public bool isFighting = false;
 
+    private int tmpChangeStat = 1; // 0 - chill ; 1 - fight ; 2 - inactive
+    
+    public Camera cam;
     private float timeBtwAttack;
     private float startTimeBtwAttack;
     private GameObject attackPos;
@@ -25,6 +28,7 @@ public class FightBehaviour : MonoBehaviour
         attackRange = 3f;
         damage = 10f;
         startTimeBtwAttack = 0.5f;
+        cam = GameObject.Find("Main Camera").GetComponent<Camera>();
     }
 
     void Update()
@@ -47,17 +51,39 @@ public class FightBehaviour : MonoBehaviour
             timeBtwAttack -= Time.deltaTime;
         }
         
+        enemyCheck();
+        if (tmpChangeStat == 0)
+        {
+            cam.GetComponent<CameraFollow>().changeScale(cam.GetComponent<CameraFollow>().defaultScale);
+            move.assignStats(move.speedChill,move.jumpPowerChill,move.dashingVelocityChill,move.dashingTimeChill);
+            tmpChangeStat = 2;
+        }
+        else if (tmpChangeStat == 1)
+        {
+            cam.GetComponent<CameraFollow>().changeScale(cam.GetComponent<CameraFollow>().battleScale);
+            move.assignStats(move.speedBattle,move.jumpPowerBattle,move.dashingVelocityBattle,move.dashingTimeBattle);
+            tmpChangeStat = 2;
+        }
+    }
+
+    private void enemyCheck()
+    {
         RaycastHit2D hit = Physics2D.Raycast(eye.transform.position, new Vector2(move.faceDir, 0), rayDistanse, enemyMask);
         if (hit.collider == null)
         {
-            isFighting = false;
-            move.assignStats(move.speedChill,move.jumpPowerChill,move.dashingVelocityChill,move.dashingTimeChill);
+            if (isFighting)
+            {
+                isFighting = false;
+                tmpChangeStat = 0;
+            }
+            else
+                tmpChangeStat = 2;
         }
         else if (hit.collider.CompareTag("Enemy"))
         {
             isFighting = true;
-            Debug.Log("Enemy");
-            move.assignStats(move.speedBattle,move.jumpPowerBattle,move.dashingVelocityBattle,move.dashingTimeBattle);
+            tmpChangeStat = 1;
+
         }
     }
 }
