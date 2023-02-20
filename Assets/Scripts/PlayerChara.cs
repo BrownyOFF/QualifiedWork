@@ -24,6 +24,8 @@ public class PlayerChara : MonoBehaviour
 
     #region Grade Stats
 
+    public float pieces = 0f;
+    public float piecesToGrade = 1f;
     public float hpPerc = 1f;
     public float spPerc = 1f;
     
@@ -32,6 +34,11 @@ public class PlayerChara : MonoBehaviour
 
     public bool deacrese = false;
 
+    public void getPieces(float amount)
+    {
+        pieces += amount;
+    }
+    
     public bool canJump()
     {
         if (spCurrent >= jumpCost)

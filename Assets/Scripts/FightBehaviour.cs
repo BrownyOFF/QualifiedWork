@@ -10,7 +10,8 @@ public class FightBehaviour : MonoBehaviour
     private GameObject eye;
     private float rayDistanse = 10f;
     public bool isFighting = false;
-
+    public bool isAttacking = false;
+    public bool isBlocking = false;
     private int tmpChangeStat = 1; // 0 - chill ; 1 - fight ; 2 - inactive
     
     public Camera cam;
@@ -27,28 +28,66 @@ public class FightBehaviour : MonoBehaviour
         attackPos = GameObject.Find("attackPos");
         attackRange = 3f;
         damage = 10f;
-        startTimeBtwAttack = 0.5f;
+        startTimeBtwAttack = 1f;
         cam = GameObject.Find("Main Camera").GetComponent<Camera>();
     }
 
+    public bool canAttackCheck()
+    {
+        if (!isBlocking && timeBtwAttack <= 0)
+        {
+            return true;
+        }
+        else
+            return false;
+    }
+
+    public bool canBlockCheck()
+    {
+        if (!isAttacking)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
+    public void attack()
+    {
+        isAttacking = true;
+        timeBtwAttack = startTimeBtwAttack;
+        Collider2D[] enemyToDamage = Physics2D.OverlapCircleAll(attackPos.transform.position, attackRange, enemyMask);
+        for (int i = 0; i < enemyToDamage.Length; i++)
+        {
+            enemyToDamage[i].GetComponent<EnemyStat>().takingDamage(damage);
+        }
+    }
+
+    public void block()
+    {
+        // Block Template
+    }
     void Update()
     {
-        if (timeBtwAttack <= 0)
+        if (Input.GetKey(KeyCode.Mouse0))
         {
-            // can attack
-            if (Input.GetKey(KeyCode.Mouse0))
+            if (canAttackCheck())
             {
-                timeBtwAttack = startTimeBtwAttack;
-                Collider2D[] enemyToDamage = Physics2D.OverlapCircleAll(attackPos.transform.position, attackRange, enemyMask);
-                for (int i = 0; i < enemyToDamage.Length; i++)
-                {
-                    enemyToDamage[i].GetComponent<EnemyStat>().takingDamage(damage);
-                }
+                attack();
+            }else
+            {
+                isAttacking = false;
+                timeBtwAttack -= Time.deltaTime;
             }
-
-        } else
+        } 
+        else if (Input.GetKey(KeyCode.Mouse1))
         {
-            timeBtwAttack -= Time.deltaTime;
+            if (canBlockCheck())
+            {
+                block();
+            }
         }
         
         enemyCheck();
