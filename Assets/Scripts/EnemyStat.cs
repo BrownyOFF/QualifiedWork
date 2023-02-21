@@ -27,7 +27,7 @@ public class EnemyStat : MonoBehaviour
 
     private void death()
     {
-        GameObject.Find("Player").GetComponent<PlayerChara>().getPieces(pieces);
+        GameObject.FindWithTag("Player").GetComponent<PlayerChara>().getPieces(pieces);
         Destroy(gameObject);
     }
 }

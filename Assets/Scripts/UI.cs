@@ -16,7 +16,7 @@ public class UI : MonoBehaviour
         canvas = GetComponent<Canvas>();
         hp = GameObject.Find("HP").GetComponent<Text>();
         sp = GameObject.Find("SP").GetComponent<Text>();
-        playerStats = GameObject.Find("Player").GetComponent<PlayerChara>();
+        playerStats = GameObject.FindWithTag("Player").GetComponent<PlayerChara>();
     }
     
     void Update()

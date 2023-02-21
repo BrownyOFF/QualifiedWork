@@ -16,7 +16,7 @@ public class CameraFollow : MonoBehaviour
     private void Start()
     {
         cam = GetComponent<Camera>();
-        target = GameObject.Find("Player").transform;
+        target = GameObject.FindWithTag("Player").transform;
         changeScale(defaultScale);
     }
 
