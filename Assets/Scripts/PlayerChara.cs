@@ -34,6 +34,12 @@ public class PlayerChara : MonoBehaviour
 
     public bool deacrese = false;
 
+
+    public void takeDmg(float dmg)
+    {
+        hpCurrent -= dmg;
+    }
+    
     public void getPieces(float amount)
     {
         pieces += amount;

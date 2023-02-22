@@ -28,7 +28,7 @@ public class FightBehaviour : MonoBehaviour
         attackPos = GameObject.Find("attackPos");
         attackRange = 3f;
         damage = 10f;
-        startTimeBtwAttack = 1f;
+        startTimeBtwAttack = 0.5f;
         cam = GameObject.Find("Main Camera").GetComponent<Camera>();
     }
 
@@ -62,6 +62,8 @@ public class FightBehaviour : MonoBehaviour
         for (int i = 0; i < enemyToDamage.Length; i++)
         {
             enemyToDamage[i].GetComponent<EnemyStat>().takingDamage(damage);
+            if (enemyToDamage[i].GetComponent<EnemyStat>().hp <= 0)
+                isFighting = false;
         }
     }
 
@@ -91,6 +93,7 @@ public class FightBehaviour : MonoBehaviour
         }
         
         enemyCheck();
+
         if (tmpChangeStat == 0)
         {
             cam.GetComponent<CameraFollow>().changeScale(cam.GetComponent<CameraFollow>().defaultScale);
@@ -122,7 +125,6 @@ public class FightBehaviour : MonoBehaviour
         {
             isFighting = true;
             tmpChangeStat = 1;
-
         }
     }
 }

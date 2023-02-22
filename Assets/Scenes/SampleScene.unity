@@ -30837,10 +30837,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b09412dc5f2bc674f87c07d0da1eb31c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultScale: 6
-  battleScale: 4
+  defaultScale: 7
+  battleScale: 6
   offset: {x: 0, y: 0, z: -10}
-  damping: 0.3
+  damping: 1
+  currentScale: 
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0

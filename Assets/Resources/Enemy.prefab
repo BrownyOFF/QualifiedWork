@@ -134,5 +134,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e85715d867e5246a3dc9c8a431941a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 20
+  moveSpeed: 5
+  attackRange: 3
+  attackDamage: 10
+  attackCooldown: 2
+  distanceToMove: 10
+  blockDuration: 1
+  blockCooldown: 3
+  hp: 100
   pieces: 10
