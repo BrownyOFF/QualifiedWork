@@ -10,9 +10,9 @@ public class LevelCreate : MonoBehaviour
 
 
     private GameObject Player;
-    private GameObject Enemy;
+    public GameObject Enemy;
 
-    private GameObject[] EnemyPos;
+    public GameObject[] EnemyPos;
     private GameObject PlayerPos;
 
     #endregion
@@ -24,14 +24,19 @@ public class LevelCreate : MonoBehaviour
         EnemyPos = GameObject.FindGameObjectsWithTag("enemyPos");
         PlayerPos = GameObject.FindWithTag("playerPos");
 
-        foreach (var tPos in EnemyPos)
-        {
-            SpawnObject(Enemy, tPos);
-        }
+        foreachCycle(Enemy, EnemyPos);
         SpawnObject(Player, PlayerPos);
     }
 
-    private void SpawnObject(GameObject obj, GameObject pos)
+    public void foreachCycle(GameObject obj, GameObject[] pos)
+    {
+        foreach (var tPos in pos)
+        {
+            SpawnObject(obj, tPos);
+        }
+    }
+    
+    public void SpawnObject(GameObject obj, GameObject pos)
     {
         var posVec = new Vector2(pos.transform.position.x, pos.transform.position.y);
         Instantiate(obj, posVec, Quaternion.identity);

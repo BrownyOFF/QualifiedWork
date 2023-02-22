@@ -141,5 +141,5 @@ MonoBehaviour:
   distanceToMove: 10
   blockDuration: 1
   blockCooldown: 3
-  hp: 100
+  hp: 30
   pieces: 10

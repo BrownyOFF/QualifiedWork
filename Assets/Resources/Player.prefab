@@ -206,10 +206,11 @@ MonoBehaviour:
   spCurrent: 50
   spBase: 50
   spMax: 50
+  level: 1
   jumpCost: 10
   dashCost: 25
   pieces: 0
-  piecesToGrade: 1
+  piecesToGrade: 10
   hpPerc: 1
   spPerc: 1
   deacrese: 0
@@ -230,7 +231,7 @@ MonoBehaviour:
   isAttacking: 0
   isBlocking: 0
   cam: {fileID: 0}
-  attackRange: 1
+  attackRange: 3
 --- !u!1 &4260113326570186881
 GameObject:
   m_ObjectHideFlags: 0

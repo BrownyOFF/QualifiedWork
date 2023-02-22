@@ -8,7 +8,9 @@ public class SpikeDamage : MonoBehaviour
     public bool IsTakingDamage = false;
     private Collider2D check;
     public PlayerChara chara;
+    public EnemyStat enChara;
     private bool inTrigger = false;
+    private float damage = 10f;
     void Start()
     {
         
@@ -39,9 +41,14 @@ public class SpikeDamage : MonoBehaviour
             {
                 chara = check.GetComponent<PlayerChara>();
                 IsTakingDamage = true;
-                chara.hpCurrent -= 10f;
+                chara.hpCurrent -= damage;
                 StartCoroutine(Delay());
-
+            }
+            else if (check.CompareTag("Enemy") && !IsTakingDamage)
+            {
+                enChara = check.GetComponent<EnemyStat>();
+                enChara.hp -= damage;
+                StartCoroutine(Delay());
             }
         }
     }

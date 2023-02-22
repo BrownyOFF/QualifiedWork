@@ -21,7 +21,7 @@ public class EnemyStat : MonoBehaviour
     private float blockTimer = 0f;
     private float blockCooldownTimer = 0f;
     
-    public float hp = 100f;
+    public float hp = 50f;
     public float pieces = 10f;
     #endregion
 
@@ -139,6 +139,11 @@ public class EnemyStat : MonoBehaviour
 
     }
 
+    public void destroy()
+    {
+        Destroy(gameObject);
+    }
+    
     private void death()
     {
         player.GetComponent<PlayerChara>().getPieces(pieces);
