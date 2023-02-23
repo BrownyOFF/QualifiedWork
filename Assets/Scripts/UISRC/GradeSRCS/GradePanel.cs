@@ -20,10 +20,27 @@ public class GradePanel : MonoBehaviour
     private PlayerChara stats;
 
     private CameraFollow cam;
-    
-    void Start()
+
+    private bool isGet = false;
+
+    void OnEnable()
     {
-        //btn Find
+        if (isGet)
+        {
+            PrintText();
+        }
+    }
+
+    private void Start()
+    {
+        GetObj();
+        PrintText();
+        isGet = true;
+    }
+
+    void GetObj()
+    {
+        //Btn find
         hpGrade = GameObject.Find("HealthBtn").GetComponent<Button>();
         spGrade = GameObject.Find("StaminaBtn").GetComponent<Button>();
         conf = GameObject.Find("ConfBtn").GetComponent<Button>();
@@ -34,22 +51,19 @@ public class GradePanel : MonoBehaviour
         sp = GameObject.Find("SPMax").GetComponent<Text>();
         pieces = GameObject.Find("Pieces").GetComponent<Text>();
         piecesCost = GameObject.Find("Cost").GetComponent<Text>();
-        
+
         // Player Stats Find
         stats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerChara>();
-        
+
         //Camera find
         cam = GameObject.FindWithTag("MainCamera").GetComponent<CameraFollow>();
-        
-        PrintText();
-        
+
         //Btn Listeners
         hpGrade.onClick.AddListener(HpGrade);
         spGrade.onClick.AddListener(SpGrade);
         conf.onClick.AddListener(ConfAction);
     }
-
-    void PrintText()
+void PrintText()
     {
         hp.text = "Health: " + stats.hpMax;
         sp.text = "Stamina: " + stats.spMax;

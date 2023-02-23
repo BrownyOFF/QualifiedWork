@@ -7,10 +7,14 @@ public class SchrineScript : MonoBehaviour
 {
     private GameObject camera;
     private GameObject btnShow;
+    private GameObject respPoint;
     private bool canEnter = false;
     private bool inShrine = false;
+
+    private Collider2D playerColl;
     private void OnTriggerEnter2D(Collider2D col)
     {
+        playerColl = col;
         canEnter = true;
         btnShow.SetActive(true);
     }
@@ -26,6 +30,7 @@ public class SchrineScript : MonoBehaviour
     {
         camera = GameObject.FindWithTag("MainCamera");
         btnShow = gameObject.transform.GetChild(0).gameObject;
+        respPoint = gameObject.transform.GetChild(1).gameObject;
         btnShow.SetActive(false);
     }
 
@@ -33,6 +38,7 @@ public class SchrineScript : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.E) && canEnter && !inShrine)
         {
+            playerColl.GetComponent<PlayerChara>().RespawnPointAssign(respPoint);
             camera.GetComponent<CameraFollow>().changeCanvas(1);
             GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().enabled = false;
             GameObject.FindWithTag("Player").GetComponent<FightBehaviour>().enabled = false;

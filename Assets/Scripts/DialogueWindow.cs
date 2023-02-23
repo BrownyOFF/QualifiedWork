@@ -10,6 +10,7 @@ public class DialogueWindow : MonoBehaviour
     private Transform[] gameobjectChilds;
     [SerializeField] private string message;
     private float timeToPrint = 0.3f;
+    private IEnumerator print;
     void Start()
     {
         //get child components
@@ -27,7 +28,8 @@ public class DialogueWindow : MonoBehaviour
         {
             dialogeBox.SetActive(true);
             text.SetActive(true);
-            StartCoroutine(PrintText());
+            print = PrintText();
+            StartCoroutine(print);
         }
     }
 
@@ -35,6 +37,7 @@ public class DialogueWindow : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            StopCoroutine(print);
             ClearText();
             dialogeBox.SetActive(false);
             text.gameObject.SetActive(false);

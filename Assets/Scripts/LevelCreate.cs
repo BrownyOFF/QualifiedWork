@@ -9,7 +9,7 @@ public class LevelCreate : MonoBehaviour
     #region PreFabs
 
 
-    private GameObject Player;
+    public GameObject Player;
     public GameObject Enemy;
 
     public GameObject[] EnemyPos;
@@ -33,6 +33,18 @@ public class LevelCreate : MonoBehaviour
         foreach (var tPos in pos)
         {
             SpawnObject(obj, tPos);
+        }
+    }
+
+    public void forEachEnemyFindDestroy()
+    {
+        GameObject[] enemy = GameObject.FindGameObjectsWithTag("Enemy");
+        if (enemy != null)
+        {
+            foreach (var i in enemy)
+            {
+                i.GetComponent<EnemyStat>().destroy();
+            }
         }
     }
     

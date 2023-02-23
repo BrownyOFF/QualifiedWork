@@ -16,20 +16,29 @@ public class CameraFollow : MonoBehaviour
     private GameObject Default;
     private GameObject Shrine;
     private GameObject Grade;
+    public GameObject YouDied;
 
-    
+    public bool noDamping = false;
+
     private void Start()
     {
         Cursor.visible = false;
         Default = GameObject.Find("DefaultUI");
         Shrine = GameObject.Find("ShrineUI");
         Grade = GameObject.Find("GradeUI");
+        YouDied = GameObject.Find("Death");
+        YouDied.SetActive(false);
         changeCanvas(0);
         cam = GetComponent<Camera>();
-        target = GameObject.FindWithTag("Player").transform;
+        FindPlayer();
         changeScale(defaultScale);
     }
 
+    public void FindPlayer()
+    {
+        target = GameObject.FindWithTag("Player").transform;
+    }
+    
     public void changeCanvas(int i)
     {
         if (i == 0)
@@ -40,14 +49,14 @@ public class CameraFollow : MonoBehaviour
             Cursor.visible = false;
 
         }
-        if (i == 1)
+        else if (i == 1)
         {
             Grade.SetActive(false);
             Default.SetActive(false);
             Shrine.SetActive(true);
             Cursor.visible = true;
         }
-        if (i == 2)
+        else if (i == 2)
         {
             Grade.SetActive(true);
             Default.SetActive(false);
@@ -57,6 +66,16 @@ public class CameraFollow : MonoBehaviour
     }
     private void Update()
     {
+        if (GameObject.FindWithTag("Player").GetComponent<PlayerChara>().isDead)
+        {
+            noDamping = true;
+            return;
+        }
+        else if(noDamping && cam.transform.position != target.position)
+        {
+            noDamping = false;
+            transform.position = target.position;
+        }
         Vector3 movePos = target.position + offset;
         transform.position = Vector3.SmoothDamp(transform.position, movePos, ref velocity, damping);
     }

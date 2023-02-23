@@ -53,19 +53,20 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\SpikeDamage.cs" />
+     <Compile Include="Assets\Scripts\UISRC\GradeSRCS\GradeButton.cs" />
+     <Compile Include="Assets\Scripts\UISRC\RestSRCS\RestButton.cs" />
      <Compile Include="Assets\Scripts\EnemyStat.cs" />
+     <Compile Include="Assets\Scripts\UISRC\TravelSRCS\TravelButton.cs" />
      <Compile Include="Assets\Scripts\PlayerSRC\PlayerChara.cs" />
      <Compile Include="Assets\Scripts\SchrineScript.cs" />
      <Compile Include="Assets\Scripts\PlayerSRC\FightBehaviour.cs" />
      <Compile Include="Assets\Scripts\UISRC\UI.cs" />
      <Compile Include="Assets\Scripts\PlayerSRC\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
+     <Compile Include="Assets\Scripts\UISRC\GradeSRCS\GradePanel.cs" />
      <Compile Include="Assets\Scripts\DialogueWindow.cs" />
      <Compile Include="Assets\Scripts\LevelCreate.cs" />
-     <Compile Include="Assets\Scripts\UISRC\RestSRCS\RestButton.cs" />
-     <Compile Include="Assets\Scripts\UISRC\GradeSRCS\GradeButton.cs" />
-     <Compile Include="Assets\Scripts\UISRC\TravelSRCS\TravelButton.cs" />
-     <Compile Include="Assets\Scripts\UISRC\GradeSRCS\GradePanel.cs" />
+     <Compile Include="Assets\Scripts\KillBoxSRC.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\texture\Font.txt" />

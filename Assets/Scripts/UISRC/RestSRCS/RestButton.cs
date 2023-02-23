@@ -26,14 +26,7 @@ public class RestButton : MonoBehaviour
         Debug.Log("Button Clicked");
         //destroy all current enemy's
         enemys = GameObject.FindGameObjectsWithTag("Enemy");
-        if (enemys != null)
-        {
-            foreach (var i in enemys)
-            {
-                i.GetComponent<EnemyStat>().destroy();
-            }
-        }
-
+        levelCreateSRC.GetComponent<LevelCreate>().forEachEnemyFindDestroy();
         //spawn them again
         levelCreateSRC.GetComponent<LevelCreate>().foreachCycle(levelCreateSRC.GetComponent<LevelCreate>().Enemy, levelCreateSRC.GetComponent<LevelCreate>().EnemyPos);
         

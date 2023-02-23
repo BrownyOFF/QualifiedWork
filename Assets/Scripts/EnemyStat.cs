@@ -43,7 +43,11 @@ public class EnemyStat : MonoBehaviour
         {
             death();    
         }
-        
+
+        if (GameObject.FindGameObjectWithTag("Player") == null)
+        {
+            return;
+        }
         distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
         
         // Check if it's time to block again
@@ -144,7 +148,7 @@ public class EnemyStat : MonoBehaviour
         Destroy(gameObject);
     }
     
-    private void death()
+    public void death()
     {
         player.GetComponent<PlayerChara>().getPieces(pieces);
         Destroy(gameObject);

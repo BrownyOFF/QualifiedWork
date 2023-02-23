@@ -17,6 +17,11 @@ public class PlayerChara : MonoBehaviour
 
     public int level = 1;
 
+    public GameObject RespawnPoint;
+    private LevelCreate levelCreateSRC;
+
+    public bool isDead = false;
+
     #endregion
 
     #region MoveCost
@@ -35,7 +40,8 @@ public class PlayerChara : MonoBehaviour
     #endregion
 
     public bool deacrese = false;
-
+    public Camera cam;
+    
 
     public void takeDmg(float dmg)
     {
@@ -65,10 +71,17 @@ public class PlayerChara : MonoBehaviour
 
     void Start()
     {
+        cam = Camera.main;
+        levelCreateSRC = GameObject.FindWithTag("lvlScr").GetComponent<LevelCreate>();
         CalcStats();
         assignStats();
     }
 
+    public void RespawnPointAssign(GameObject pos)
+    {
+        RespawnPoint = pos;
+    }
+    
     public void CalcStats()
     {
         hpMax = hpBase * hpPerc;
@@ -101,8 +114,27 @@ public class PlayerChara : MonoBehaviour
         }
     }
 
+    public IEnumerator Death()
+    {
+        isDead = true;
+        cam.GetComponent<CameraFollow>().YouDied.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        assignStats();
+        pieces = 0f;
+        gameObject.transform.position = RespawnPoint.transform.position;
+        cam.GetComponent<CameraFollow>().YouDied.SetActive(false);
+
+        levelCreateSRC.GetComponent<LevelCreate>().forEachEnemyFindDestroy();
+        levelCreateSRC.GetComponent<LevelCreate>().foreachCycle(levelCreateSRC.GetComponent<LevelCreate>().Enemy, levelCreateSRC.GetComponent<LevelCreate>().EnemyPos);
+        isDead = false;
+    }
+    
     void Update()
     {
+        if (hpCurrent <= 0)
+        {
+            StartCoroutine(Death());
+        }
         if (spCurrent < 0)
             spCurrent = 0;
         if (spCurrent < spMax && !spRegenerating)

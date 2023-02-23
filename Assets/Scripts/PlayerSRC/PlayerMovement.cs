@@ -75,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
         {
             isDashing = true;
             _canDash = false;
-            dashingDir = new Vector2(Input.GetAxisRaw("Horizontal"),Input.GetAxisRaw("Vertical"));
+            dashingDir = new Vector2(Input.GetAxisRaw("Horizontal"),0);
             if (dashingDir == Vector2.zero)
             {
                 dashingDir = new Vector2(transform.localScale.x, 0);
