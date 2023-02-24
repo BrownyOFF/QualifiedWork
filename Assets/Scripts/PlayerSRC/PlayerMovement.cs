@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public Animator animator;
     #region Variables
     private float horizontal;
     private float speed;
@@ -62,14 +63,24 @@ public class PlayerMovement : MonoBehaviour
         var inputX = Input.GetAxisRaw("Horizontal");
         var jumpInput = Input.GetKeyDown(KeyCode.W);
 
+        //animator.SetFloat("Speed", Mathf.Abs());
         rb.velocity = new Vector2(inputX * speed, rb.velocity.y);
 
         if (jumpInput && isGrounded() && stats.canJump())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
             stats.spCurrent -= stats.jumpCost;
+            
         }
-        
+
+         //if (isGrounded == false)
+         //{
+            //animator.SetBool("isJumping", true);
+         //}
+        //else 
+        //{
+            //animator.SetBool("isJumping", false);
+        //}
         var dashInput = Input.GetKeyDown(KeyCode.F);
         if (dashInput && _canDash && stats.canDash())
         {
@@ -125,3 +136,4 @@ public class PlayerMovement : MonoBehaviour
         return Input.GetKey(KeyCode.LeftShift);
     }
 }
+  
