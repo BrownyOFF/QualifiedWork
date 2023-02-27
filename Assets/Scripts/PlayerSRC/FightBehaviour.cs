@@ -8,18 +8,18 @@ public class FightBehaviour : MonoBehaviour
     [SerializeField] private PlayerMovement move;
     private LayerMask enemyMask;
     private GameObject eye;
-    private float rayDistanse = 10f;
+    private float rayDistanse = 5f;
     public bool isFighting = false;
     public bool isAttacking = false;
     public bool isBlocking = false;
-    private int tmpChangeStat = 1; // 0 - chill ; 1 - fight ; 2 - inactive
-    
+
     public Camera cam;
     private float timeBtwAttack;
     private float startTimeBtwAttack = 0.5f;
     private GameObject attackPos;
     public float attackRange = 3f;
     private float damage = 10f;
+
     void Start()
     {
         move = GetComponent<PlayerMovement>();
@@ -50,7 +50,7 @@ public class FightBehaviour : MonoBehaviour
             return false;
         }
     }
-    
+
     public void attack()
     {
         isAttacking = true;
@@ -58,9 +58,7 @@ public class FightBehaviour : MonoBehaviour
         Collider2D[] enemyToDamage = Physics2D.OverlapCircleAll(attackPos.transform.position, attackRange, enemyMask);
         for (int i = 0; i < enemyToDamage.Length; i++)
         {
-            enemyToDamage[i].GetComponent<EnemyStat>().takingDamage(damage);
-            if (enemyToDamage[i].GetComponent<EnemyStat>().hp <= 0)
-                isFighting = false;
+            enemyToDamage[i].GetComponent<EnemySRC>().TakeDamage(damage);
         }
     }
 
@@ -68,6 +66,7 @@ public class FightBehaviour : MonoBehaviour
     {
         // Block Template
     }
+
     void Update()
     {
         if (Input.GetKey(KeyCode.Mouse0))
@@ -75,12 +74,13 @@ public class FightBehaviour : MonoBehaviour
             if (canAttackCheck())
             {
                 attack();
-            }else
+            }
+            else
             {
                 isAttacking = false;
                 timeBtwAttack -= Time.deltaTime;
             }
-        } 
+        }
         else if (Input.GetKey(KeyCode.Mouse1))
         {
             if (canBlockCheck())
@@ -88,21 +88,22 @@ public class FightBehaviour : MonoBehaviour
                 block();
             }
         }
-        
+
         enemyCheck();
 
-        if (tmpChangeStat == 0)
+        /*if (!isFighting && !move.chillStats)
         {
             cam.GetComponent<CameraFollow>().changeScale(cam.GetComponent<CameraFollow>().defaultScale);
-            move.assignStats(move.speedChill,move.jumpPowerChill,move.dashingVelocityChill,move.dashingTimeChill);
-            tmpChangeStat = 2;
+            move.assignStats(move.speedChill, move.jumpPowerChill, move.dashingVelocityChill, move.dashingTimeChill);
+            move.chillStats = true;
         }
-        else if (tmpChangeStat == 1)
+        else if (isFighting && !move.chillStats)
         {
             cam.GetComponent<CameraFollow>().changeScale(cam.GetComponent<CameraFollow>().battleScale);
-            move.assignStats(move.speedBattle,move.jumpPowerBattle,move.dashingVelocityBattle,move.dashingTimeBattle);
-            tmpChangeStat = 2;
-        }
+            move.assignStats(move.speedBattle, move.jumpPowerBattle, move.dashingVelocityBattle,
+                move.dashingTimeBattle);
+            move.chillStats = false;
+        }*/
     }
 
     private void enemyCheck()
@@ -113,15 +114,12 @@ public class FightBehaviour : MonoBehaviour
             if (isFighting)
             {
                 isFighting = false;
-                tmpChangeStat = 0;
             }
-            else
-                tmpChangeStat = 2;
         }
-        else if (hit.collider.CompareTag("Enemy"))
+        else if (hit.collider.CompareTag("Enemy") && !isFighting)
         {
             isFighting = true;
-            tmpChangeStat = 1;
         }
     }
+
 }

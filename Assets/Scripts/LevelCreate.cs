@@ -43,7 +43,8 @@ public class LevelCreate : MonoBehaviour
         {
             foreach (var i in enemy)
             {
-                i.GetComponent<EnemyStat>().destroy();
+                i.SetActive(true);
+                i.GetComponent<EnemySRC>().destroy();
             }
         }
     }

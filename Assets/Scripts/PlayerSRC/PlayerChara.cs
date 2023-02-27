@@ -73,6 +73,7 @@ public class PlayerChara : MonoBehaviour
     {
         cam = Camera.main;
         levelCreateSRC = GameObject.FindWithTag("lvlScr").GetComponent<LevelCreate>();
+        RespawnPoint = GameObject.FindWithTag("playerPos");
         CalcStats();
         assignStats();
     }

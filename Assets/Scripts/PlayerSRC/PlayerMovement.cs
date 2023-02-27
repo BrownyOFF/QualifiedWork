@@ -7,6 +7,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public Animator animator;
+    private SpriteRenderer sprite;
     #region Variables
     private float horizontal;
     private float speed;
@@ -25,6 +26,8 @@ public class PlayerMovement : MonoBehaviour
     private bool _canDash = true;
     #endregion
 
+    public bool chillStats = true;
+    
     #region ChillStats
     public float speedChill = 8f;
     public float jumpPowerChill = 16f;
@@ -32,22 +35,26 @@ public class PlayerMovement : MonoBehaviour
     public float dashingTimeChill = 0.05f;
     #endregion
 
-    #region CombatStats
-    public float speedBattle = 4f;
-    public float jumpPowerBattle = 16f;
-    public float dashingVelocityBattle = 120f;
-    public float dashingTimeBattle = 0.5f;
-    #endregion
+    // #region CombatStats
+    // public float speedBattle = 4f;
+    // public float jumpPowerBattle = 16f;
+    // public float dashingVelocityBattle = 120f;
+    // public float dashingTimeBattle = 0.5f;
+    // #endregion
     
     [SerializeField] private PlayerChara stats;
     [SerializeField] private FightBehaviour fight;
+    public bool isChilling;
     private void Start()
     {
+        sprite = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         stats = GetComponent<PlayerChara>();
         fight = GetComponent<FightBehaviour>();
         groundCheck = GameObject.Find("groundCheck");
         assignStats(speedChill,jumpPowerChill,dashingVelocityChill,dashingTimeChill);
+        isChilling = true;
     }
 
     public void assignStats(float spd,float jmppwr, float dashvel,float dashtime)
@@ -60,27 +67,43 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        // if (fight.isFighting && isChilling)
+        // {
+        //     assignStats(speedBattle,jumpPowerBattle,dashingVelocityBattle,dashingTimeBattle);
+        //     isChilling = false;
+        // }
+        // else if (!fight.isFighting && !isChilling)
+        // {
+        //     assignStats(speedChill,jumpPowerChill,dashingVelocityChill,dashingTimeChill);
+        //     isChilling = false;
+        // }
+        
+        
         var inputX = Input.GetAxisRaw("Horizontal");
         var jumpInput = Input.GetKeyDown(KeyCode.W);
 
-        //animator.SetFloat("Speed", Mathf.Abs());
+        animator.SetFloat("Speed", Math.Abs(inputX));
+
+        if (inputX > 0)
+        {
+            sprite.flipX = false;
+        }
+        else if (inputX < 0)
+        {
+            sprite.flipX = true;
+        }
+        
         rb.velocity = new Vector2(inputX * speed, rb.velocity.y);
 
         if (jumpInput && isGrounded() && stats.canJump())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
             stats.spCurrent -= stats.jumpCost;
-            
+            animator.SetBool("isJump", true);
         }
-
-         //if (isGrounded == false)
-         //{
-            //animator.SetBool("isJumping", true);
-         //}
-        //else 
-        //{
-            //animator.SetBool("isJumping", false);
-        //}
+        else if (isGrounded())
+            animator.SetBool("isJump", false);
+        
         var dashInput = Input.GetKeyDown(KeyCode.F);
         if (dashInput && _canDash && stats.canDash())
         {
@@ -93,6 +116,7 @@ public class PlayerMovement : MonoBehaviour
             }
 
             stats.spCurrent -= stats.dashCost;
+            animator.SetBool("isDash", true);
             StartCoroutine(StopDashing());
         }
 
@@ -125,8 +149,9 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(dashingTime);
         isDashing = false;
+        animator.SetBool("isDash", false);
     }
-    private bool isGrounded()
+    public bool isGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.transform.position, 0.2f,groundLayer);
     }
