@@ -12,6 +12,9 @@ public class PlayerChara : MonoBehaviour
     public float spCurrent = 50f;
     public float spBase = 50f;
     public float spMax;
+
+    public float enduranceMax = 50f;
+    public float enduranceCurrent = 0f;
     
     private bool spRegenerating = false;
 
@@ -93,8 +96,17 @@ public class PlayerChara : MonoBehaviour
     {
         hpCurrent = hpMax;
         spCurrent = spMax;
+        enduranceCurrent = 0f;
     }
-    
+
+    public void EnduranceDamage(float dmg)
+    {
+        enduranceCurrent += dmg;
+        if (enduranceCurrent > enduranceMax)
+        {
+            
+        } 
+    }
     private IEnumerator RegenSP()
     {
         spRegenerating = true;

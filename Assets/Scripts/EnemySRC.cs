@@ -20,6 +20,8 @@ public class EnemySRC : MonoBehaviour
     private float range = 2f;
     private float timeBeetwenAttack = 1f;
     private float startTimeBeetwenAttack = 0f;
+    private float enduranceCurrent = 0f;
+    private float enduranceMax = 15f;
     #endregion
 
     #region References
@@ -49,12 +51,13 @@ public class EnemySRC : MonoBehaviour
         Destroy(gameObject);
     }
     
-    public void TakeDamage(float damage)
+    public void TakeDamage(float dmg)
     {
         if (gameObject != null)
         {
-            health -= damage;
+            health -= dmg;
         }
+        enduranceCurrent += dmg;
     }
 
     private bool CanAttack()

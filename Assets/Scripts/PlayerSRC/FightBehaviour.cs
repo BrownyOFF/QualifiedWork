@@ -12,10 +12,13 @@ public class FightBehaviour : MonoBehaviour
     public bool isFighting = false;
     public bool isAttacking = false;
     public bool isBlocking = false;
-
+    public bool isParry = false;
+    
     public Camera cam;
     private float timeBtwAttack;
     private float startTimeBtwAttack = 0.5f;
+    private float parryStartTime = 0f;
+    private float parryTime = 0.3f;
     private GameObject attackPos;
     public float attackRange = 3f;
     private float damage = 10f;
@@ -64,9 +67,23 @@ public class FightBehaviour : MonoBehaviour
 
     public void block()
     {
-        // Block Template
+        if(isBlocking)
+            return;
+        isBlocking = true;
+        if (CanParry())
+        {
+            
+        }
+
     }
 
+    private bool CanParry()
+    {
+        if (parryStartTime <= parryTime)
+            return true;
+        else
+            return false;
+    }
     void Update()
     {
         if (Input.GetKey(KeyCode.Mouse0))
@@ -88,22 +105,16 @@ public class FightBehaviour : MonoBehaviour
                 block();
             }
         }
-
+        else
+        {
+            isBlocking = false;
+        }
         enemyCheck();
 
-        /*if (!isFighting && !move.chillStats)
+        if (isBlocking)
         {
-            cam.GetComponent<CameraFollow>().changeScale(cam.GetComponent<CameraFollow>().defaultScale);
-            move.assignStats(move.speedChill, move.jumpPowerChill, move.dashingVelocityChill, move.dashingTimeChill);
-            move.chillStats = true;
+            parryStartTime += Time.deltaTime;
         }
-        else if (isFighting && !move.chillStats)
-        {
-            cam.GetComponent<CameraFollow>().changeScale(cam.GetComponent<CameraFollow>().battleScale);
-            move.assignStats(move.speedBattle, move.jumpPowerBattle, move.dashingVelocityBattle,
-                move.dashingTimeBattle);
-            move.chillStats = false;
-        }*/
     }
 
     private void enemyCheck()

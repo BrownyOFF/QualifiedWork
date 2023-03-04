@@ -92,57 +92,61 @@ public class PlayerMovement : MonoBehaviour
         {
             sprite.flipX = true;
         }
-        
-        rb.velocity = new Vector2(inputX * speed, rb.velocity.y);
 
-        if (jumpInput && isGrounded() && stats.canJump())
+        if (!fight.isBlocking)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpPower);
-            stats.spCurrent -= stats.jumpCost;
-            animator.SetBool("isJump", true);
-        }
-        else if (isGrounded())
-            animator.SetBool("isJump", false);
-        
-        var dashInput = Input.GetKeyDown(KeyCode.F);
-        if (dashInput && _canDash && stats.canDash())
-        {
-            isDashing = true;
-            _canDash = false;
-            dashingDir = new Vector2(Input.GetAxisRaw("Horizontal"),0);
-            if (dashingDir == Vector2.zero)
-            {
-                dashingDir = new Vector2(transform.localScale.x, 0);
+            rb.velocity = new Vector2(inputX * speed, rb.velocity.y);
+            if (jumpInput && isGrounded() && stats.canJump()) 
+            { 
+                rb.velocity = new Vector2(rb.velocity.x, jumpPower); 
+                stats.spCurrent -= stats.jumpCost; 
+                animator.SetBool("isJump", true);
+            }
+            else if (isGrounded()) 
+                animator.SetBool("isJump", false);
+            
+            var dashInput = Input.GetKeyDown(KeyCode.F); 
+            if (dashInput && _canDash && stats.canDash()) 
+            { 
+                isDashing = true; 
+                _canDash = false; 
+                dashingDir = new Vector2(Input.GetAxisRaw("Horizontal"),0); 
+                if (dashingDir == Vector2.zero) 
+                { 
+                    dashingDir = new Vector2(transform.localScale.x, 0);
+                }
+                
+                stats.spCurrent -= stats.dashCost; 
+                animator.SetBool("isDash", true); 
+                StartCoroutine(StopDashing());
+            }
+            
+            if (isDashing) 
+            { 
+                rb.velocity = dashingDir.normalized * dashingVelocity; 
+                return;
+            }
+            
+            if (isGrounded()) 
+            { 
+                _canDash = true;
+                
+            }
+            
+            if (isSprinting()) 
+            { 
+                rb.velocity = new Vector2(inputX * speed * spintMult, rb.velocity.y);
             }
 
-            stats.spCurrent -= stats.dashCost;
-            animator.SetBool("isDash", true);
-            StartCoroutine(StopDashing());
-        }
-
-        if (isDashing)
-        {
-            rb.velocity = dashingDir.normalized * dashingVelocity;
-            return;
-        }
-
-        if (isGrounded())
-        {
-            _canDash = true;
-        }
-
-        if (isSprinting())
-        {
-            rb.velocity = new Vector2(inputX * speed * spintMult, rb.velocity.y);
-        }
-
-        if (!fight.isFighting)
-        {
-            if (inputX == 1f || inputX == -1f)
-            {
-                faceDir = inputX;
+            if (!fight.isFighting) 
+            { 
+                if (inputX == 1f || inputX == -1f) 
+                { 
+                    faceDir = inputX;
+                }
             }
         }
+        
     }
     
     private IEnumerator StopDashing()
