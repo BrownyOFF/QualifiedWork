@@ -15,11 +15,11 @@ public class KillBoxSRC : MonoBehaviour
     {
         if (col.CompareTag("Player"))
         {
-            col.GetComponent<PlayerChara>().hpCurrent = 0f;
+            col.GetComponent<PlayerChara>().Death();
         }
         else if (col.CompareTag("Enemy"))
         {
-            col.GetComponent<EnemyStat>().death();
+            col.GetComponent<EnemySRC>().Death();
         }
     }
 

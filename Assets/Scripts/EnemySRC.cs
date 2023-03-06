@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Random = System.Random;
 
 public class EnemySRC : MonoBehaviour
 {
@@ -15,32 +16,49 @@ public class EnemySRC : MonoBehaviour
     #endregion
 
     #region Combat Stats
-    public float health = 30f;
+    public float health = 100f;
     private float damage = 20f;
     private float range = 2f;
     private float timeBeetwenAttack = 1f;
     private float startTimeBeetwenAttack = 0f;
     private float enduranceCurrent = 0f;
-    private float enduranceMax = 15f;
+    private float enduranceMax = 30f;
+    private float timeToUnstun = 2f;
+    private float startTimeToUnstun = 0f;
+    private float startTimeToUnHit = 0f;
+    private float timeToUnHit = 3f;
     #endregion
 
     #region References
     private GameObject playerObj;
+    private GameObject bar;
+    private GameObject frame;
+    private float barScaleCurrent;
+    private float barScaleMax;
+    private float scaleDiff;
     private Rigidbody2D rb;
     #endregion
 
     #region Bools
     private bool isAttacking = false;
     private bool isBlocking = false;
+    private bool isTakedHitRecently = false;
+    private bool isStunned = false;
+    private bool isRegenerating = false;
     #endregion
     
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         playerObj = GameObject.FindWithTag("Player");
+        var enduranceBar = transform.GetChild(1).gameObject;
+        frame = enduranceBar.transform.GetChild(0).gameObject;
+        bar = enduranceBar.transform.GetChild(1).gameObject;
+        barScaleMax = bar.GetComponent<RectTransform>().localScale.x;
+        scaleDiff = enduranceMax / barScaleMax;
     }
 
-    private void Death()
+    public void Death()
     {
         playerObj.GetComponent<PlayerChara>().getPieces(pieces);
         gameObject.SetActive(false);
@@ -55,9 +73,31 @@ public class EnemySRC : MonoBehaviour
     {
         if (gameObject != null)
         {
-            health -= dmg;
+            if (isStunned) //hit after stunned
+            {
+                health -= dmg * 5f;
+                enduranceCurrent = 0f;
+                isStunned = false;
+                return;
+            }
+            var dice = UnityEngine.Random.Range(0,1f); // dice to block or hit
+            if (dice >= 0.5f) // block
+            {
+                enduranceCurrent += dmg * 1.25f;
+            }
+            else // hit
+            {
+                health -= dmg;
+                enduranceCurrent += dmg * 0.5f;
+            }
+            isTakedHitRecently = true;
+            startTimeToUnHit = 0;
+            if (enduranceCurrent >= enduranceMax) // check if stunned
+            {
+                Debug.Log("Is Stunned");
+                isStunned = true;
+            }
         }
-        enduranceCurrent += dmg;
     }
 
     private bool CanAttack()
@@ -97,11 +137,65 @@ public class EnemySRC : MonoBehaviour
         else
             return false;
     }
+
+    private void BarRenderer()
+    {
+        barScaleCurrent = enduranceCurrent / scaleDiff;
+        if (barScaleCurrent > barScaleMax)
+            barScaleCurrent = barScaleMax;
+        bar.GetComponent<RectTransform>().localScale = new Vector3(barScaleCurrent,bar.GetComponent<RectTransform>().localScale.y,bar.GetComponent<RectTransform>().localScale.z);
+    }
+
+    private IEnumerator RegenEndurance()
+    {
+        while (enduranceCurrent > 0)
+        {
+            enduranceCurrent -= 1;
+            yield return new WaitForSeconds(0.5f);
+        }
+        enduranceCurrent = 0;
+        isRegenerating = false;
+    }
+    
     void Update()
     {
+        if (health <= 0)
+            Death();                                                        // Death check, simple as that
+        
+        BarRenderer();
+
+        if (playerObj.GetComponent<PlayerChara>().isDead)
+        {
+            return;
+        }
+        
+        if (isStunned && startTimeToUnstun < timeToUnstun)
+        {
+            startTimeToUnstun += Time.deltaTime;                            // Stun count 
+            return;                                                         //    and
+        }                                                                   // change bool            
+        else if (startTimeToUnstun >= timeToUnstun || !isStunned)
+        {
+            startTimeToUnstun = 0f;
+            isStunned = false;
+        }
+
+        if (isTakedHitRecently && startTimeToUnHit < timeToUnHit)
+        {
+            if(isRegenerating)
+                StopCoroutine(RegenEndurance());
+            startTimeToUnHit += Time.deltaTime;                                       
+        }                                                                   // Count To Unhit and regen endurance
+        else
+        {
+            if(isRegenerating)
+                StopCoroutine(RegenEndurance());
+            StartCoroutine(RegenEndurance());
+            isRegenerating = true;
+        }                                                                   // Regen Endurance
+        
         distanceToPlayer = Vector2.Distance(transform.position, playerObj.transform.position);
-        if(health <= 0)
-            Death();
+        
 
         if (SeePlayer() && !CanAttack())
         {

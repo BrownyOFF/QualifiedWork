@@ -35,13 +35,6 @@ public class PlayerMovement : MonoBehaviour
     public float dashingTimeChill = 0.05f;
     #endregion
 
-    // #region CombatStats
-    // public float speedBattle = 4f;
-    // public float jumpPowerBattle = 16f;
-    // public float dashingVelocityBattle = 120f;
-    // public float dashingTimeBattle = 0.5f;
-    // #endregion
-    
     [SerializeField] private PlayerChara stats;
     [SerializeField] private FightBehaviour fight;
     public bool isChilling;
@@ -67,18 +60,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // if (fight.isFighting && isChilling)
-        // {
-        //     assignStats(speedBattle,jumpPowerBattle,dashingVelocityBattle,dashingTimeBattle);
-        //     isChilling = false;
-        // }
-        // else if (!fight.isFighting && !isChilling)
-        // {
-        //     assignStats(speedChill,jumpPowerChill,dashingVelocityChill,dashingTimeChill);
-        //     isChilling = false;
-        // }
-        
-        
+        if(stats.isDead)
+            return;
+
         var inputX = Input.GetAxisRaw("Horizontal");
         var jumpInput = Input.GetKeyDown(KeyCode.W);
 
@@ -100,11 +84,8 @@ public class PlayerMovement : MonoBehaviour
             { 
                 rb.velocity = new Vector2(rb.velocity.x, jumpPower); 
                 stats.spCurrent -= stats.jumpCost; 
-                animator.SetBool("isJump", true);
             }
-            else if (isGrounded()) 
-                animator.SetBool("isJump", false);
-            
+
             var dashInput = Input.GetKeyDown(KeyCode.F); 
             if (dashInput && _canDash && stats.canDash()) 
             { 
@@ -130,7 +111,11 @@ public class PlayerMovement : MonoBehaviour
             if (isGrounded()) 
             { 
                 _canDash = true;
-                
+                animator.SetBool("isJump", false);
+            }
+            else
+            {
+                animator.SetBool("isJump", true);
             }
             
             if (isSprinting()) 
@@ -145,6 +130,8 @@ public class PlayerMovement : MonoBehaviour
                     faceDir = inputX;
                 }
             }
+            
+            
         }
         
     }

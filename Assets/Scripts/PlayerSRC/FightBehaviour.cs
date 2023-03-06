@@ -6,6 +6,7 @@ using UnityEngine;
 public class FightBehaviour : MonoBehaviour
 {
     [SerializeField] private PlayerMovement move;
+    private PlayerChara chara;
     private LayerMask enemyMask;
     private GameObject eye;
     private float rayDistanse = 5f;
@@ -25,6 +26,7 @@ public class FightBehaviour : MonoBehaviour
 
     void Start()
     {
+        chara = GetComponent<PlayerChara>();
         move = GetComponent<PlayerMovement>();
         eye = GameObject.Find("eyeCheck");
         enemyMask = LayerMask.GetMask("Enemy");
@@ -86,6 +88,9 @@ public class FightBehaviour : MonoBehaviour
     }
     void Update()
     {
+        if(chara.isDead)
+            return;
+        
         if (Input.GetKey(KeyCode.Mouse0))
         {
             if (canAttackCheck())
@@ -109,28 +114,10 @@ public class FightBehaviour : MonoBehaviour
         {
             isBlocking = false;
         }
-        enemyCheck();
 
         if (isBlocking)
         {
             parryStartTime += Time.deltaTime;
         }
     }
-
-    private void enemyCheck()
-    {
-        RaycastHit2D hit = Physics2D.Raycast(eye.transform.position, new Vector2(move.faceDir, 0), rayDistanse, enemyMask);
-        if (hit.collider == null)
-        {
-            if (isFighting)
-            {
-                isFighting = false;
-            }
-        }
-        else if (hit.collider.CompareTag("Enemy") && !isFighting)
-        {
-            isFighting = true;
-        }
-    }
-
 }
