@@ -38,6 +38,8 @@ public class SchrineScript : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.E) && canEnter && !inShrine)
         {
+            playerColl.GetComponent<PlayerMovement>().rb.velocity = Vector2.zero;
+            playerColl.GetComponent<PlayerMovement>().animator.SetFloat("Speed", 0);
             playerColl.GetComponent<PlayerChara>().RespawnPointAssign(respPoint);
             camera.GetComponent<CameraFollow>().changeCanvas(1);
             GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().enabled = false;

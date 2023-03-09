@@ -113,6 +113,10 @@ public class EnemySRC : MonoBehaviour
         isAttacking = true;
         
         playerObj.GetComponent<PlayerChara>().takeDmg(damage);
+        if (playerObj.GetComponent<FightBehaviour>().isParry)
+        {
+            enduranceCurrent += 5;
+        }
     }
 
     private void Move()

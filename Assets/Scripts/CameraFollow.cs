@@ -3,9 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using UnityEngine.UIElements;
+using Cursor = UnityEngine.Cursor;
 
 public class CameraFollow : MonoBehaviour
 {
+    public Animator anim;
+
     public int defaultScale = 8;
     public int battleScale = 6;
     private Transform target;
@@ -17,16 +21,20 @@ public class CameraFollow : MonoBehaviour
     private GameObject Shrine;
     private GameObject Grade;
     public GameObject YouDied;
+    public UnityEngine.UI.Image blackScreenImage;
 
     public bool noDamping = false;
 
     private void Start()
     {
         Cursor.visible = false;
+        
         Default = GameObject.Find("DefaultUI");
         Shrine = GameObject.Find("ShrineUI");
         Grade = GameObject.Find("GradeUI");
         YouDied = GameObject.Find("Death");
+        blackScreenImage = GameObject.Find("BlackScreen").GetComponent<UnityEngine.UI.Image>();
+        anim = blackScreenImage.GetComponent<Animator>();
         YouDied.SetActive(false);
         changeCanvas(0);
         cam = GetComponent<Camera>();
@@ -38,7 +46,19 @@ public class CameraFollow : MonoBehaviour
     {
         target = GameObject.FindWithTag("Player").transform;
     }
-    
+
+    public void BlackScreenTransparency(int a)
+    {
+        if (a == 1)
+        {
+            anim.SetTrigger("Fade");
+        }
+        else
+        {
+            anim.SetTrigger("UnFade");
+
+        }
+    }
     public void changeCanvas(int i)
     {
         if (i == 0)

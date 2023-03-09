@@ -9,7 +9,7 @@ public class DialogueWindow : MonoBehaviour
     private GameObject dialogeBox;
     private Transform[] gameobjectChilds;
     [SerializeField] private string message;
-    private float timeToPrint = 0.3f;
+    private float timeToPrint = 0.15f;
     private IEnumerator print;
     void Start()
     {

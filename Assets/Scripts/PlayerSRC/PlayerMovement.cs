@@ -60,12 +60,18 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if(stats.isDead)
+        if(stats.isDead || stats.isStunned)
             return;
 
         var inputX = Input.GetAxisRaw("Horizontal");
         var jumpInput = Input.GetKeyDown(KeyCode.W);
 
+        if (fight.isBlocking)
+        {
+            rb.velocity = Vector2.zero;
+            animator.SetFloat("Speed", 0);
+            return;
+        }
         animator.SetFloat("Speed", Math.Abs(inputX));
 
         if (inputX > 0)

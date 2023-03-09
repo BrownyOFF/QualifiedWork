@@ -180,16 +180,14 @@ MonoBehaviour:
   dashingVelocity: 0
   dashingTime: 0
   dashingDir: {x: 0, y: 0}
+  chillStats: 1
   speedChill: 8
   jumpPowerChill: 16
   dashingVelocityChill: 50
   dashingTimeChill: 0.05
-  speedBattle: 4
-  jumpPowerBattle: 16
-  dashingVelocityBattle: 20
-  dashingTimeBattle: 0.05
   stats: {fileID: 0}
   fight: {fileID: 0}
+  isChilling: 0
 --- !u!114 &4260113326295581132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,9 +206,13 @@ MonoBehaviour:
   spCurrent: 50
   spBase: 50
   spMax: 50
+  enduranceMax: 50
+  enduranceCurrent: 0
+  isStunned: 0
   level: 1
   RespawnPoint: {fileID: 0}
   isDead: 0
+  deathCourotine: 0
   jumpCost: 10
   dashCost: 25
   pieces: 0
@@ -219,6 +221,7 @@ MonoBehaviour:
   spPerc: 1
   deacrese: 0
   cam: {fileID: 0}
+  camSRC: {fileID: 0}
 --- !u!114 &4260113326295581134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,6 +238,8 @@ MonoBehaviour:
   isFighting: 0
   isAttacking: 0
   isBlocking: 0
+  isParry: 0
+  isRecentlyHit: 0
   cam: {fileID: 0}
   attackRange: 3
 --- !u!95 &5281353993983225910

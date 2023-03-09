@@ -17,13 +17,19 @@ public class PlayerChara : MonoBehaviour
     public float enduranceCurrent = 0f;
     
     private bool spRegenerating = false;
-
+    private bool enduranceRegenerating = false;
+    
+    public bool isStunned = false;
+    private float stunTime = 1f;
+    
     public int level = 1;
 
     public GameObject RespawnPoint;
     private LevelCreate levelCreateSRC;
+    private FightBehaviour fight;
 
     public bool isDead = false;
+    public bool deathCourotine = false;
 
     #endregion
 
@@ -44,11 +50,42 @@ public class PlayerChara : MonoBehaviour
 
     public bool deacrese = false;
     public Camera cam;
+    public CameraFollow camSRC;
+    public GameObject enduranceBar;
+    private float barScaleCurrent;
+    private float barScaleMax;
+    private float scaleDiff;
     
 
     public void takeDmg(float dmg)
     {
-        hpCurrent -= dmg;
+        if (fight.isBlocking && !fight.isParry)
+        {
+            enduranceCurrent += dmg;
+            Debug.Log("Endurance damage: " +dmg);
+            if (enduranceCurrent >= enduranceMax)
+            {
+                StartCoroutine(Stun());
+            }
+        }
+        else if (fight.isBlocking && fight.isParry)
+        {
+            enduranceCurrent += dmg / 2;
+        }
+        else if(isStunned)
+        {
+            StopCoroutine(Stun());
+            isStunned = false;
+            enduranceCurrent = 0;
+            hpCurrent -= 1.25f * dmg;
+        }
+        else
+        {
+            hpCurrent -= dmg;
+            enduranceCurrent += dmg / 4;
+        }
+
+        fight.isRecentlyHit = true;
     }
     
     public void getPieces(float amount)
@@ -75,10 +112,24 @@ public class PlayerChara : MonoBehaviour
     void Start()
     {
         cam = Camera.main;
+        camSRC = cam.GetComponent<CameraFollow>();
         levelCreateSRC = GameObject.FindWithTag("lvlScr").GetComponent<LevelCreate>();
         RespawnPoint = GameObject.FindWithTag("playerPos");
+        fight = GetComponent<FightBehaviour>();
         CalcStats();
         assignStats();
+        var bar = GameObject.Find("PlayerEnduranceBar").gameObject;
+        enduranceBar = bar.transform.GetChild(1).gameObject;
+        barScaleMax = enduranceBar.GetComponent<RectTransform>().localScale.x;
+        scaleDiff = enduranceMax / barScaleMax;
+    }
+
+    private void BarRenderer()
+    {
+        barScaleCurrent = enduranceCurrent / scaleDiff;
+        if (barScaleCurrent > barScaleMax)
+            barScaleCurrent = barScaleMax;
+        enduranceBar.GetComponent<RectTransform>().localScale = new Vector3(barScaleCurrent,enduranceBar.GetComponent<RectTransform>().localScale.y,enduranceBar.GetComponent<RectTransform>().localScale.z);
     }
 
     public void RespawnPointAssign(GameObject pos)
@@ -98,15 +149,7 @@ public class PlayerChara : MonoBehaviour
         spCurrent = spMax;
         enduranceCurrent = 0f;
     }
-
-    public void EnduranceDamage(float dmg)
-    {
-        enduranceCurrent += dmg;
-        if (enduranceCurrent > enduranceMax)
-        {
-            
-        } 
-    }
+    
     private IEnumerator RegenSP()
     {
         spRegenerating = true;
@@ -116,7 +159,7 @@ public class PlayerChara : MonoBehaviour
             if (spCurrent < spMax)
             {
                 spCurrent += 4;
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(0.3f);
             }
             else
             {
@@ -127,10 +170,29 @@ public class PlayerChara : MonoBehaviour
         }
     }
 
+    private IEnumerator RegenEndurance()
+    {
+        while (true)
+        {
+            if (enduranceCurrent > 0)
+            {
+                enduranceCurrent -= 5;
+                yield return new WaitForSeconds(0.2f);
+            }
+            else
+            {
+                enduranceRegenerating = false;
+                enduranceCurrent = 0;
+                break;
+            }
+        }
+    }
     public IEnumerator Death()
     {
+        deathCourotine = true;
         isDead = true;
         cam.GetComponent<CameraFollow>().YouDied.SetActive(true);
+        camSRC.BlackScreenTransparency(1);
         yield return new WaitForSeconds(3f);
         assignStats();
         pieces = 0f;
@@ -140,14 +202,26 @@ public class PlayerChara : MonoBehaviour
         levelCreateSRC.GetComponent<LevelCreate>().forEachEnemyFindDestroy();
         levelCreateSRC.GetComponent<LevelCreate>().foreachCycle(levelCreateSRC.GetComponent<LevelCreate>().Enemy, levelCreateSRC.GetComponent<LevelCreate>().EnemyPos);
         isDead = false;
+        camSRC.BlackScreenTransparency(0);
     }
+
+    private IEnumerator Stun()
+    {
+        isStunned = true;
+        yield return new WaitForSeconds(stunTime);
+        isStunned = false;
+    }
+    
     
     void Update()
     {
-        if (hpCurrent <= 0)
+        if (hpCurrent <= 0 && !deathCourotine)
         {
             StartCoroutine(Death());
         }
+
+        BarRenderer();
+            
         if (spCurrent < 0)
             spCurrent = 0;
         if (spCurrent < spMax && !spRegenerating)
@@ -156,5 +230,11 @@ public class PlayerChara : MonoBehaviour
         }
         if (spCurrent > spMax)
             spCurrent = spMax;
+
+        if (enduranceCurrent > 0 && !fight.isRecentlyHit && !enduranceRegenerating)
+        {
+            enduranceRegenerating = true;
+            StartCoroutine(RegenEndurance());
+        }
     }
 }
