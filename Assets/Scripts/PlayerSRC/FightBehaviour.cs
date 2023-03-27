@@ -41,7 +41,7 @@ public class FightBehaviour : MonoBehaviour
 
     public bool canAttackCheck()
     {
-        if (!isBlocking && timeBtwAttack <= 0)
+        if (!isBlocking && timeBtwAttack <= 0 && move.rb.velocity == Vector2.zero)
         {
             return true;
         }

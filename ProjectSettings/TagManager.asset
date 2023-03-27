@@ -11,6 +11,7 @@ TagManager:
   - playerPos
   - lvlScr
   - RespPoint
+  - InterestPoint
   layers:
   - Default
   - TransparentFX

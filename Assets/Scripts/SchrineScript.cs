@@ -10,24 +10,36 @@ public class SchrineScript : MonoBehaviour
     private GameObject respPoint;
     private bool canEnter = false;
     private bool inShrine = false;
-
+    private GameObject player;
+    private GameObject questionMark;
     private Collider2D playerColl;
     private void OnTriggerEnter2D(Collider2D col)
     {
-        playerColl = col;
-        canEnter = true;
-        btnShow.SetActive(true);
+        if (col.CompareTag("Player") && !inShrine)
+        {
+            inShrine = true;
+            playerColl = col;
+            canEnter = true;
+            btnShow.SetActive(true);
+            questionMark.SetActive(true);
+        }
     }
-
     private void OnTriggerExit2D(Collider2D other)
     {
-        canEnter = false;
-        btnShow.SetActive(false);
-        camera.GetComponent<CameraFollow>().changeCanvas(0);
+        if (other.CompareTag("Player") && inShrine)
+        {
+            inShrine = false;
+            canEnter = false;
+            btnShow.SetActive(false);
+            camera.GetComponent<CameraFollow>().changeCanvas(0);
+            questionMark.SetActive(false);
+        }
     }
 
     void Start()
     {
+        player = GameObject.FindWithTag("Player");
+        questionMark = player.transform.GetChild(3).gameObject;
         camera = GameObject.FindWithTag("MainCamera");
         btnShow = gameObject.transform.GetChild(0).gameObject;
         respPoint = gameObject.transform.GetChild(1).gameObject;
@@ -36,7 +48,7 @@ public class SchrineScript : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.E) && canEnter && !inShrine)
+        if (Input.GetKey(KeyCode.E) && canEnter && inShrine)
         {
             playerColl.GetComponent<PlayerMovement>().rb.velocity = Vector2.zero;
             playerColl.GetComponent<PlayerMovement>().animator.SetFloat("Speed", 0);

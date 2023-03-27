@@ -32917,7 +32917,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 924621409329268093, guid: c0875900c7e01a94189793b803616a9b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 130.56859
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 924621409329268093, guid: c0875900c7e01a94189793b803616a9b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -34653,7 +34653,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 978364696}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -202.85, y: 1.64, z: 0}
+  m_LocalPosition: {x: -180.4, y: 1.44, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 995667050}
@@ -34853,7 +34853,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 924621409329268093, guid: dbf79e1afff047d41ba90526dd635c3b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.6892548
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 924621409329268093, guid: dbf79e1afff047d41ba90526dd635c3b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -34972,7 +34972,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_TargetDisplay: 0
 --- !u!224 &1376204669
 RectTransform:
@@ -68376,6 +68376,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3337885288231276421, guid: 8023d799f4cb2534ba6578ee35a576cd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3337885288612681876, guid: 8023d799f4cb2534ba6578ee35a576cd, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -880
+      objectReference: {fileID: 0}
+    - target: {fileID: 3337885288612681878, guid: 8023d799f4cb2534ba6578ee35a576cd, type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3337885288612681879, guid: 8023d799f4cb2534ba6578ee35a576cd, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 3337885289912282137, guid: 8023d799f4cb2534ba6578ee35a576cd, type: 3}
       propertyPath: m_Name
       value: Main Camera

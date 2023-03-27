@@ -30,9 +30,12 @@ public class LevelCreate : MonoBehaviour
 
     public void foreachCycle(GameObject obj, GameObject[] pos)
     {
-        foreach (var tPos in pos)
+        if (pos != null)
         {
-            SpawnObject(obj, tPos);
+            foreach (var tPos in pos)
+            {
+                SpawnObject(obj, tPos);
+            }
         }
     }
 
