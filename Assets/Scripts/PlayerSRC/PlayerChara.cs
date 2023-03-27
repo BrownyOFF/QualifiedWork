@@ -48,6 +48,11 @@ public class PlayerChara : MonoBehaviour
 
     #endregion
 
+    #region Items
+    public int flowerAmount; // 0 code
+    public int shardAmount;  // 1 code
+    #endregion
+    
     public bool deacrese = false;
     public Camera cam;
     public CameraFollow camSRC;
@@ -55,8 +60,17 @@ public class PlayerChara : MonoBehaviour
     private float barScaleCurrent;
     private float barScaleMax;
     private float scaleDiff;
-    
+    private Animator animCont;
 
+
+    public void TakeItem(int type)
+    {
+        if (type == 0)
+            flowerAmount++;
+        else
+            shardAmount++;
+    }
+    
     public void takeDmg(float dmg)
     {
         if (fight.isBlocking && !fight.isParry)
@@ -70,6 +84,7 @@ public class PlayerChara : MonoBehaviour
         }
         else if (fight.isBlocking && fight.isParry)
         {
+            animCont.SetTrigger("Parry");
             enduranceCurrent += dmg / 2;
         }
         else if(isStunned)
@@ -81,6 +96,7 @@ public class PlayerChara : MonoBehaviour
         }
         else
         {
+            animCont.SetTrigger("Hurt");
             hpCurrent -= dmg;
             enduranceCurrent += dmg / 4;
         }
@@ -111,6 +127,7 @@ public class PlayerChara : MonoBehaviour
 
     void Start()
     {
+        animCont = GetComponent<Animator>();
         cam = Camera.main;
         camSRC = cam.GetComponent<CameraFollow>();
         levelCreateSRC = GameObject.FindWithTag("lvlScr").GetComponent<LevelCreate>();
@@ -189,10 +206,12 @@ public class PlayerChara : MonoBehaviour
     }
     public IEnumerator Death()
     {
+        animCont.SetBool("isDead", true);
         deathCourotine = true;
         isDead = true;
         cam.GetComponent<CameraFollow>().YouDied.SetActive(true);
         camSRC.BlackScreenTransparency(1);
+        animCont.SetBool("isDead", false);
         yield return new WaitForSeconds(3f);
         assignStats();
         pieces = 0f;
@@ -202,6 +221,7 @@ public class PlayerChara : MonoBehaviour
         levelCreateSRC.GetComponent<LevelCreate>().forEachEnemyFindDestroy();
         levelCreateSRC.GetComponent<LevelCreate>().foreachCycle(levelCreateSRC.GetComponent<LevelCreate>().Enemy, levelCreateSRC.GetComponent<LevelCreate>().EnemyPos);
         isDead = false;
+
         camSRC.BlackScreenTransparency(0);
     }
 

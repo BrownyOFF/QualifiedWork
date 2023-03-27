@@ -27,9 +27,11 @@ public class FightBehaviour : MonoBehaviour
     public float attackRange = 3f;
     private float damage = 10f;
     private bool isBlockClicked = false;
+    private Animator animCont;
 
     void Start()
     {
+        animCont = GetComponent<Animator>();
         chara = GetComponent<PlayerChara>();
         move = GetComponent<PlayerMovement>();
         enemyMask = LayerMask.GetMask("Enemy");
@@ -61,6 +63,7 @@ public class FightBehaviour : MonoBehaviour
 
     public void attack()
     {
+        animCont.SetTrigger("Attack");
         Debug.Log("Attack!");
         isAttacking = true;
         timeBtwAttack = startTimeBtwAttack;
@@ -101,12 +104,14 @@ public class FightBehaviour : MonoBehaviour
         {
             if (canBlockCheck())
             {
+                animCont.SetBool("Block", true);
                 isBlocking = true;
                 StartCoroutine(CanParry());
             }
         }
         else
         {
+            animCont.SetBool("Block", false);
             isParry = false;
             isBlocking = false;
             timeBtwAttack -= Time.deltaTime;

@@ -37,6 +37,7 @@ public class EnemySRC : MonoBehaviour
     private float barScaleMax;
     private float scaleDiff;
     private Rigidbody2D rb;
+    private Animator animCont;
     #endregion
 
     #region Bools
@@ -49,6 +50,7 @@ public class EnemySRC : MonoBehaviour
     
     void Start()
     {
+        animCont = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         playerObj = GameObject.FindWithTag("Player");
         var enduranceBar = transform.GetChild(1).gameObject;
@@ -60,6 +62,7 @@ public class EnemySRC : MonoBehaviour
 
     public void Death()
     {
+        animCont.SetTrigger("Dead");
         playerObj.GetComponent<PlayerChara>().getPieces(pieces);
         gameObject.SetActive(false);
     }
@@ -84,9 +87,11 @@ public class EnemySRC : MonoBehaviour
             if (dice >= 0.5f) // block
             {
                 enduranceCurrent += dmg * 1.25f;
+                animCont.SetTrigger("Block");
             }
             else // hit
             {
+                animCont.SetTrigger("Hurt");
                 health -= dmg;
                 enduranceCurrent += dmg * 0.5f;
             }
@@ -109,6 +114,7 @@ public class EnemySRC : MonoBehaviour
 
     private void Attack()
     {
+        animCont.SetTrigger("Attack");
         rb.velocity = Vector2.zero;
         isAttacking = true;
         
@@ -204,10 +210,16 @@ public class EnemySRC : MonoBehaviour
         if (SeePlayer() && !CanAttack())
         {
             Move();
+            animCont.SetBool("IsMoving", true);
         }
         else if (CanAttack() && !isAttacking)
         {
+            animCont.SetTrigger("Attack");
             Attack();
+        }
+        else
+        {
+            animCont.SetBool("IsMoving", false);
         }
 
         if (isAttacking)
