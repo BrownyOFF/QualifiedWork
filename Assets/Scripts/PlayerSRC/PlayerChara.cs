@@ -31,6 +31,8 @@ public class PlayerChara : MonoBehaviour
     public bool isDead = false;
     public bool deathCourotine = false;
 
+    public bool inDialogue = false;
+
     #endregion
 
     #region MoveCost

@@ -26,7 +26,6 @@ public class PlayerMovement : MonoBehaviour
     private bool _canDash = true;
     #endregion
 
-    public bool chillStats = true;
     
     #region ChillStats
     public float speedChill = 8f;
@@ -37,7 +36,6 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private PlayerChara stats;
     [SerializeField] private FightBehaviour fight;
-    public bool isChilling;
     private void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
@@ -47,7 +45,6 @@ public class PlayerMovement : MonoBehaviour
         fight = GetComponent<FightBehaviour>();
         groundCheck = GameObject.Find("groundCheck");
         assignStats(speedChill,jumpPowerChill,dashingVelocityChill,dashingTimeChill);
-        isChilling = true;
     }
 
     public void assignStats(float spd,float jmppwr, float dashvel,float dashtime)
@@ -60,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if(stats.isDead || stats.isStunned)
+        if(stats.isDead || stats.isStunned || stats.inDialogue)
             return;
 
         var inputX = Input.GetAxisRaw("Horizontal");

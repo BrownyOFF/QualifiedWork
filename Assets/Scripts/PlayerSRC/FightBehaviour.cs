@@ -64,7 +64,6 @@ public class FightBehaviour : MonoBehaviour
     public void attack()
     {
         animCont.SetTrigger("Attack");
-        Debug.Log("Attack!");
         isAttacking = true;
         timeBtwAttack = startTimeBtwAttack;
         Collider2D[] enemyToDamage = Physics2D.OverlapCircleAll(attackPos.transform.position, attackRange, enemyMask);
@@ -73,7 +72,6 @@ public class FightBehaviour : MonoBehaviour
             enemyToDamage[i].GetComponent<EnemySRC>().TakeDamage(damage);
         }
     }
-    
 
     private IEnumerator CanParry()
     {
@@ -83,9 +81,8 @@ public class FightBehaviour : MonoBehaviour
     }
     void Update()
     {
-        if(chara.isDead || chara.isStunned)
+        if(chara.isDead || chara.isStunned || chara.inDialogue)
             return;
-        
         
         if (Input.GetKeyDown(KeyCode.Mouse0) && !isAttacking)
         {

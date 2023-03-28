@@ -6,7 +6,9 @@ using UnityEngine;
 public class EnterSRC : MonoBehaviour
 {
     private GameObject questionMark;
+    [SerializeField] private TextAsset textFile;
     private bool inside = false;
+    private bool inShop = false;
     void Start()
     {
         questionMark = GameObject.FindWithTag("Player").transform.GetChild(3).gameObject;
@@ -32,9 +34,17 @@ public class EnterSRC : MonoBehaviour
 
     void Update()
     {
-        if (inside && Input.GetKeyDown(KeyCode.E))
+        if (inside && Input.GetKeyDown(KeyCode.E) && !inShop)
         {
-            
+            GameObject.FindWithTag("Player").GetComponent<PlayerChara>().inDialogue = true;
+            StartCoroutine(GameObject.FindWithTag("MainCamera").GetComponent<CameraFollow>().DialogueSrc(textFile));
+            inShop = true;
+        }
+        else if (inside && Input.GetKeyDown(KeyCode.Escape) && inShop)
+        {
+            inShop = false;
+            GameObject.FindWithTag("Player").GetComponent<PlayerChara>().inDialogue = false;
+            GameObject.FindWithTag("MainCamera").GetComponent<CameraFollow>().changeCanvas(0);
         }
     }
 }
