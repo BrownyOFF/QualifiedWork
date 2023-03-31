@@ -38,6 +38,7 @@ public class EnemySRC : MonoBehaviour
     private float scaleDiff;
     private Rigidbody2D rb;
     private Animator animCont;
+    private bool isDead = false;
     #endregion
 
     #region Bools
@@ -60,10 +61,12 @@ public class EnemySRC : MonoBehaviour
         scaleDiff = enduranceMax / barScaleMax;
     }
 
-    public void Death()
+    public IEnumerator Death()
     {
+        isDead = true;
         animCont.SetTrigger("Dead");
         playerObj.GetComponent<PlayerChara>().getPieces(pieces);
+        yield return new WaitForSeconds(3f);
         gameObject.SetActive(false);
     }
 
@@ -100,7 +103,13 @@ public class EnemySRC : MonoBehaviour
             if (enduranceCurrent >= enduranceMax) // check if stunned
             {
                 Debug.Log("Is Stunned");
+                animCont.SetTrigger("isStunned");
                 isStunned = true;
+            }
+
+            if (isAttacking)
+            {
+                StopCoroutine(Attack());
             }
         }
     }
@@ -112,12 +121,13 @@ public class EnemySRC : MonoBehaviour
         return false;
     }
 
-    private void Attack()
+    private IEnumerator Attack()
     {
         animCont.SetTrigger("Attack");
         rb.velocity = Vector2.zero;
         isAttacking = true;
-        
+        yield return new WaitForSeconds(0.15f);
+                    
         playerObj.GetComponent<PlayerChara>().takeDmg(damage);
         if (playerObj.GetComponent<FightBehaviour>().isParry)
         {
@@ -169,22 +179,22 @@ public class EnemySRC : MonoBehaviour
     
     void Update()
     {
-        if (health <= 0)
-            Death();                                                        // Death check, simple as that
-        
-        BarRenderer();
-
-        if (playerObj.GetComponent<PlayerChara>().isDead)
+        if (playerObj.GetComponent<PlayerChara>().isDead || isDead)
         {
             return;
         }
         
+        if (health <= 0 && !isDead)
+            StartCoroutine(Death());                                                        // Death check, simple as that
+        
+        BarRenderer();
+
         if (isStunned && startTimeToUnstun < timeToUnstun)
         {
             startTimeToUnstun += Time.deltaTime;                            // Stun count 
             return;                                                         //    and
         }                                                                   // change bool            
-        else if (startTimeToUnstun >= timeToUnstun || !isStunned)
+        if (startTimeToUnstun >= timeToUnstun || isStunned)
         {
             startTimeToUnstun = 0f;
             isStunned = false;
@@ -215,7 +225,7 @@ public class EnemySRC : MonoBehaviour
         else if (CanAttack() && !isAttacking)
         {
             animCont.SetTrigger("Attack");
-            Attack();
+            StartCoroutine(Attack());
         }
         else
         {

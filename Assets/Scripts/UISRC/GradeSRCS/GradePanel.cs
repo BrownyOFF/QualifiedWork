@@ -11,11 +11,11 @@ public class GradePanel : MonoBehaviour
     private Button spGrade;
     private Button conf;
 
-    private Text lvl;
-    private Text hp;
-    private Text sp;
-    private Text pieces;
-    private Text piecesCost;
+    private TextMeshProUGUI lvl;
+    private TextMeshProUGUI hp;
+    private TextMeshProUGUI sp;
+    private TextMeshProUGUI pieces;
+    private TextMeshProUGUI piecesCost;
 
     private PlayerChara stats;
 
@@ -46,11 +46,11 @@ public class GradePanel : MonoBehaviour
         conf = GameObject.Find("ConfBtn").GetComponent<Button>();
 
         //text Find
-        lvl = GameObject.Find("Level").GetComponent<Text>();
-        hp = GameObject.Find("HPMax").GetComponent<Text>();
-        sp = GameObject.Find("SPMax").GetComponent<Text>();
-        pieces = GameObject.Find("Pieces").GetComponent<Text>();
-        piecesCost = GameObject.Find("Cost").GetComponent<Text>();
+        lvl = GameObject.Find("Level").GetComponent<TextMeshProUGUI>();
+        hp = GameObject.Find("HPMax").GetComponent<TextMeshProUGUI>();
+        sp = GameObject.Find("SPMax").GetComponent<TextMeshProUGUI>();
+        pieces = GameObject.Find("Pieces").GetComponent<TextMeshProUGUI>();
+        piecesCost = GameObject.Find("Cost").GetComponent<TextMeshProUGUI>();
 
         // Player Stats Find
         stats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerChara>();

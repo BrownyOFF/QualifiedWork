@@ -61,9 +61,10 @@ public class FightBehaviour : MonoBehaviour
         }
     }
 
-    public void attack()
+    public IEnumerator attack()
     {
         animCont.SetTrigger("Attack");
+        yield return new WaitForSeconds(0.25f);
         isAttacking = true;
         timeBtwAttack = startTimeBtwAttack;
         Collider2D[] enemyToDamage = Physics2D.OverlapCircleAll(attackPos.transform.position, attackRange, enemyMask);
@@ -73,7 +74,7 @@ public class FightBehaviour : MonoBehaviour
         }
     }
 
-    private IEnumerator CanParry()
+    public IEnumerator CanParry()
     {
         isParry = true;
         yield return new WaitForSeconds(parryTime);
@@ -88,7 +89,7 @@ public class FightBehaviour : MonoBehaviour
         {
             if (canAttackCheck())
             {
-                attack();
+                StartCoroutine(attack());
             }
             else
             {
@@ -97,7 +98,7 @@ public class FightBehaviour : MonoBehaviour
             }
 
         }
-        else if (Input.GetKey(KeyCode.Mouse1))
+        else if (Input.GetKey(KeyCode.Mouse1) && !isBlocking)
         {
             if (canBlockCheck())
             {

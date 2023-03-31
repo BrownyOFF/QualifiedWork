@@ -87,6 +87,8 @@ public class PlayerChara : MonoBehaviour
         else if (fight.isBlocking && fight.isParry)
         {
             animCont.SetTrigger("Parry");
+            fight.isBlocking = false;
+            StopCoroutine(fight.CanParry());
             enduranceCurrent += dmg / 2;
         }
         else if(isStunned)
