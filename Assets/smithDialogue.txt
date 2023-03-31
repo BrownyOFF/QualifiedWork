@@ -2,3 +2,6 @@ name:Кузнець
 sprite:Assets\sprites\smith_spr.png
 bg:Assets\sprites\smith_bg.jpg
 msg_00:Вітаю!
+que_01_00:Ви місцевий кузнець?
+que_02_00:Не підскажеш, що це за фрагмент такий?
+que_exit:Мені час, бувай.

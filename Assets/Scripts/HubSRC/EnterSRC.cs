@@ -29,6 +29,7 @@ public class EnterSRC : MonoBehaviour
         {
             questionMark.SetActive(false);
             inside = false;
+            inShop = false;
         }
     }
 
@@ -37,14 +38,8 @@ public class EnterSRC : MonoBehaviour
         if (inside && Input.GetKeyDown(KeyCode.E) && !inShop)
         {
             GameObject.FindWithTag("Player").GetComponent<PlayerChara>().inDialogue = true;
-            StartCoroutine(GameObject.FindWithTag("MainCamera").GetComponent<CameraFollow>().DialogueSrc(textFile));
+            StartCoroutine(GameObject.FindWithTag("MainCamera").GetComponent<DialogueSRC>().DialogueSrc(textFile));
             inShop = true;
-        }
-        else if (inside && Input.GetKeyDown(KeyCode.Escape) && inShop)
-        {
-            inShop = false;
-            GameObject.FindWithTag("Player").GetComponent<PlayerChara>().inDialogue = false;
-            GameObject.FindWithTag("MainCamera").GetComponent<CameraFollow>().changeCanvas(0);
         }
     }
 }

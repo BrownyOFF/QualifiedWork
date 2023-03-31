@@ -56,6 +56,7 @@
      <Compile Include="Assets\Scripts\UISRC\GradeSRCS\GradeButton.cs" />
      <Compile Include="Assets\Scripts\UISRC\RestSRCS\RestButton.cs" />
      <Compile Include="Assets\Scripts\EnemyStat.cs" />
+     <Compile Include="Assets\Scripts\HubSRC\LeaveDialogue.cs" />
      <Compile Include="Assets\Scripts\HubSRC\EnterSRC.cs" />
      <Compile Include="Assets\Scripts\UISRC\TravelSRCS\TravelButton.cs" />
      <Compile Include="Assets\Scripts\PlayerSRC\PlayerChara.cs" />
@@ -64,9 +65,10 @@
      <Compile Include="Assets\Scripts\KillBoxSRC.cs" />
      <Compile Include="Assets\Scripts\PlayerSRC\FightBehaviour.cs" />
      <Compile Include="Assets\Scripts\UISRC\UI.cs" />
+     <Compile Include="Assets\Scripts\Camera_HUD\DialogueSRC.cs" />
      <Compile Include="Assets\Scripts\ItemPickUp.cs" />
      <Compile Include="Assets\Scripts\PlayerSRC\PlayerMovement.cs" />
-     <Compile Include="Assets\Scripts\CameraFollow.cs" />
+     <Compile Include="Assets\Scripts\Camera_HUD\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\EnemySRC.cs" />
      <Compile Include="Assets\Scripts\UISRC\GradeSRCS\GradePanel.cs" />
      <Compile Include="Assets\Scripts\DialogueWindow.cs" />
