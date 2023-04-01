@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
@@ -23,10 +24,12 @@ public class DialogueSRC : MonoBehaviour
     private GameObject sayButtonPrefab;
     private GameObject buttonPos;
     public List<GameObject> bttnList;
+    private List<string> que;
+    private List<string> queType;
+    private string messageText;
     
     void Start()
     {
-        bttnList = new List<GameObject>();
         sayButtonPrefab = Resources.Load("sayBttn") as GameObject;
         cam = GetComponent<Camera>();
         Dialogue = GameObject.Find("DialogueUI");
@@ -44,8 +47,11 @@ public class DialogueSRC : MonoBehaviour
         
     }
     
-    public IEnumerator DialogueSrc(TextAsset textFile)
+    public IEnumerator DialogueSrc(TextAsset textFile, string queID)
     {
+        que = new List<string>();
+        queType = new List<string>();
+        bttnList = new List<GameObject>();
         camSCR.BlackScreenTransparency(1);
         yield return new WaitForSeconds(1.5f);
         camSCR.BlackScreenTransparency(2);
@@ -55,34 +61,78 @@ public class DialogueSRC : MonoBehaviour
         var message = getBetween(text, "msg_00:", "\r");
         var spr_path = getBetween(text, "sprite:", "\r");
         var bg_path = getBetween(text, "bg:", "\r");
-        var que_01 = getBetween(text, "que_01_00:", "\r");
-        var que_02 = getBetween(text, "que_02_00:", "\r");
+        if (queID != "")
+        {
+            var que_01 = getBetween(text, queID + ":", "\r");
+            que.Add(que_01);
+            queType.Add(queID);
+        }
+        var que_grade = getBetween(text, "que_grade_00:", "\r");
+        que.Add(que_grade);
+        queType.Add("que_grade_00");
+
+        
         var que_exit = getBetween(text, "que_exit:", "\r");
-        string[] que = new[] { que_01, que_02, que_exit };
+        que.Add(que_exit);
+        queType.Add("que_exit");
+
         Sprite spr = LoadSpriteFromFile(spr_path);
         Sprite bg = LoadSpriteFromFile(bg_path);
         spriteObj.GetComponent<Image>().sprite = spr;
         bgObj.GetComponent<Image>().sprite = bg;
         messageObj.GetComponent<TextMeshProUGUI>().text = message;
         namObj.GetComponent<TextMeshProUGUI>().text = name;
-        quePrint(que);
+        quePrint(que, queType, text);
     }
 
-    private void quePrint(string[] que)
+    private void quePrint(List<string> que, List<string> queID, string textFile)
     {
         var posDiff = 0;
-        for (int i = 0; i < que.Length; i++)
+        for (int i = 0; i < que.Count; i++)
         {
             var posVec = new Vector3(buttonPos.transform.position.x, buttonPos.transform.position.y - posDiff, 0);
             GameObject bttnSay = Instantiate(sayButtonPrefab, posVec, quaternion.identity, heroSayObj.transform);
             posDiff += 1;
             bttnList.Add(bttnSay);
-            if (i == que.Length - 1)
+            if (queID[i].Contains("exit"))
             {
                 bttnSay.AddComponent<LeaveDialogue>();
             }
+            else if (queID[i].Contains("grade"))
+            {
+                bttnSay.AddComponent<GradeSRC>();
+                bttnSay.GetComponent<GradeSRC>().textString = getAllDialogue(queID[i], textFile);
+                bttnSay.GetComponent<GradeSRC>().messageID = queID[i];
+            }
+            else
+            {
+                bttnSay.AddComponent<BttnDialogueSRC>();
+                bttnSay.GetComponent<BttnDialogueSRC>().bttnCount = i;
+                bttnSay.GetComponent<BttnDialogueSRC>().messageID = queID[i];
+                bttnSay.GetComponent<BttnDialogueSRC>().textString = getAllDialogue(queID[i], textFile);
+                bttnSay.GetComponent<BttnDialogueSRC>().messageObj = messageObj;
+                bttnSay.GetComponent<BttnDialogueSRC>().bttnList = bttnList;
+            }
             bttnSay.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = que[i];
         }
+    }
+
+    public string getAllDialogue(string messID, string text)
+    {
+        int lstDgt = 1;
+        messageText = "";
+        string id = getBetween(messID, "que_", "_0");
+        while (true)
+        {
+            var tmpText = getBetween(text, "mess_" + id + "_0" + lstDgt + ":", "\r");
+            if (tmpText == "")
+            {
+                break;
+            }
+            messageText += tmpText + "\r\n";
+            lstDgt++;
+        }
+        return messageText;
     }
     public static string getBetween(string file, string strStart, string strEnd)
     {

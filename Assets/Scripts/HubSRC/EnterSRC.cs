@@ -38,7 +38,7 @@ public class EnterSRC : MonoBehaviour
         if (inside && Input.GetKeyDown(KeyCode.E) && !inShop)
         {
             GameObject.FindWithTag("Player").GetComponent<PlayerChara>().inDialogue = true;
-            StartCoroutine(GameObject.FindWithTag("MainCamera").GetComponent<DialogueSRC>().DialogueSrc(textFile));
+            StartCoroutine(GameObject.FindWithTag("MainCamera").GetComponent<DialogueSRC>().DialogueSrc(textFile, "que_01_00"));
             inShop = true;
         }
     }
