@@ -11,10 +11,12 @@ public class RestButton : MonoBehaviour
     
     //PlayerRelated
     private PlayerChara player;
+    private PlayerInventory inventory;
     
     private Button bttn;
     void Start()
     {
+        inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>();
         levelCreateSRC = GameObject.FindGameObjectWithTag("lvlScr");
         bttn = GetComponent<Button>();
         bttn.onClick.AddListener(onClickFunc);
@@ -32,6 +34,9 @@ public class RestButton : MonoBehaviour
         
         //Player reset stats
         player.assignStats();
+        
+        // Reset Flask
+        inventory.ResetFlask();
     }
     void Update()
     {

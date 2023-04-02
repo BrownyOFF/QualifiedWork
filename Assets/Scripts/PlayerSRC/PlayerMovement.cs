@@ -57,8 +57,11 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if(stats.isDead || stats.isStunned || stats.inDialogue)
+        if (stats.isDead || stats.isStunned || stats.inDialogue || fight.isParry)
+        {
+            rb.velocity = Vector2.zero;      
             return;
+        }
 
         var inputX = Input.GetAxisRaw("Horizontal");
         var jumpInput = Input.GetKeyDown(KeyCode.W);

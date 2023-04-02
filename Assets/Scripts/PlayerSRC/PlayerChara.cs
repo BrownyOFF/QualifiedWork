@@ -13,9 +13,6 @@ public class PlayerChara : MonoBehaviour
     public float spBase = 50f;
     public float spMax;
 
-    public float enduranceMax = 50f;
-    public float enduranceCurrent = 0f;
-    
     private bool spRegenerating = false;
     private bool enduranceRegenerating = false;
     
@@ -32,7 +29,6 @@ public class PlayerChara : MonoBehaviour
     public bool deathCourotine = false;
 
     public bool inDialogue = false;
-
     #endregion
 
     #region MoveCost
@@ -41,76 +37,47 @@ public class PlayerChara : MonoBehaviour
     #endregion
 
     #region Grade Stats
-
     public float pieces = 0f;
     public float piecesToGrade = 10f;
     public float hpPerc = 1f;
     public float spPerc = 1f;
-    
-
-    #endregion
-
-    #region Items
-    public int flowerAmount; // 0 code
-    public int shardAmount;  // 1 code
     #endregion
     
     public bool deacrese = false;
     public Camera cam;
     public CameraFollow camSRC;
-    public GameObject enduranceBar;
-    private float barScaleCurrent;
-    private float barScaleMax;
-    private float scaleDiff;
     private Animator animCont;
-
-
-    public void TakeItem(int type)
-    {
-        if (type == 0)
-            flowerAmount++;
-        else
-            shardAmount++;
-    }
     
     public void takeDmg(float dmg)
     {
         if (fight.isBlocking && !fight.isParry)
         {
-            enduranceCurrent += dmg;
-            Debug.Log("Endurance damage: " +dmg);
-            if (enduranceCurrent >= enduranceMax)
-            {
-                StartCoroutine(Stun());
-            }
+            spCurrent -= dmg;
         }
         else if (fight.isBlocking && fight.isParry)
         {
             animCont.SetTrigger("Parry");
             fight.isBlocking = false;
             StopCoroutine(fight.CanParry());
-            enduranceCurrent += dmg / 2;
         }
         else if(isStunned)
         {
             StopCoroutine(Stun());
             isStunned = false;
-            enduranceCurrent = 0;
             hpCurrent -= 1.25f * dmg;
         }
         else
         {
             animCont.SetTrigger("Hurt");
             hpCurrent -= dmg;
-            enduranceCurrent += dmg / 4;
         }
-
         fight.isRecentlyHit = true;
     }
     
     public void getPieces(float amount)
     {
-        pieces += amount;
+        var target = pieces + amount;
+        pieces = Mathf.Lerp(pieces, target, 1);
     }
     
     public bool canJump()
@@ -139,18 +106,6 @@ public class PlayerChara : MonoBehaviour
         fight = GetComponent<FightBehaviour>();
         CalcStats();
         assignStats();
-        var bar = GameObject.Find("PlayerEnduranceBar").gameObject;
-        enduranceBar = bar.transform.GetChild(1).gameObject;
-        barScaleMax = enduranceBar.GetComponent<RectTransform>().localScale.x;
-        scaleDiff = enduranceMax / barScaleMax;
-    }
-
-    private void BarRenderer()
-    {
-        barScaleCurrent = enduranceCurrent / scaleDiff;
-        if (barScaleCurrent > barScaleMax)
-            barScaleCurrent = barScaleMax;
-        enduranceBar.GetComponent<RectTransform>().localScale = new Vector3(barScaleCurrent,enduranceBar.GetComponent<RectTransform>().localScale.y,enduranceBar.GetComponent<RectTransform>().localScale.z);
     }
 
     public void RespawnPointAssign(GameObject pos)
@@ -168,7 +123,6 @@ public class PlayerChara : MonoBehaviour
     {
         hpCurrent = hpMax;
         spCurrent = spMax;
-        enduranceCurrent = 0f;
     }
     
     private IEnumerator RegenSP()
@@ -191,23 +145,6 @@ public class PlayerChara : MonoBehaviour
         }
     }
 
-    private IEnumerator RegenEndurance()
-    {
-        while (true)
-        {
-            if (enduranceCurrent > 0)
-            {
-                enduranceCurrent -= 5;
-                yield return new WaitForSeconds(0.2f);
-            }
-            else
-            {
-                enduranceRegenerating = false;
-                enduranceCurrent = 0;
-                break;
-            }
-        }
-    }
     public IEnumerator Death()
     {
         animCont.SetBool("isDead", true);
@@ -236,7 +173,6 @@ public class PlayerChara : MonoBehaviour
         isStunned = false;
     }
     
-    
     void Update()
     {
         if (hpCurrent <= 0 && !deathCourotine)
@@ -244,7 +180,10 @@ public class PlayerChara : MonoBehaviour
             StartCoroutine(Death());
         }
 
-        BarRenderer();
+        if (hpCurrent > hpMax)
+        {
+            hpCurrent = hpMax;
+        }
             
         if (spCurrent < 0)
             spCurrent = 0;
@@ -254,11 +193,5 @@ public class PlayerChara : MonoBehaviour
         }
         if (spCurrent > spMax)
             spCurrent = spMax;
-
-        if (enduranceCurrent > 0 && !fight.isRecentlyHit && !enduranceRegenerating)
-        {
-            enduranceRegenerating = true;
-            StartCoroutine(RegenEndurance());
-        }
     }
 }

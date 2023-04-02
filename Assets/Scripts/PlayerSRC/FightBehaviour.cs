@@ -18,15 +18,17 @@ public class FightBehaviour : MonoBehaviour
     private float startUnHitTime = 0f;
     public Camera cam;
     private float timeBtwAttack;
-    private float startTimeBtwAttack = 0.4f;
+    private float startTimeBtwAttack = 0.5f;
     private int attackCount = 0;
     private int attackCountMax = 3;
     private float attackDelayTime = 1f;
-    private float parryTime = 0.3f;
+    private float parryTime = 0.5f;
     private GameObject attackPos;
+    private bool parryCan = true;
     public float attackRange = 3f;
     public float damage = 10f;
     private bool isBlockClicked = false;
+    private bool canAttack = true;
     private Animator animCont;
 
     void Start()
@@ -37,16 +39,6 @@ public class FightBehaviour : MonoBehaviour
         enemyMask = LayerMask.GetMask("Enemy");
         attackPos = GameObject.Find("attackPos");
         cam = GameObject.Find("Main Camera").GetComponent<Camera>();
-    }
-
-    public bool canAttackCheck()
-    {
-        if (!isBlocking && timeBtwAttack <= 0 && move.rb.velocity == Vector2.zero)
-        {
-            return true;
-        }
-        else
-            return false;
     }
 
     public bool canBlockCheck()
@@ -64,39 +56,50 @@ public class FightBehaviour : MonoBehaviour
     public IEnumerator attack()
     {
         animCont.SetTrigger("Attack");
-        yield return new WaitForSeconds(0.25f);
         isAttacking = true;
+        canAttack = false;
+        yield return new WaitForSeconds(0.25f);
         timeBtwAttack = startTimeBtwAttack;
         Collider2D[] enemyToDamage = Physics2D.OverlapCircleAll(attackPos.transform.position, attackRange, enemyMask);
         for (int i = 0; i < enemyToDamage.Length; i++)
         {
             enemyToDamage[i].GetComponent<EnemySRC>().TakeDamage(damage);
         }
+        isAttacking = false;
+        StartCoroutine(AttackCD());
     }
 
     public IEnumerator CanParry()
     {
-        isParry = true;
+        if (!isAttacking && !isBlocking)
+        {
+            animCont.SetTrigger("Parry");
+            isParry = true;
+            parryCan = false;
+            yield return new WaitForSeconds(0.2f);
+            isParry = false;
+            StartCoroutine(ParryCD());
+        }
+    }
+
+    private IEnumerator AttackCD()
+    {
+        yield return new WaitForSeconds(startTimeBtwAttack);
+        canAttack = true;
+    }
+    public IEnumerator ParryCD()
+    {
         yield return new WaitForSeconds(parryTime);
-        isParry = false;
+        parryCan = true;
     }
     void Update()
     {
         if(chara.isDead || chara.isStunned || chara.inDialogue)
             return;
-        
-        if (Input.GetKeyDown(KeyCode.Mouse0) && !isAttacking)
-        {
-            if (canAttackCheck())
-            {
-                StartCoroutine(attack());
-            }
-            else
-            {
-                isAttacking = false;
-                timeBtwAttack -= Time.deltaTime;
-            }
 
+        if (Input.GetKeyDown(KeyCode.Mouse0) && canAttack)
+        {
+            StartCoroutine(attack());
         }
         else if (Input.GetKey(KeyCode.Mouse1) && !isBlocking)
         {
@@ -107,16 +110,14 @@ public class FightBehaviour : MonoBehaviour
                 StartCoroutine(CanParry());
             }
         }
+        else if (Input.GetKey(KeyCode.E) && parryCan)
+        {
+            StartCoroutine(CanParry());
+        }
         else
         {
             animCont.SetBool("Block", false);
-            isParry = false;
             isBlocking = false;
-            timeBtwAttack -= Time.deltaTime;
-            if (timeBtwAttack <= 0)
-            {
-                isAttacking = false;
-            }
         }
         
         if (isRecentlyHit)

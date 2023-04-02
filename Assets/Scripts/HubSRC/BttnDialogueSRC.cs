@@ -51,7 +51,7 @@ public class BttnDialogueSRC : MonoBehaviour
         if (isGrade)
         {
             GameObject.FindWithTag("Player").GetComponent<FightBehaviour>().damage += 5;
-            GameObject.FindWithTag("Player").GetComponent<PlayerChara>().shardAmount--;
+            GameObject.FindWithTag("Player").GetComponent<PlayerInventory>().shardAmount--;
             isGrade = false;
         }
         isClicked = true;
