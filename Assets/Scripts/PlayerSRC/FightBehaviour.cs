@@ -25,7 +25,7 @@ public class FightBehaviour : MonoBehaviour
     private float parryTime = 0.3f;
     private GameObject attackPos;
     public float attackRange = 3f;
-    private float damage = 10f;
+    public float damage = 10f;
     private bool isBlockClicked = false;
     private Animator animCont;
 

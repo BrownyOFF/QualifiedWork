@@ -12,7 +12,9 @@ public class BttnDialogueSRC : MonoBehaviour
     public int bttnCount;
     private Button bttn;
     public List<GameObject> bttnList;
-
+    public bool isGrade;
+    
+    
     private bool isPrinting = false;
     private int strCount = 1;
     private bool isClicked = false;
@@ -26,6 +28,10 @@ public class BttnDialogueSRC : MonoBehaviour
     private IEnumerator printText()
     {
         var text = GetLine(textString, strCount);
+        if (text == "")
+        {
+            EndButton();
+        }
         isPrinting = true;
         for (int i = 0; i < text.Length; i++)
         {
@@ -40,6 +46,13 @@ public class BttnDialogueSRC : MonoBehaviour
         if (isClicked)
         {
             return;
+        }
+
+        if (isGrade)
+        {
+            GameObject.FindWithTag("Player").GetComponent<FightBehaviour>().damage += 5;
+            GameObject.FindWithTag("Player").GetComponent<PlayerChara>().shardAmount--;
+            isGrade = false;
         }
         isClicked = true;
         messageObj.GetComponent<TextMeshProUGUI>().text = "";
@@ -58,6 +71,22 @@ public class BttnDialogueSRC : MonoBehaviour
         string[] lines = text.Replace("\r","").Split('\n');
         return lines.Length >= lineNo ? lines[lineNo-1] : null;
     }
+
+    private void EndButton()
+    {
+        messageObj.GetComponent<TextMeshProUGUI>().text = "Щось ше??";
+        for (int i = 0; i < bttnList.Count; i++)
+        {
+            if (i != bttnCount)
+            {
+                bttnList[i].SetActive(true);
+            }
+            else
+            {
+                bttnList[i].SetActive(false);
+            }
+        }
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && !isPrinting && isClicked)
@@ -65,16 +94,5 @@ public class BttnDialogueSRC : MonoBehaviour
             messageObj.GetComponent<TextMeshProUGUI>().text = "";
             StartCoroutine(printText());
         }
-        else if (Input.GetKeyDown(KeyCode.Mouse0) && isPrinting)
-        {
-            StopCoroutine(printText());
-            FastPrint();
-        }
-    }
-
-    void FastPrint()
-    {
-        var text = GetLine(textString, strCount);
-        messageObj.GetComponent<TextMeshProUGUI>().text = text;
     }
 }

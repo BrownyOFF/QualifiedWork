@@ -67,10 +67,13 @@ public class DialogueSRC : MonoBehaviour
             que.Add(que_01);
             queType.Add(queID);
         }
-        var que_grade = getBetween(text, "que_grade_00:", "\r");
-        que.Add(que_grade);
-        queType.Add("que_grade_00");
-
+        
+        if (GameObject.FindWithTag("Player").GetComponent<PlayerChara>().shardAmount > 0)
+        {
+            var que_grade = getBetween(text, "que_grade_00:", "\r");
+            que.Add(que_grade);
+            queType.Add("que_grade_00");
+        }
         
         var que_exit = getBetween(text, "que_exit:", "\r");
         que.Add(que_exit);
@@ -100,9 +103,13 @@ public class DialogueSRC : MonoBehaviour
             }
             else if (queID[i].Contains("grade"))
             {
-                bttnSay.AddComponent<GradeSRC>();
-                bttnSay.GetComponent<GradeSRC>().textString = getAllDialogue(queID[i], textFile);
-                bttnSay.GetComponent<GradeSRC>().messageID = queID[i];
+                bttnSay.AddComponent<BttnDialogueSRC>();
+                bttnSay.GetComponent<BttnDialogueSRC>().bttnCount = i;
+                bttnSay.GetComponent<BttnDialogueSRC>().messageID = queID[i];
+                bttnSay.GetComponent<BttnDialogueSRC>().textString = getAllDialogue(queID[i], textFile);
+                bttnSay.GetComponent<BttnDialogueSRC>().messageObj = messageObj;
+                bttnSay.GetComponent<BttnDialogueSRC>().bttnList = bttnList;
+                bttnSay.GetComponent<BttnDialogueSRC>().isGrade = true;
             }
             else
             {
@@ -112,6 +119,7 @@ public class DialogueSRC : MonoBehaviour
                 bttnSay.GetComponent<BttnDialogueSRC>().textString = getAllDialogue(queID[i], textFile);
                 bttnSay.GetComponent<BttnDialogueSRC>().messageObj = messageObj;
                 bttnSay.GetComponent<BttnDialogueSRC>().bttnList = bttnList;
+                bttnSay.GetComponent<BttnDialogueSRC>().isGrade = false;
             }
             bttnSay.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = que[i];
         }

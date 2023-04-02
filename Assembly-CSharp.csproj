@@ -59,6 +59,7 @@
      <Compile Include="Assets\Scripts\HubSRC\LeaveDialogue.cs" />
      <Compile Include="Assets\Scripts\HubSRC\EnterSRC.cs" />
      <Compile Include="Assets\Scripts\UISRC\TravelSRCS\TravelButton.cs" />
+     <Compile Include="Assets\Scripts\HubSRC\BttnDialogueSRC.cs" />
      <Compile Include="Assets\Scripts\PlayerSRC\PlayerChara.cs" />
      <Compile Include="Assets\Scripts\SchrineScript.cs" />
      <Compile Include="Assets\Scripts\HubSRC\ShopSRC.cs" />
@@ -71,10 +72,9 @@
      <Compile Include="Assets\Scripts\Camera_HUD\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\EnemySRC.cs" />
      <Compile Include="Assets\Scripts\UISRC\GradeSRCS\GradePanel.cs" />
+     <Compile Include="Assets\Scripts\HubSRC\GradeBttnSRC.cs" />
      <Compile Include="Assets\Scripts\DialogueWindow.cs" />
      <Compile Include="Assets\Scripts\LevelCreate.cs" />
-     <Compile Include="Assets\Scripts\HubSRC\BttnDialogueSRC.cs" />
-     <Compile Include="Assets\Scripts\HubSRC\GradeBttnSRC.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\texture\Font.txt" />
