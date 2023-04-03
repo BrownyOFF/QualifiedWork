@@ -54,6 +54,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\SpikeDamage.cs" />
      <Compile Include="Assets\Scripts\UISRC\GradeSRCS\GradeButton.cs" />
+     <Compile Include="Assets\Scripts\PlayerSRC\PlayerInventory.cs" />
      <Compile Include="Assets\Scripts\UISRC\RestSRCS\RestButton.cs" />
      <Compile Include="Assets\Scripts\EnemyStat.cs" />
      <Compile Include="Assets\Scripts\HubSRC\LeaveDialogue.cs" />
@@ -75,7 +76,9 @@
      <Compile Include="Assets\Scripts\HubSRC\GradeBttnSRC.cs" />
      <Compile Include="Assets\Scripts\DialogueWindow.cs" />
      <Compile Include="Assets\Scripts\LevelCreate.cs" />
-     <Compile Include="Assets\Scripts\PlayerSRC\PlayerInventory.cs" />
+     <Compile Include="Assets\Scripts\mainMenuSRC\mainMenuSRC.cs" />
+     <Compile Include="Assets\Scripts\mainMenuSRC\exitGameSRC.cs" />
+     <Compile Include="Assets\Scripts\mainMenuSRC\newGameSRC.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\texture\Font.txt" />
@@ -96,6 +99,7 @@
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+     <None Include="Assets\itemsSprite.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
      <None Include="Assets\castle\License.txt" />

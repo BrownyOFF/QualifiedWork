@@ -26,7 +26,6 @@ public class PlayerMovement : MonoBehaviour
     private bool _canDash = true;
     #endregion
 
-    
     #region ChillStats
     public float speedChill = 8f;
     public float jumpPowerChill = 16f;
@@ -136,12 +135,8 @@ public class PlayerMovement : MonoBehaviour
                     faceDir = inputX;
                 }
             }
-            
-            
         }
-        
     }
-    
     private IEnumerator StopDashing()
     {
         yield return new WaitForSeconds(dashingTime);

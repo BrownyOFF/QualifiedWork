@@ -63,7 +63,6 @@ public class BttnDialogueSRC : MonoBehaviour
                 bttnList[i].SetActive(false);
             }
         }
-
         StartCoroutine(printText());
     }
     private string GetLine(string text, int lineNo)

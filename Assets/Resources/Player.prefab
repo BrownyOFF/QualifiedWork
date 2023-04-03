@@ -338,9 +338,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flowerAmount: 0
   shardAmount: 0
+  quickCurrent: 0
+  quickCurrentID: 3
   inv: 
   amount: 
+  quickSlots: 
   itemsList: {fileID: 4900000, guid: c305c8facd437d04a92be38faa212d50, type: 3}
+  itemsSprite: {fileID: 4900000, guid: 1926b8bf924930e42848847a25641993, type: 3}
 --- !u!95 &5281353993983225910
 Animator:
   serializedVersion: 3
