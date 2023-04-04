@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ItemPickUp : MonoBehaviour
 {
-    [SerializeField] private int id; 
+    [SerializeField] public int id; 
     private bool inside = false;
     private GameObject player;
     private GameObject questionMark;
@@ -34,13 +34,13 @@ public class ItemPickUp : MonoBehaviour
         }
     }
 
-    
     void Update()
     {
         if (inside && Input.GetKeyDown(KeyCode.E))
         {
             player.GetComponent<PlayerInventory>().TakeItem(id);
-            Debug.Log("Picked Item");
+            Debug.Log("Picked Item " + id);
+            questionMark.SetActive(false);
             gameObject.SetActive(false);
         }
     }

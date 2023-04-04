@@ -11,13 +11,15 @@ public class PlayerInventory : MonoBehaviour
     private PlayerMovement move;
     private FightBehaviour fight;
     private GameObject itemBar;
+    private Transform posItemUse;
     public int flowerAmount;
     public int shardAmount;
     public int quickCurrent = 0;
-    public int quickCurrentID = 3;
+    // public int quickCurrentID = 3;
     public List<int> inv;
     public List<int> amount;
     public List<int> quickSlots;
+    private GameObject knife;
     public TextAsset itemsList;
     public TextAsset itemsSprite;
     private string itemsListString;
@@ -25,14 +27,15 @@ public class PlayerInventory : MonoBehaviour
     
     void Start()
     {
+        knife = Resources.Load("Knife") as GameObject;
+        posItemUse = gameObject.transform.GetChild(1).transform;
         itemBar = GameObject.Find("itemBar");
         chara = GetComponent<PlayerChara>();
         move = GetComponent<PlayerMovement>();
         fight = GetComponent<FightBehaviour>();
         itemsListString = itemsList.text;
-        inv.Add(3);
+        inv.Add(2);
         amount.Add(flaskMax);
-        quickSlots.Add(inv[0]);
         ChangeSprite();
     }
     public void TakeItem(int id)
@@ -48,31 +51,37 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
-    public void UseItem(int id)
+    public void UseItem(int index)
     {
-        var tmpID = inv.IndexOf(id);
-        if (id == 3 && amount[tmpID] > 0)
+        var tmpID = inv.IndexOf(index);
+        if (inv[index] == 2 && amount[index] > 0)
         {
             chara.hpCurrent += 25;
-            amount[tmpID]--;
+            amount[index]--;
+        }
+        else if (inv[index] == 3 && amount[index] > 0)
+        {
+            var tmppos = new Vector2(posItemUse.position.x, posItemUse.position.y);
+            GameObject knife_throw = Instantiate(knife, tmppos, Quaternion.identity);
+            amount[index]--;
         }
     }
 
     public void ResetFlask()
     {
-        amount[inv.IndexOf(3)] = flaskMax;
+        amount[inv.IndexOf(2)] = flaskMax;
     }
 
     private void ChangeItem(int n)
     {
-        if (quickCurrent == quickSlots.Count-1 && n == 1)
+        if (quickCurrent == inv.Count-1 && n == 1)
         {
             quickCurrent = 0;
             return;
         }
         else if (quickCurrent == 0 && n == -1)
         {
-            quickCurrent = quickSlots.Count-1;
+            quickCurrent = inv.Count-1;
             return;
         }
 
@@ -86,7 +95,7 @@ public class PlayerInventory : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Q) && !fight.isAttacking && !fight.isBlocking)
         {
-            UseItem(quickSlots[quickCurrent]);
+            UseItem(quickCurrent);
         }
         else if (Input.GetAxis("Mouse ScrollWheel") > 0f ) // forward
         {
@@ -101,10 +110,10 @@ public class PlayerInventory : MonoBehaviour
 
     private void ChangeSprite()
     {
-        var tmp = quickSlots[quickCurrent];
+        var tmp = inv[quickCurrent];
         var tmp2 = inv.IndexOf(tmp);
         var text = itemsSprite.text;
-        var spr_path = getBetween(text,quickSlots[quickCurrent].ToString() + ":" , "\r");
+        var spr_path = getBetween(text,inv[quickCurrent].ToString() + ":" , "\r");
         Sprite itmSpr = LoadSpriteFromFile(spr_path);
         itemBar.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = amount[tmp2].ToString();
         itemBar.transform.GetChild(0).GetComponent<Image>().sprite = itmSpr;

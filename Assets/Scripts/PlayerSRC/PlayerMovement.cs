@@ -152,5 +152,17 @@ public class PlayerMovement : MonoBehaviour
     {
         return Input.GetKey(KeyCode.LeftShift);
     }
+
+    public Vector2 FaceDirection()
+    {
+        if (faceDir == 1)
+        {
+            return Vector2.right;
+        }
+        else
+        {
+            return Vector2.left;
+        }
+    }
 }
   

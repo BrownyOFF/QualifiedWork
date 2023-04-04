@@ -1,1 +1,4 @@
-3:Assets\sprites\flask_spr.png
+0:Assets\sprites\shard_spr.png
+1:Assets\sprites\flower_spr.png
+2:Assets\sprites\flask_spr.png
+3:Assets\sprites\knife_spr.png

@@ -29,11 +29,7 @@ public class EnemySRC : MonoBehaviour
 
     #region References
     private GameObject playerObj;
-    private GameObject bar;
-    private GameObject frame;
-    private float barScaleCurrent;
-    private float barScaleMax;
-    private float scaleDiff;
+    private GameObject itemDrop;
     private Rigidbody2D rb;
     private Animator animCont;
     private bool isDead = false;
@@ -49,6 +45,7 @@ public class EnemySRC : MonoBehaviour
     
     void Start()
     {
+        itemDrop = Resources.Load("ItemPickUp") as GameObject;
         animCont = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         playerObj = GameObject.FindWithTag("Player");
@@ -58,6 +55,9 @@ public class EnemySRC : MonoBehaviour
     {
         isDead = true;
         animCont.SetTrigger("Dead");
+        var pos = new Vector2(transform.position.x,transform.position.y);
+        GameObject pickUp = Instantiate(itemDrop, pos, Quaternion.identity);
+        pickUp.GetComponent<ItemPickUp>().id = 3;
         playerObj.GetComponent<PlayerChara>().getPieces(pieces);
         yield return new WaitForSeconds(3f);
         gameObject.SetActive(false);
