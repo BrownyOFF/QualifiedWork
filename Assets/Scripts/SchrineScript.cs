@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class SchrineScript : MonoBehaviour
 {
+    public string name;
     private GameObject camera;
     private GameObject btnShow;
     private GameObject respPoint;

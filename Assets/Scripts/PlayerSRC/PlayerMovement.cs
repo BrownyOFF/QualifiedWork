@@ -145,7 +145,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public bool isGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.transform.position, 0.2f,groundLayer);
+        return Physics2D.OverlapCircle(groundCheck.transform.position, 1f,groundLayer);
     }
 
     public bool isSprinting()

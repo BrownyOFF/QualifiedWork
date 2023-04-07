@@ -110,7 +110,7 @@ public class FightBehaviour : MonoBehaviour
                 StartCoroutine(CanParry());
             }
         }
-        else if (Input.GetKey(KeyCode.E) && parryCan)
+        else if (Input.GetKey(KeyCode.E) && parryCan && move.rb.velocity != Vector2.zero)
         {
             StartCoroutine(CanParry());
         }

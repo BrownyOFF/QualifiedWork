@@ -1,16 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TravelButton : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private Button bttn;
+    private CameraFollow cam;
+
     void Start()
     {
-        
+        cam = GameObject.FindWithTag("MainCamera").GetComponent<CameraFollow>();
+        bttn = GetComponent<Button>();
+        bttn.onClick.AddListener(onClickFunc);
     }
 
-    // Update is called once per frame
+    private void onClickFunc()
+    {
+        cam.changeCanvas(4);
+    }
     void Update()
     {
         

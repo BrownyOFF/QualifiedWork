@@ -19,7 +19,7 @@ public class EnemySRC : MonoBehaviour
     public float health = 100f;
     private float damage = 20f;
     private float range = 1.3f;
-    private float timeBeetwenAttack = 1f;
+    private float timeBeetwenAttack = 3f;
     private float startTimeBeetwenAttack = 0f;
     private float timeToUnstun = 2f;
     private float startTimeToUnstun = 0f;
@@ -67,6 +67,13 @@ public class EnemySRC : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    private IEnumerator StunCD()
+    {
+        isStunned = true;
+        yield return new WaitForSeconds(3f);
+        isStunned = false;
+    }
     
     public void TakeDamage(float dmg)
     {
@@ -75,21 +82,16 @@ public class EnemySRC : MonoBehaviour
             if (isStunned) //hit after stunned
             {
                 health -= dmg * 5f;
+                StopCoroutine(StunCD());
                 isStunned = false;
                 return;
             }
-            var dice = UnityEngine.Random.Range(0,1f); // dice to block or hit
-            if (dice >= 0.5f) // block
-            {
-                animCont.SetTrigger("Block");
-            }
-            else // hit
-            {
-                animCont.SetTrigger("Hurt");
-                health -= dmg;
-            }
+            
+            animCont.SetTrigger("Hurt");
+            health -= dmg;
+            rb.AddForce(new Vector2(50000f, 0f),ForceMode2D.Impulse);
+            
             isTakedHitRecently = true;
-            startTimeToUnHit = 0;
             if (isAttacking)
             {
                 StopCoroutine(Attack());
@@ -109,9 +111,15 @@ public class EnemySRC : MonoBehaviour
         animCont.SetTrigger("Attack");
         rb.velocity = Vector2.zero;
         isAttacking = true;
-        yield return new WaitForSeconds(0.15f);
-                    
-        playerObj.GetComponent<PlayerChara>().takeDmg(damage);
+        yield return new WaitForSeconds(0.3f);
+        if (playerObj.GetComponent<FightBehaviour>().isParry)
+        {
+            StartCoroutine(StunCD());
+            
+        }else
+        {
+            playerObj.GetComponent<PlayerChara>().takeDmg(damage);
+        }
     }
 
     private void Move()
@@ -141,13 +149,13 @@ public class EnemySRC : MonoBehaviour
     {
         if (playerObj.GetComponent<PlayerChara>().isDead || isDead)
         {
+            rb.velocity = Vector2.zero;
             return;
         }
         
         if (health <= 0 && !isDead)
             StartCoroutine(Death());                                                        // Death check, simple as that
         
-
         if (isStunned && startTimeToUnstun < timeToUnstun)
         {
             startTimeToUnstun += Time.deltaTime;                            // Stun count 

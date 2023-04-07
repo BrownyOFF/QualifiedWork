@@ -67595,7 +67595,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6060231280393089632, guid: e81481a58f957d9429748c2b4e2dd65e, type: 3}
       propertyPath: m_Name
-      value: Shrine
+      value: lvl_0_0
       objectReference: {fileID: 0}
     - target: {fileID: 6060231280393089635, guid: e81481a58f957d9429748c2b4e2dd65e, type: 3}
       propertyPath: m_RootOrder
@@ -67640,6 +67640,10 @@ PrefabInstance:
     - target: {fileID: 6060231280393089635, guid: e81481a58f957d9429748c2b4e2dd65e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6060231280393089660, guid: e81481a58f957d9429748c2b4e2dd65e, type: 3}
+      propertyPath: name
+      value: lvl_0_1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e81481a58f957d9429748c2b4e2dd65e, type: 3}
@@ -68037,7 +68041,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6060231280393089632, guid: e81481a58f957d9429748c2b4e2dd65e, type: 3}
       propertyPath: m_Name
-      value: Shrine
+      value: lvl_0_1
       objectReference: {fileID: 0}
     - target: {fileID: 6060231280393089635, guid: e81481a58f957d9429748c2b4e2dd65e, type: 3}
       propertyPath: m_RootOrder
@@ -68082,6 +68086,10 @@ PrefabInstance:
     - target: {fileID: 6060231280393089635, guid: e81481a58f957d9429748c2b4e2dd65e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6060231280393089660, guid: e81481a58f957d9429748c2b4e2dd65e, type: 3}
+      propertyPath: name
+      value: lvl_0_2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e81481a58f957d9429748c2b4e2dd65e, type: 3}

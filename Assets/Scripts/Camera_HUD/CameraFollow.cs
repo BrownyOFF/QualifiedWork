@@ -23,6 +23,7 @@ public class CameraFollow : MonoBehaviour
     private GameObject Default;
     private GameObject Shrine;
     private GameObject Grade;
+    private GameObject Travel;
     private GameObject Dialogue;
     public GameObject YouDied;
     public GameObject blackScreen;
@@ -36,6 +37,7 @@ public class CameraFollow : MonoBehaviour
         Default = GameObject.Find("DefaultUI");
         Shrine = GameObject.Find("ShrineUI");
         Grade = GameObject.Find("GradeUI");
+        Travel = GameObject.Find("TravelUI");
         Dialogue = GameObject.Find("DialogueUI");
         YouDied = GameObject.Find("Death");
         blackScreen = GameObject.Find("BlackScreen");
@@ -71,6 +73,7 @@ public class CameraFollow : MonoBehaviour
             Shrine.SetActive(false);
             Default.SetActive(true);
             Grade.SetActive(false);
+            Travel.SetActive(false);
             Dialogue.SetActive(false);
             Cursor.visible = false;
         }
@@ -79,6 +82,7 @@ public class CameraFollow : MonoBehaviour
             Grade.SetActive(false);
             Default.SetActive(false);
             Shrine.SetActive(true);
+            Travel.SetActive(false);
             Dialogue.SetActive(false);
             Cursor.visible = true;
         }
@@ -87,7 +91,17 @@ public class CameraFollow : MonoBehaviour
             Grade.SetActive(true);
             Default.SetActive(false);
             Shrine.SetActive(false);
+            Travel.SetActive(false);
             Dialogue.SetActive(false);
+            Cursor.visible = true;
+        }
+        else if (i == 4) // travel
+        {
+            Grade.SetActive(false);
+            Default.SetActive(false);
+            Shrine.SetActive(false);
+            Dialogue.SetActive(false);
+            Travel.SetActive(true);
             Cursor.visible = true;
         }
         else if (i == 3) // dialogue
@@ -95,6 +109,7 @@ public class CameraFollow : MonoBehaviour
             Grade.SetActive(false);
             Default.SetActive(false);
             Shrine.SetActive(false);
+            Travel.SetActive(false);
             Dialogue.SetActive(true);
             Cursor.visible = true;
         }
