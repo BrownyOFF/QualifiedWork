@@ -12,6 +12,7 @@ TagManager:
   - lvlScr
   - RespPoint
   - InterestPoint
+  - shrine
   layers:
   - Default
   - TransparentFX

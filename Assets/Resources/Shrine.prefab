@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 6060231280393089660}
   m_Layer: 0
   m_Name: Shrine
-  m_TagString: Untagged
+  m_TagString: shrine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bba34ca3f8a0539449857dda0dfddfa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: 
 --- !u!1 &7492952833618802096
 GameObject:
   m_ObjectHideFlags: 0

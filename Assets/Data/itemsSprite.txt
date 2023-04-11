@@ -2,3 +2,4 @@
 1:Assets\sprites\flower_spr.png
 2:Assets\sprites\flask_spr.png
 3:Assets\sprites\knife_spr.png
+4:Assets\sprites\bomb.png

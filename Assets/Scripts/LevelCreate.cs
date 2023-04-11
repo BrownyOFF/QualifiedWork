@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using UnityEngine;
-
 public class LevelCreate : MonoBehaviour
 {
     #region PreFabs
@@ -16,6 +15,9 @@ public class LevelCreate : MonoBehaviour
     private GameObject PlayerPos;
 
     #endregion
+
+    private int playerTP;
+    private GameObject[] shrines;
     void Awake()
     {
         Player = Resources.Load("Player") as GameObject;
@@ -24,8 +26,18 @@ public class LevelCreate : MonoBehaviour
         EnemyPos = GameObject.FindGameObjectsWithTag("enemyPos");
         PlayerPos = GameObject.FindWithTag("playerPos");
 
+        shrines = GameObject.FindGameObjectsWithTag("shrine");
+
+        playerTP = PlayerPrefs.GetInt("PlayerPos");
+        if (playerTP != null)
+        {
+            SpawnObject(Player, shrines[playerTP]);
+        }
+        else
+        {
+            SpawnObject(Player, PlayerPos);
+        }
         foreachCycle(Enemy, EnemyPos);
-        SpawnObject(Player, PlayerPos);
     }
 
     public void foreachCycle(GameObject obj, GameObject[] pos)

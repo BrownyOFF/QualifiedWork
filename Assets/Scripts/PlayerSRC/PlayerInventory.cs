@@ -20,6 +20,7 @@ public class PlayerInventory : MonoBehaviour
     public List<int> amount;
     public List<int> quickSlots;
     private GameObject knife;
+    private GameObject bomb;
     public TextAsset itemsList;
     public TextAsset itemsSprite;
     private string itemsListString;
@@ -28,6 +29,7 @@ public class PlayerInventory : MonoBehaviour
     void Start()
     {
         knife = Resources.Load("Knife") as GameObject;
+        bomb = Resources.Load("Bomb") as GameObject;
         posItemUse = gameObject.transform.GetChild(1).transform;
         itemBar = GameObject.Find("itemBar");
         chara = GetComponent<PlayerChara>();
@@ -63,6 +65,12 @@ public class PlayerInventory : MonoBehaviour
         {
             var tmppos = new Vector2(posItemUse.position.x, posItemUse.position.y);
             GameObject knife_throw = Instantiate(knife, tmppos, Quaternion.identity);
+            amount[index]--;
+        }
+        else if (inv[index] == 4 && amount[index] > 0)
+        {
+            var tmppos = new Vector2(posItemUse.position.x, posItemUse.position.y);
+            GameObject bomb_throw = Instantiate(bomb, tmppos, Quaternion.identity);
             amount[index]--;
         }
     }
