@@ -29,9 +29,15 @@ public class LevelCreate : MonoBehaviour
         shrines = GameObject.FindGameObjectsWithTag("shrine");
 
         playerTP = PlayerPrefs.GetInt("PlayerPos");
-        if (playerTP != null)
+        if (playerTP != -1)
         {
             SpawnObject(Player, shrines[playerTP]);
+            PlayerPrefs.SetInt("PlayerPos", -1);
+        }
+        else if (PlayerPrefs.GetInt("IsLoaded") == 0)
+        {
+            PlayerPos.transform.position = new Vector3(PlayerPrefs.GetInt("PosX"),PlayerPrefs.GetInt("PosY"), 0);
+            SpawnObject(Player, PlayerPos);
         }
         else
         {

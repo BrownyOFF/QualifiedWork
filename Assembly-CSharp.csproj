@@ -59,6 +59,7 @@
      <Compile Include="Assets\Scripts\mainMenuSRC\newGameSRC.cs" />
      <Compile Include="Assets\Scripts\EnemyStat.cs" />
      <Compile Include="Assets\Scripts\HubSRC\LeaveDialogue.cs" />
+     <Compile Include="Assets\Scripts\BombThrow.cs" />
      <Compile Include="Assets\Scripts\HubSRC\EnterSRC.cs" />
      <Compile Include="Assets\Scripts\UISRC\TravelSRCS\TravelButton.cs" />
      <Compile Include="Assets\Scripts\HubSRC\BttnDialogueSRC.cs" />
@@ -83,7 +84,8 @@
      <Compile Include="Assets\Scripts\DialogueWindow.cs" />
      <Compile Include="Assets\Scripts\LevelCreate.cs" />
      <Compile Include="Assets\Scripts\UISRC\TravelSRCS\Shrine_bttnSRC.cs" />
-     <Compile Include="Assets\Scripts\BombThrow.cs" />
+     <Compile Include="Assets\SaveManager.cs" />
+     <Compile Include="Assets\Scripts\mainMenuSRC\ContinueSRC.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\texture\Font.txt" />

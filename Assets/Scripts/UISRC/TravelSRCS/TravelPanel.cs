@@ -12,7 +12,7 @@ public class TravelPanel : MonoBehaviour
     private string lvl_names_string;
     public TextAsset shrine_names;
     private string shrine_names_string;
-    private List<GameObject> lvl_bttns;
+    public List<GameObject> lvl_bttns;
     private List<GameObject> shrine_bttns;
     public List<string> scenes_list;
 

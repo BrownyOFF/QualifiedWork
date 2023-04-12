@@ -162,7 +162,7 @@ public class PlayerChara : MonoBehaviour
         levelCreateSRC.GetComponent<LevelCreate>().forEachEnemyFindDestroy();
         levelCreateSRC.GetComponent<LevelCreate>().foreachCycle(levelCreateSRC.GetComponent<LevelCreate>().Enemy, levelCreateSRC.GetComponent<LevelCreate>().EnemyPos);
         isDead = false;
-
+        deathCourotine = false;
         camSRC.BlackScreenTransparency(0);
     }
 
@@ -179,7 +179,7 @@ public class PlayerChara : MonoBehaviour
         {
             StartCoroutine(Death());
         }
-
+        CalcStats();
         if (hpCurrent > hpMax)
         {
             hpCurrent = hpMax;
