@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 4260113326295581170}
   - component: {fileID: 4260113326295581171}
   - component: {fileID: 4260113326295581168}
+  - component: {fileID: 6586663945968350849}
   - component: {fileID: 4260113326295581135}
   - component: {fileID: 4260113326295581132}
   - component: {fileID: 4260113326295581134}
@@ -242,6 +243,32 @@ CapsuleCollider2D:
   m_Offset: {x: -0.05210698, y: -0.04324951}
   m_Size: {x: 0.19472021, y: 0.33807647}
   m_Direction: 0
+--- !u!114 &6586663945968350849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4260113326295581169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48544a12b9b164e4b95446dacda5743b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player:
+    hpPerc: 1
+    spPerc: 1
+    piecesToGrade: 10
+    pieces: 0
+    level: 1
+    resPos: {x: 0, y: 0, z: 0}
+    damage: 10
+    speed: 8
+    jumpPower: 16
+    spintMult: 1.5
+    flaskMax: 2
+    inv: 02000000
+    amount: 02000000
 --- !u!114 &4260113326295581135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,6 +297,7 @@ MonoBehaviour:
   dashingTimeChill: 0.05
   stats: {fileID: 0}
   fight: {fileID: 0}
+  playerClass: {fileID: 0}
 --- !u!114 &4260113326295581132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,17 +317,13 @@ MonoBehaviour:
   spBase: 50
   spMax: 50
   isStunned: 0
-  level: 1
   RespawnPoint: {fileID: 0}
   isDead: 0
   deathCourotine: 0
   inDialogue: 0
   jumpCost: 10
   dashCost: 25
-  pieces: 0
-  piecesToGrade: 10
-  hpPerc: 1
-  spPerc: 1
+  player: {fileID: 0}
   deacrese: 0
   cam: {fileID: 0}
   camSRC: {fileID: 0}
@@ -316,6 +340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   move: {fileID: 0}
+  playerClass: {fileID: 0}
   isFighting: 0
   isAttacking: 0
   isBlocking: 0
@@ -323,7 +348,6 @@ MonoBehaviour:
   isRecentlyHit: 0
   cam: {fileID: 0}
   attackRange: 3
-  damage: 10
 --- !u!114 &6782137053203885293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,12 +360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9df4a86c86818644f877d31b9dc26192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flowerAmount: 0
-  shardAmount: 0
   quickCurrent: 0
-  inv: 
-  amount: 
-  quickSlots: 
   itemsList: {fileID: 4900000, guid: c305c8facd437d04a92be38faa212d50, type: 3}
   itemsSprite: {fileID: 4900000, guid: 1926b8bf924930e42848847a25641993, type: 3}
 --- !u!95 &5281353993983225910

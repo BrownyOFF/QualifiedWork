@@ -12,17 +12,21 @@ public class UI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI pieces;
 
     [SerializeField] private PlayerChara playerStats;
+
+    public PlayerClass playerClass;
     void Start()
     {
         canvas = GetComponent<Canvas>();
         playerStats = GameObject.FindWithTag("Player").GetComponent<PlayerChara>();
+        playerClass = GameObject.FindWithTag("Player").GetComponent<PlayerClass>();
+
     }
     
     void Update()
     {
         hp.text = playerStats.hpCurrent.ToString();
         sp.text = playerStats.spCurrent.ToString();
-        var pie = playerStats.pieces.ToString(); 
+        var pie = playerClass.player.pieces.ToString(); 
         pieces.text = "Pieces: " + pie;
     }
 }

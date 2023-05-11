@@ -22,6 +22,7 @@ public class newGameSRC : MonoBehaviour
         {
             File.Delete(path);
         }
+        PlayerPrefs.SetInt("PlayerPos", 0);
         SceneManager.LoadScene("lvl_0");
     }
     void Update()

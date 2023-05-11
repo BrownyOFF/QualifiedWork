@@ -10,9 +10,9 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer sprite;
     #region Variables
     private float horizontal;
-    private float speed;
-    private float jumpPower;
-    private float spintMult = 1.5f;
+    //private float speed;
+    //private float jumpPower;
+    //private float spintMult = 1.5f;
     public float faceDir;
     
     [SerializeField] public Rigidbody2D rb;
@@ -35,23 +35,16 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private PlayerChara stats;
     [SerializeField] private FightBehaviour fight;
+    public PlayerClass playerClass;
     private void Start()
     {
+        playerClass = GetComponent<PlayerClass>();
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         stats = GetComponent<PlayerChara>();
         fight = GetComponent<FightBehaviour>();
         groundCheck = GameObject.Find("groundCheck");
-        assignStats(speedChill,jumpPowerChill,dashingVelocityChill,dashingTimeChill);
-    }
-
-    public void assignStats(float spd,float jmppwr, float dashvel,float dashtime)
-    {
-        speed = spd;
-        jumpPower = jmppwr;
-        dashingVelocity = dashvel;
-        dashingTime = dashtime;
     }
 
     void Update()
@@ -84,10 +77,10 @@ public class PlayerMovement : MonoBehaviour
 
         if (!fight.isBlocking)
         {
-            rb.velocity = new Vector2(inputX * speed, rb.velocity.y);
+            rb.velocity = new Vector2(inputX * playerClass.player.speed, rb.velocity.y);
             if (jumpInput && isGrounded() && stats.canJump()) 
             { 
-                rb.velocity = new Vector2(rb.velocity.x, jumpPower); 
+                rb.velocity = new Vector2(rb.velocity.x, playerClass.player.jumpPower); 
                 stats.spCurrent -= stats.jumpCost; 
             }
 
@@ -125,7 +118,7 @@ public class PlayerMovement : MonoBehaviour
             
             if (isSprinting()) 
             { 
-                rb.velocity = new Vector2(inputX * speed * spintMult, rb.velocity.y);
+                rb.velocity = new Vector2(inputX * playerClass.player.speed * playerClass.player.spintMult, rb.velocity.y);
             }
 
             if (!fight.isFighting) 

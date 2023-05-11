@@ -19,8 +19,9 @@ public class PlayerChara : MonoBehaviour
     public bool isStunned = false;
     private float stunTime = 1f;
     
-    public int level = 1;
+    //public int level = 1;
 
+    //public Vector3 resPos;
     public GameObject RespawnPoint;
     private LevelCreate levelCreateSRC;
     private FightBehaviour fight;
@@ -35,14 +36,15 @@ public class PlayerChara : MonoBehaviour
     [SerializeField] public float jumpCost = 10f;
     [SerializeField] public float dashCost = 25f;
     #endregion
-
+    /*
     #region Grade Stats
     public float pieces = 0f;
     public float piecesToGrade = 10f;
     public float hpPerc = 1f;
     public float spPerc = 1f;
     #endregion
-    
+    */
+    public PlayerClass player;
     public bool deacrese = false;
     public Camera cam;
     public CameraFollow camSRC;
@@ -76,8 +78,8 @@ public class PlayerChara : MonoBehaviour
     
     public void getPieces(float amount)
     {
-        var target = pieces + amount;
-        pieces = Mathf.Lerp(pieces, target, 1);
+        var target = player.player.pieces + amount;
+        player.player.pieces = Mathf.Lerp(player.player.pieces, target, 1);
     }
     
     public bool canJump()
@@ -98,6 +100,7 @@ public class PlayerChara : MonoBehaviour
 
     void Start()
     {
+        player = GetComponent<PlayerClass>();
         animCont = GetComponent<Animator>();
         cam = Camera.main;
         camSRC = cam.GetComponent<CameraFollow>();
@@ -111,12 +114,13 @@ public class PlayerChara : MonoBehaviour
     public void RespawnPointAssign(GameObject pos)
     {
         RespawnPoint = pos;
+        player.player.resPos = new Vector3(pos.transform.position.x, pos.transform.position.y, 0);
     }
     
     public void CalcStats()
     {
-        hpMax = hpBase * hpPerc;
-        spMax = spBase * spPerc;
+        hpMax = hpBase * player.player.hpPerc;
+        spMax = spBase * player.player.spPerc;
     }
     
     public void assignStats()
@@ -155,7 +159,7 @@ public class PlayerChara : MonoBehaviour
         animCont.SetBool("isDead", false);
         yield return new WaitForSeconds(3f);
         assignStats();
-        pieces = 0f;
+        player.player.pieces = 0f;
         gameObject.transform.position = RespawnPoint.transform.position;
         cam.GetComponent<CameraFollow>().YouDied.SetActive(false);
 
@@ -179,7 +183,6 @@ public class PlayerChara : MonoBehaviour
         {
             StartCoroutine(Death());
         }
-        CalcStats();
         if (hpCurrent > hpMax)
         {
             hpCurrent = hpMax;

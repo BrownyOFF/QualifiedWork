@@ -11,13 +11,14 @@ public class GradePanel : MonoBehaviour
     private Button spGrade;
     private Button conf;
 
-    private TextMeshProUGUI lvl;
-    private TextMeshProUGUI hp;
-    private TextMeshProUGUI sp;
-    private TextMeshProUGUI pieces;
-    private TextMeshProUGUI piecesCost;
+    public TextMeshProUGUI lvl;
+    public TextMeshProUGUI hp;
+    public TextMeshProUGUI sp;
+    public TextMeshProUGUI pieces;
+    public TextMeshProUGUI piecesCost;
 
     private PlayerChara stats;
+    public PlayerClass playerClass;
 
     private CameraFollow cam;
 
@@ -25,10 +26,7 @@ public class GradePanel : MonoBehaviour
 
     void OnEnable()
     {
-        if (isGet)
-        {
-            PrintText();
-        }
+        PrintText();
     }
 
     private void Start()
@@ -36,6 +34,7 @@ public class GradePanel : MonoBehaviour
         GetObj();
         PrintText();
         isGet = true;
+        playerClass = GameObject.FindWithTag("Player").GetComponent<PlayerClass>();
     }
 
     void GetObj()
@@ -54,7 +53,8 @@ public class GradePanel : MonoBehaviour
 
         // Player Stats Find
         stats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerChara>();
-
+        playerClass = GameObject.FindWithTag("Player").GetComponent<PlayerClass>();
+        
         //Camera find
         cam = GameObject.FindWithTag("MainCamera").GetComponent<CameraFollow>();
 
@@ -67,45 +67,45 @@ void PrintText()
     {
         hp.text = "Health: " + stats.hpMax;
         sp.text = "Stamina: " + stats.spMax;
-        lvl.text = "Level: " + stats.level;
-        pieces.text = "Pieces: " + stats.pieces;
-        piecesCost.text = "Cost: " + stats.piecesToGrade;
+        lvl.text = "Level: " + playerClass.player.level;
+        pieces.text = "Pieces: " + playerClass.player.pieces;
+        piecesCost.text = "Cost: " + playerClass.player.piecesToGrade;
     }
 
     void HpGrade()
     {
-        if (stats.pieces < stats.piecesToGrade)
+        if (playerClass.player.pieces < playerClass.player.piecesToGrade)
         {
             Debug.Log("Not Enough Pieces");
             return;
         }
         else
         {
-            stats.hpPerc += 0.2f;
+            playerClass.player.hpPerc += 0.2f;
             stats.CalcStats();
             stats.assignStats();
-            stats.pieces -= stats.piecesToGrade;
-            stats.piecesToGrade += stats.piecesToGrade / 2;
-            stats.level += 1;
+            playerClass.player.pieces -= playerClass.player.piecesToGrade;
+            playerClass.player.piecesToGrade += playerClass.player.piecesToGrade / 2;
+            playerClass.player.level += 1;
             PrintText();
         }
     }
 
     void SpGrade()
     {
-        if (stats.pieces < stats.piecesToGrade)
+        if (playerClass.player.pieces < playerClass.player.piecesToGrade)
         {
             Debug.Log("Not Enough Pieces");
             return;
         }
         else
         {
-            stats.spPerc += 0.2f;
+            playerClass.player.spPerc += 0.2f;
             stats.CalcStats();
             stats.assignStats();
-            stats.pieces -= stats.piecesToGrade;
-            stats.piecesToGrade += stats.piecesToGrade / 2;
-            stats.level += 1;
+            playerClass.player.pieces -= playerClass.player.piecesToGrade;
+            playerClass.player.piecesToGrade += playerClass.player.piecesToGrade / 2;
+            playerClass.player.level += 1;
             PrintText();
         }
     }

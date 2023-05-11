@@ -68,7 +68,7 @@ public class DialogueSRC : MonoBehaviour
             queType.Add(queID);
         }
         
-        if (GameObject.FindWithTag("Player").GetComponent<PlayerInventory>().shardAmount > 0)
+        if (GameObject.FindWithTag("Player").GetComponent<PlayerClass>().player.amount[GameObject.FindWithTag("Player").GetComponent<PlayerClass>().player.inv.IndexOf(0)] > 0)
         {
             var que_grade = getBetween(text, "que_grade_00:", "\r");
             que.Add(que_grade);

@@ -10,24 +10,25 @@ public class PlayerInventory : MonoBehaviour
     private PlayerChara chara;
     private PlayerMovement move;
     private FightBehaviour fight;
+    private PlayerClass playerClass;
     private GameObject itemBar;
     private Transform posItemUse;
-    public int flowerAmount;
-    public int shardAmount;
+    //public int flowerAmount;
+    //public int shardAmount;
     public int quickCurrent = 0;
     // public int quickCurrentID = 3;
-    public List<int> inv;
-    public List<int> amount;
-    public List<int> quickSlots;
+    //public List<int> inv;
+    //public List<int> amount;
     private GameObject knife;
     private GameObject bomb;
     public TextAsset itemsList;
     public TextAsset itemsSprite;
     private string itemsListString;
-    private int flaskMax = 2;
+    //private int flaskMax = 2;
     
     void Start()
     {
+        playerClass = GetComponent<PlayerClass>();
         knife = Resources.Load("Knife") as GameObject;
         bomb = Resources.Load("Bomb") as GameObject;
         posItemUse = gameObject.transform.GetChild(1).transform;
@@ -36,60 +37,58 @@ public class PlayerInventory : MonoBehaviour
         move = GetComponent<PlayerMovement>();
         fight = GetComponent<FightBehaviour>();
         itemsListString = itemsList.text;
-        inv.Add(2);
-        amount.Add(flaskMax);
         ChangeSprite();
     }
     public void TakeItem(int id)
     {
-        if (inv.Contains(id))
+        if (playerClass.player.inv.Contains(id))
         {
-            int i = inv.IndexOf(id);
-            amount[i]++;
+            int i = playerClass.player.inv.IndexOf(id);
+            playerClass.player.amount[i]++;
         }else
         {
-            inv.Add(id);
-            amount.Add(1);
+            playerClass.player.inv.Add(id);
+            playerClass.player.amount.Add(1);
         }
     }
 
     public void UseItem(int index)
     {
-        var tmpID = inv.IndexOf(index);
-        if (inv[index] == 2 && amount[index] > 0)
+        var tmpID = playerClass.player.inv.IndexOf(index);
+        if (playerClass.player.inv[index] == 2 && playerClass.player.amount[index] > 0)
         {
             chara.hpCurrent += 25;
-            amount[index]--;
+            playerClass.player.amount[index]--;
         }
-        else if (inv[index] == 3 && amount[index] > 0)
+        else if (playerClass.player.inv[index] == 3 && playerClass.player.amount[index] > 0)
         {
             var tmppos = new Vector2(posItemUse.position.x, posItemUse.position.y);
             GameObject knife_throw = Instantiate(knife, tmppos, Quaternion.identity);
-            amount[index]--;
+            playerClass.player.amount[index]--;
         }
-        else if (inv[index] == 4 && amount[index] > 0)
+        else if (playerClass.player.inv[index] == 4 && playerClass.player.amount[index] > 0)
         {
             var tmppos = new Vector2(posItemUse.position.x, posItemUse.position.y);
             GameObject bomb_throw = Instantiate(bomb, tmppos, Quaternion.identity);
-            amount[index]--;
+            playerClass.player.amount[index]--;
         }
     }
 
     public void ResetFlask()
     {
-        amount[inv.IndexOf(2)] = flaskMax;
+        playerClass.player.amount[0] = playerClass.player.flaskMax;
     }
 
     private void ChangeItem(int n)
     {
-        if (quickCurrent == inv.Count-1 && n == 1)
+        if (quickCurrent == playerClass.player.inv.Count-1 && n == 1)
         {
             quickCurrent = 0;
             return;
         }
         else if (quickCurrent == 0 && n == -1)
         {
-            quickCurrent = inv.Count-1;
+            quickCurrent = playerClass.player.inv.Count-1;
             return;
         }
 
@@ -99,7 +98,7 @@ public class PlayerInventory : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
-            Debug.Log(inv);
+            Debug.Log(playerClass.player.inv);
         }
         else if (Input.GetKeyDown(KeyCode.Q) && !fight.isAttacking && !fight.isBlocking)
         {
@@ -108,22 +107,23 @@ public class PlayerInventory : MonoBehaviour
         else if (Input.GetAxis("Mouse ScrollWheel") > 0f ) // forward
         {
             ChangeItem(1);
+            ChangeSprite();
         }
         else if (Input.GetAxis("Mouse ScrollWheel") < 0f ) // backwards
         {
             ChangeItem(-1);
+            ChangeSprite();
         }
-        ChangeSprite();
     }
 
     private void ChangeSprite()
     {
-        var tmp = inv[quickCurrent];
-        var tmp2 = inv.IndexOf(tmp);
+        var tmp = playerClass.player.inv[quickCurrent];
+        var tmp2 = playerClass.player.inv.IndexOf(tmp);
         var text = itemsSprite.text;
-        var spr_path = getBetween(text,inv[quickCurrent].ToString() + ":" , "\r");
+        var spr_path = getBetween(text,playerClass.player.inv[quickCurrent].ToString() + ":" , "\r");
         Sprite itmSpr = LoadSpriteFromFile(spr_path);
-        itemBar.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = amount[tmp2].ToString();
+        itemBar.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = playerClass.player.amount[tmp2].ToString();
         itemBar.transform.GetChild(0).GetComponent<Image>().sprite = itmSpr;
     }
     private static string getBetween(string file, string strStart, string strEnd)

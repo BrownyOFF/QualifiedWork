@@ -6,6 +6,7 @@ using UnityEngine;
 public class FightBehaviour : MonoBehaviour
 {
     [SerializeField] private PlayerMovement move;
+    public PlayerClass playerClass;
     private PlayerChara chara;
     private LayerMask enemyMask;
     private float rayDistanse = 5f;
@@ -26,13 +27,14 @@ public class FightBehaviour : MonoBehaviour
     private GameObject attackPos;
     private bool parryCan = true;
     public float attackRange = 3f;
-    public float damage = 10f;
+    //public float damage = 10f;
     private bool isBlockClicked = false;
     private bool canAttack = true;
     private Animator animCont;
 
     void Start()
     {
+        playerClass = GetComponent<PlayerClass>();
         animCont = GetComponent<Animator>();
         chara = GetComponent<PlayerChara>();
         move = GetComponent<PlayerMovement>();
@@ -63,7 +65,7 @@ public class FightBehaviour : MonoBehaviour
         Collider2D[] enemyToDamage = Physics2D.OverlapCircleAll(attackPos.transform.position, attackRange, enemyMask);
         for (int i = 0; i < enemyToDamage.Length; i++)
         {
-            enemyToDamage[i].GetComponent<EnemySRC>().TakeDamage(damage);
+            enemyToDamage[i].GetComponent<EnemySRC>().TakeDamage(playerClass.player.damage);
         }
         isAttacking = false;
         StartCoroutine(AttackCD());

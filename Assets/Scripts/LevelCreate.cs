@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 public class LevelCreate : MonoBehaviour
 {
     #region PreFabs
@@ -20,9 +22,9 @@ public class LevelCreate : MonoBehaviour
     private GameObject[] shrines;
     void Awake()
     {
-        Player = Resources.Load("Player") as GameObject;
+        Player = GameObject.FindWithTag("Player");
         Enemy = Resources.Load("Enemy") as GameObject;
-
+        
         EnemyPos = GameObject.FindGameObjectsWithTag("enemyPos");
         PlayerPos = GameObject.FindWithTag("playerPos");
 
@@ -32,18 +34,20 @@ public class LevelCreate : MonoBehaviour
         if (playerTP != -1)
         {
             SpawnObject(Player, shrines[playerTP]);
+            PlayerPos.transform.position = shrines[playerTP].transform.position;
+            Player.transform.position = PlayerPos.transform.position;
             PlayerPrefs.SetInt("PlayerPos", -1);
         }
         else if (PlayerPrefs.GetInt("IsLoaded") == 0)
         {
             PlayerPos.transform.position = new Vector3(PlayerPrefs.GetInt("PosX"),PlayerPrefs.GetInt("PosY"), 0);
-            SpawnObject(Player, PlayerPos);
+            Player.transform.position = PlayerPos.transform.position;
         }
-        else
+
+        if (SceneManager.GetActiveScene().name != "lvl_hub")
         {
-            SpawnObject(Player, PlayerPos);
+            foreachCycle(Enemy, EnemyPos);
         }
-        foreachCycle(Enemy, EnemyPos);
     }
 
     public void foreachCycle(GameObject obj, GameObject[] pos)
@@ -75,7 +79,6 @@ public class LevelCreate : MonoBehaviour
         var posVec = new Vector2(pos.transform.position.x, pos.transform.position.y);
         Instantiate(obj, posVec, Quaternion.identity);
     }
-    
     
     void Update()
     {
