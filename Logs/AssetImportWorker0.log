@@ -15,11 +15,11 @@ F:/dip/test
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-53879
+59047
 Successfully changed project path to: F:/dip/test
 F:/dip/test
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 62.43 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 55.20 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.26f1 (7298b473bc1a)
 [Subsystems] Discovering subsystems at path F:/Геймдев/2020.3.26f1/Editor/Data/Resources/UnitySubsystems
@@ -35,89 +35,89 @@ Initialize mono
 Mono path[0] = 'F:/Геймдев/2020.3.26f1/Editor/Data/Managed'
 Mono path[1] = 'F:/Геймдев/2020.3.26f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'F:/Геймдев/2020.3.26f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56076
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56996
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: F:/Геймдев/2020.3.26f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.001259 seconds.
+Registered in 0.000934 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 57.13 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 56.75 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.529 seconds
+- Completed reload, in  0.475 seconds
 Domain Reload Profiling:
-	ReloadAssembly (530ms)
-		BeginReloadAssembly (49ms)
+	ReloadAssembly (475ms)
+		BeginReloadAssembly (42ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (413ms)
-			LoadAssemblies (49ms)
+		EndReloadAssembly (372ms)
+			LoadAssemblies (41ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (132ms)
+			SetupTypeCache (112ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (24ms)
-			SetupLoadedEditorAssemblies (173ms)
+			RebuildScriptCaches (23ms)
+			SetupLoadedEditorAssemblies (161ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (5ms)
+				InitializePlatformSupportModulesInManaged (4ms)
 				SetLoadedEditorAssemblies (0ms)
 				RefreshPlugins (57ms)
-				BeforeProcessingInitializeOnLoad (8ms)
-				ProcessInitializeOnLoadAttributes (76ms)
-				ProcessInitializeOnLoadMethodAttributes (27ms)
+				BeforeProcessingInitializeOnLoad (7ms)
+				ProcessInitializeOnLoadAttributes (69ms)
+				ProcessInitializeOnLoadMethodAttributes (23ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.003565 seconds.
+Registered in 0.002863 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 61.80 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 51.90 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.011 seconds
+- Completed reload, in  0.857 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1012ms)
-		BeginReloadAssembly (140ms)
+	ReloadAssembly (858ms)
+		BeginReloadAssembly (111ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (4ms)
+			DisableScriptedObjects (5ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (25ms)
-		EndReloadAssembly (814ms)
-			LoadAssemblies (92ms)
+			CreateAndSetChildDomain (18ms)
+		EndReloadAssembly (699ms)
+			LoadAssemblies (73ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (269ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (40ms)
-			SetupLoadedEditorAssemblies (318ms)
+			SetupTypeCache (220ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (35ms)
+			SetupLoadedEditorAssemblies (285ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (3ms)
+				InitializePlatformSupportModulesInManaged (4ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (62ms)
-				BeforeProcessingInitializeOnLoad (59ms)
-				ProcessInitializeOnLoadAttributes (176ms)
-				ProcessInitializeOnLoadMethodAttributes (16ms)
+				RefreshPlugins (52ms)
+				BeforeProcessingInitializeOnLoad (52ms)
+				ProcessInitializeOnLoadAttributes (161ms)
+				ProcessInitializeOnLoadMethodAttributes (14ms)
 				AfterProcessingInitializeOnLoad (2ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (6ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-Refreshing native plugins compatible for Editor in 0.75 ms, found 3 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 1.24 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2245 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 101.2 MB.
-System memory in use after: 101.3 MB.
+System memory in use before: 101.3 MB.
+System memory in use after: 101.4 MB.
 
 Unloading 28 unused Assets to reduce memory usage. Loaded Objects now: 2680.
-Total: 3.230200 ms (FindLiveObjects: 0.206000 ms CreateObjectMapping: 0.089600 ms MarkObjects: 2.866300 ms  DeleteObjects: 0.067200 ms)
+Total: 2.985400 ms (FindLiveObjects: 0.199500 ms CreateObjectMapping: 0.088200 ms MarkObjects: 2.627300 ms  DeleteObjects: 0.069400 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -131,145 +131,9 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  path: Assets/Scenes/MainMenu.unity
-  artifactKey: Guid(7371651c415b67b42933fb792842e011) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/MainMenu.unity using Guid(7371651c415b67b42933fb792842e011) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '81511707e65fb699ff150ef091f88a49') in 0.018552 seconds 
-  Import took 0.023747 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 2465.991864 seconds.
-  path: Assets/Тайлсет лвл 2
-  artifactKey: Guid(990d660fbafef43459334db095b0bb41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Тайлсет лвл 2 using Guid(990d660fbafef43459334db095b0bb41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1f8ef10ada2908bad38937fa9591a7f1') in 0.009762 seconds 
-  Import took 0.064678 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 1.231952 seconds.
-  path: Assets/Текстури для хабу
-  artifactKey: Guid(a7d721e781f0bf740ab7362b5da761e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Текстури для хабу using Guid(a7d721e781f0bf740ab7362b5da761e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7363e079dc3413b50e26ea95d3bc8b70') in 0.008127 seconds 
-  Import took 0.013384 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 1.405171 seconds.
-  path: Assets/Текстури інтерфейс
-  artifactKey: Guid(fce6a3014da97f144a77d4df0b286307) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Текстури інтерфейс using Guid(fce6a3014da97f144a77d4df0b286307) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8bb52aa4f09c6b99a62d9c670921b362') in 0.007515 seconds 
-  Import took 0.013522 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.303196 seconds.
-  path: Assets/Текстури інтерфейс/бомба.psd
-  artifactKey: Guid(76f844f78bb0e144e8c7a0bba413d883) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Текстури інтерфейс/бомба.psd using Guid(76f844f78bb0e144e8c7a0bba413d883) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f8bdc55a00b679e0db8ae98f6e06ccdd') in 0.170696 seconds 
-  Import took 0.174558 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000160 seconds.
-  path: Assets/Текстури інтерфейс/коін на інтерфейс.psd
-  artifactKey: Guid(3a921233c59d49040ae1da7e419bbf3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Текстури інтерфейс/коін на інтерфейс.psd using Guid(3a921233c59d49040ae1da7e419bbf3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '14060ee5a2bf4bd04bf35fd39fe908d4') in 0.012774 seconds 
-  Import took 0.016838 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000167 seconds.
-  path: Assets/Текстури інтерфейс/фласка готова 1.psd
-  artifactKey: Guid(12029f34fda1fad4db4b4a6ec1d1d6e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Текстури інтерфейс/фласка готова 1.psd using Guid(12029f34fda1fad4db4b4a6ec1d1d6e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cb3db969c9cd589ca19838fe43312a07') in 0.024077 seconds 
-  Import took 0.027781 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000187 seconds.
-  path: Assets/Текстури інтерфейс/фласка 1.psd
-  artifactKey: Guid(c58d765e69fa0ce43a4a0982daf9b450) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Текстури інтерфейс/фласка 1.psd using Guid(c58d765e69fa0ce43a4a0982daf9b450) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3712f90de042c09e349dbc05381961ab') in 0.028024 seconds 
-  Import took 0.031520 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000164 seconds.
-  path: Assets/Текстури інтерфейс/ячейка под ітеми інтерфейс.psd
-  artifactKey: Guid(8e202628c8e069245b3c807e7bd679d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Текстури інтерфейс/ячейка под ітеми інтерфейс.psd using Guid(8e202628c8e069245b3c807e7bd679d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2ccd1bb735983ff6b7e835125252e868') in 0.020276 seconds 
-  Import took 0.023670 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000153 seconds.
-  path: Assets/Текстури інтерфейс/фласка 2.psd
-  artifactKey: Guid(27eeb344b97746d4f92089666e93258c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Текстури інтерфейс/фласка 2.psd using Guid(27eeb344b97746d4f92089666e93258c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5f4d7be35f0c22e6b795eea48cb2c209') in 0.025106 seconds 
-  Import took 0.028787 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000162 seconds.
-  path: Assets/Текстури інтерфейс/кинжал.psd
-  artifactKey: Guid(f504e16e87f0f7f4b929424a3c7dffce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Текстури інтерфейс/кинжал.psd using Guid(f504e16e87f0f7f4b929424a3c7dffce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fabe5fd58c970e24b539d1278f36d477') in 0.023708 seconds 
-  Import took 0.027344 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000169 seconds.
-  path: Assets/Текстури інтерфейс/фласка готова 2.psd
-  artifactKey: Guid(d63d3f63adab1f649ac8f48f3ebf4a65) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Текстури інтерфейс/фласка готова 2.psd using Guid(d63d3f63adab1f649ac8f48f3ebf4a65) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '80492ba7666cd4f4ff6cde7c8687c2c1') in 0.018613 seconds 
-  Import took 0.022166 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000175 seconds.
-  path: Assets/Текстури інтерфейс/полоска здоров'я та стаміни.psd
-  artifactKey: Guid(bfc7f27d2d888ab4da5590dec6267bef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Текстури інтерфейс/полоска здоров'я та стаміни.psd using Guid(bfc7f27d2d888ab4da5590dec6267bef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dba4e6f5028b4537fff8b519b319e801') in 0.027369 seconds 
-  Import took 0.031402 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000160 seconds.
-  path: Assets/Текстури інтерфейс/полотно з ітемами.psd
-  artifactKey: Guid(ef9d65cf4f51d1e4f9f656dc2c52e270) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Текстури інтерфейс/полотно з ітемами.psd using Guid(ef9d65cf4f51d1e4f9f656dc2c52e270) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fecc147203fb4f091b1fcecb1daebaae') in 0.023494 seconds 
-  Import took 0.027052 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 16.679005 seconds.
-  path: Assets/Текстури інтерфейс/exit.psd
-  artifactKey: Guid(bdf11c0a6740cd842ac5486385747795) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Текстури інтерфейс/exit.psd using Guid(bdf11c0a6740cd842ac5486385747795) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2659925e8b158ef4138828cb00646c5a') in 0.021731 seconds 
-  Import took 0.025454 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 4.285507 seconds.
-  path: Assets/Текстури інтерфейс/continue.psd
-  artifactKey: Guid(be297497e65c67e4989e91ba73e139c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Текстури інтерфейс/continue.psd using Guid(be297497e65c67e4989e91ba73e139c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a7aa9ff3f07217f30a2af4900693ac4c') in 0.014254 seconds 
-  Import took 0.018863 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 4.335026 seconds.
-  path: Assets/Текстури інтерфейс/setting.psd
-  artifactKey: Guid(4f35c0547b49e1f43b5ebeb7b843a1ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Текстури інтерфейс/setting.psd using Guid(4f35c0547b49e1f43b5ebeb7b843a1ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '50c7a6803e313562965a359aaf17dd43') in 0.020418 seconds 
-  Import took 0.024654 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 6.862348 seconds.
-  path: Assets/Текстури інтерфейс/полоска new game.psd
-  artifactKey: Guid(5542fce702595df4c8db7d19339e7ee1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Текстури інтерфейс/полоска new game.psd using Guid(5542fce702595df4c8db7d19339e7ee1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0d47172a3623c114c420510d2f46dd99') in 0.015840 seconds 
-  Import took 0.019652 seconds .
+  path: Assets/Scenes/lvl_hub.unity
+  artifactKey: Guid(4760476be3247064e88e3e369ea72708) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/lvl_hub.unity using Guid(4760476be3247064e88e3e369ea72708) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8a95f517327d9e5e796f823c8f0a8a9d') in 0.011151 seconds 
+  Import took 0.016006 seconds .
 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file
