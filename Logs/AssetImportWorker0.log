@@ -15,11 +15,11 @@ F:/dip/test
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-63010
+63246
 Successfully changed project path to: F:/dip/test
 F:/dip/test
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 54.93 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 58.21 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.26f1 (7298b473bc1a)
 [Subsystems] Discovering subsystems at path F:/Геймдев/2020.3.26f1/Editor/Data/Resources/UnitySubsystems
@@ -35,89 +35,89 @@ Initialize mono
 Mono path[0] = 'F:/Геймдев/2020.3.26f1/Editor/Data/Managed'
 Mono path[1] = 'F:/Геймдев/2020.3.26f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'F:/Геймдев/2020.3.26f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56008
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56288
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: F:/Геймдев/2020.3.26f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.000891 seconds.
+Registered in 0.000938 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 58.89 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 56.36 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.481 seconds
+- Completed reload, in  0.498 seconds
 Domain Reload Profiling:
-	ReloadAssembly (482ms)
-		BeginReloadAssembly (41ms)
+	ReloadAssembly (499ms)
+		BeginReloadAssembly (43ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (388ms)
-			LoadAssemblies (40ms)
+		EndReloadAssembly (396ms)
+			LoadAssemblies (42ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (107ms)
+			SetupTypeCache (121ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (26ms)
-			SetupLoadedEditorAssemblies (177ms)
+			RebuildScriptCaches (25ms)
+			SetupLoadedEditorAssemblies (169ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (4ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (59ms)
+				RefreshPlugins (56ms)
 				BeforeProcessingInitializeOnLoad (8ms)
-				ProcessInitializeOnLoadAttributes (77ms)
-				ProcessInitializeOnLoadMethodAttributes (28ms)
+				ProcessInitializeOnLoadAttributes (74ms)
+				ProcessInitializeOnLoadMethodAttributes (26ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.002926 seconds.
+Registered in 0.003138 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 49.46 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 57.07 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.832 seconds
+- Completed reload, in  0.906 seconds
 Domain Reload Profiling:
-	ReloadAssembly (833ms)
-		BeginReloadAssembly (104ms)
+	ReloadAssembly (907ms)
+		BeginReloadAssembly (110ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (4ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (16ms)
-		EndReloadAssembly (686ms)
-			LoadAssemblies (69ms)
+			CreateAndSetChildDomain (19ms)
+		EndReloadAssembly (749ms)
+			LoadAssemblies (75ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (216ms)
+			SetupTypeCache (239ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (35ms)
-			SetupLoadedEditorAssemblies (283ms)
+			RebuildScriptCaches (39ms)
+			SetupLoadedEditorAssemblies (305ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (3ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (50ms)
-				BeforeProcessingInitializeOnLoad (53ms)
-				ProcessInitializeOnLoadAttributes (162ms)
-				ProcessInitializeOnLoadMethodAttributes (14ms)
+				RefreshPlugins (57ms)
+				BeforeProcessingInitializeOnLoad (54ms)
+				ProcessInitializeOnLoadAttributes (173ms)
+				ProcessInitializeOnLoadMethodAttributes (16ms)
 				AfterProcessingInitializeOnLoad (2ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (5ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
-Refreshing native plugins compatible for Editor in 0.96 ms, found 3 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
+Refreshing native plugins compatible for Editor in 0.67 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2245 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 101.3 MB.
 System memory in use after: 101.3 MB.
 
 Unloading 28 unused Assets to reduce memory usage. Loaded Objects now: 2680.
-Total: 3.004300 ms (FindLiveObjects: 0.192000 ms CreateObjectMapping: 0.092100 ms MarkObjects: 2.655500 ms  DeleteObjects: 0.064000 ms)
+Total: 3.212200 ms (FindLiveObjects: 0.198600 ms CreateObjectMapping: 0.086000 ms MarkObjects: 2.857700 ms  DeleteObjects: 0.068800 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -131,147 +131,35 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  path: Assets/для хабу/1642608884_1-abrakadabra-fun-p-bekgraund-dlya-igri-2.jpg
-  artifactKey: Guid(5fb3b9baf20122847b58b9aa440f2b9e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/для хабу/1642608884_1-abrakadabra-fun-p-bekgraund-dlya-igri-2.jpg using Guid(5fb3b9baf20122847b58b9aa440f2b9e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2cc6316532cc88ec0cfd5de693a87296') in 0.078504 seconds 
-  Import took 0.081800 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 81.343649 seconds.
-  path: Assets/Scenes/lvl_2.unity
-  artifactKey: Guid(cd47834f8b0ce074fb89a9ebdaec96d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/lvl_2.unity using Guid(cd47834f8b0ce074fb89a9ebdaec96d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3c9a254049254d02af1e5b4b5fc8e3f3') in 0.007247 seconds 
-  Import took 0.011118 seconds .
+  path: Assets/Scenes/lvl_0.unity
+  artifactKey: Guid(2cda990e2423bbf4892e6590ba056729) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/lvl_0.unity using Guid(2cda990e2423bbf4892e6590ba056729) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c518bb35c93e3d48a68e5071825112be') in 0.016380 seconds 
+  Import took 0.019836 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.002742 seconds.
+Registered in 0.004093 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Refreshing native plugins compatible for Editor in 0.70 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.738 seconds
+- Completed reload, in  0.782 seconds
 Domain Reload Profiling:
-	ReloadAssembly (738ms)
-		BeginReloadAssembly (99ms)
+	ReloadAssembly (782ms)
+		BeginReloadAssembly (101ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (5ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (31ms)
-		EndReloadAssembly (596ms)
-			LoadAssemblies (67ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (210ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (31ms)
-			SetupLoadedEditorAssemblies (215ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (3ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (43ms)
-				ProcessInitializeOnLoadAttributes (157ms)
-				ProcessInitializeOnLoadMethodAttributes (9ms)
-				AfterProcessingInitializeOnLoad (2ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (7ms)
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.69 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2221 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 102.4 MB.
-System memory in use after: 102.5 MB.
-
-Unloading 17 unused Assets to reduce memory usage. Loaded Objects now: 2688.
-Total: 2.787400 ms (FindLiveObjects: 0.161300 ms CreateObjectMapping: 0.072400 ms MarkObjects: 2.538900 ms  DeleteObjects: 0.014000 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 70.387748 seconds.
-  path: Assets/sprites/knife_spr.png
-  artifactKey: Guid(4d74f48d40c8bbf4184724bfc3ca7214) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/sprites/knife_spr.png using Guid(4d74f48d40c8bbf4184724bfc3ca7214) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eb85c8b0df087c5202fc45f5180fe6cb') in 0.053087 seconds 
-  Import took 0.056537 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000166 seconds.
-  path: Assets/sprites/smith_bg.jpg
-  artifactKey: Guid(1055654efbac50c449adea77234d9f6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/sprites/smith_bg.jpg using Guid(1055654efbac50c449adea77234d9f6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '17b61244448b67c57393cfe3acfbd410') in 0.018430 seconds 
-  Import took 0.021309 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000167 seconds.
-  path: Assets/sprites/yellowDot_sprite.png
-  artifactKey: Guid(9d7ba7f732d4f9f4ca0adb04d5991163) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/sprites/yellowDot_sprite.png using Guid(9d7ba7f732d4f9f4ca0adb04d5991163) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fa24b6415e9b0fd92a03e87c8280d01b') in 0.022125 seconds 
-  Import took 0.025311 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000175 seconds.
-  path: Assets/sprites/shard_spr.png
-  artifactKey: Guid(12f7761350b0a5b4797333994da8b2d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/sprites/shard_spr.png using Guid(12f7761350b0a5b4797333994da8b2d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6cc9a1686c4e23e4f2986421eb98d129') in 0.020323 seconds 
-  Import took 0.023555 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000175 seconds.
-  path: Assets/sprites/question mark.png
-  artifactKey: Guid(b025b8e6b8d61ca4f8a72b08898d56cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/sprites/question mark.png using Guid(b025b8e6b8d61ca4f8a72b08898d56cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9a5c1136a14505b25bfad766e1427fa4') in 0.022297 seconds 
-  Import took 0.025479 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000215 seconds.
-  path: Assets/sprites/smith_spr.png
-  artifactKey: Guid(6b1acb1d146ef5b4eb43d1155deed3ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/sprites/smith_spr.png using Guid(6b1acb1d146ef5b4eb43d1155deed3ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5b5d64b9c23bb4c16728e3b599041175') in 0.023329 seconds 
-  Import took 0.026558 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.003424 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.91 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.773 seconds
-Domain Reload Profiling:
-	ReloadAssembly (773ms)
-		BeginReloadAssembly (95ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (5ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (33ms)
-		EndReloadAssembly (634ms)
+			CreateAndSetChildDomain (32ms)
+		EndReloadAssembly (635ms)
 			LoadAssemblies (70ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (217ms)
+			SetupTypeCache (224ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (31ms)
+			RebuildScriptCaches (32ms)
 			SetupLoadedEditorAssemblies (235ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (4ms)
@@ -279,20 +167,20 @@ Domain Reload Profiling:
 				RefreshPlugins (1ms)
 				BeforeProcessingInitializeOnLoad (47ms)
 				ProcessInitializeOnLoadAttributes (171ms)
-				ProcessInitializeOnLoadMethodAttributes (9ms)
+				ProcessInitializeOnLoadMethodAttributes (10ms)
 				AfterProcessingInitializeOnLoad (2ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (7ms)
+			AwakeInstancesAfterBackupRestoration (8ms)
 Platform modules already initialized, skipping
 Refreshing native plugins compatible for Editor in 0.70 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2221 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 102.4 MB.
-System memory in use after: 102.5 MB.
+System memory in use before: 99.3 MB.
+System memory in use after: 99.4 MB.
 
-Unloading 17 unused Assets to reduce memory usage. Loaded Objects now: 2701.
-Total: 2.939700 ms (FindLiveObjects: 0.182400 ms CreateObjectMapping: 0.085600 ms MarkObjects: 2.654600 ms  DeleteObjects: 0.016000 ms)
+Unloading 17 unused Assets to reduce memory usage. Loaded Objects now: 2682.
+Total: 3.051300 ms (FindLiveObjects: 0.194300 ms CreateObjectMapping: 0.090200 ms MarkObjects: 2.750200 ms  DeleteObjects: 0.015800 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -305,315 +193,59 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
-Received Import Request.
-  Time since last request: 900.963276 seconds.
-  path: Assets/texture/3 Objects/Stones/2.asset
-  artifactKey: Guid(fd352e3f687c39d42af4cf897953b1bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/texture/3 Objects/Stones/2.asset using Guid(fd352e3f687c39d42af4cf897953b1bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '32119be6f667580323961e8ab60a6c7f') in 0.050042 seconds 
-  Import took 0.054006 seconds .
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003792 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.02 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.052 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1052ms)
+		BeginReloadAssembly (125ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (7ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (43ms)
+		EndReloadAssembly (865ms)
+			LoadAssemblies (94ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (312ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (44ms)
+			SetupLoadedEditorAssemblies (317ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (5ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (59ms)
+				ProcessInitializeOnLoadAttributes (234ms)
+				ProcessInitializeOnLoadMethodAttributes (15ms)
+				AfterProcessingInitializeOnLoad (2ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (11ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.97 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2221 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 99.4 MB.
+System memory in use after: 99.5 MB.
 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000190 seconds.
-  path: Assets/Favna/PNG/Bushes2/Bush2_3.asset
-  artifactKey: Guid(b6f92ff542354ef4eb3e23f0811984df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Favna/PNG/Bushes2/Bush2_3.asset using Guid(b6f92ff542354ef4eb3e23f0811984df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '80ef6691427030022c9b2c28c88b24d4') in 0.011324 seconds 
-  Import took 0.015814 seconds .
+Unloading 17 unused Assets to reduce memory usage. Loaded Objects now: 2684.
+Total: 4.647000 ms (FindLiveObjects: 0.442600 ms CreateObjectMapping: 0.287800 ms MarkObjects: 3.893100 ms  DeleteObjects: 0.021300 ms)
 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000262 seconds.
-  path: Assets/texture/3 Objects/Ridges/3.asset
-  artifactKey: Guid(789a8937dad037b4dbd5cadd9f870bd8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/texture/3 Objects/Ridges/3.asset using Guid(789a8937dad037b4dbd5cadd9f870bd8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5bea3e8c3517d5b604b8d50c7a85e42d') in 0.012264 seconds 
-  Import took 0.015695 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000155 seconds.
-  path: Assets/texture/3 Objects/Ladders/2.asset
-  artifactKey: Guid(dcdc8869344743045a54b9051910df8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/texture/3 Objects/Ladders/2.asset using Guid(dcdc8869344743045a54b9051910df8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '38d661d3b6ca2b58b268702e476efb05') in 0.010585 seconds 
-  Import took 0.013969 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000141 seconds.
-  path: Assets/texture/3 Objects/Grass/3.asset
-  artifactKey: Guid(31665841da83f7c4998cc1c0d68fa992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/texture/3 Objects/Grass/3.asset using Guid(31665841da83f7c4998cc1c0d68fa992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c64a27e53606c6356630ab9ea8c817b7') in 0.010124 seconds 
-  Import took 0.013321 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000155 seconds.
-  path: Assets/Favna/PNG/Bushes2/Bush2_4.asset
-  artifactKey: Guid(7bfc7b5e43b53ff4d8ef1eca3bf1b556) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Favna/PNG/Bushes2/Bush2_4.asset using Guid(7bfc7b5e43b53ff4d8ef1eca3bf1b556) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '08b9066e86ea6553e2d2f2fa5d45073e') in 0.010948 seconds 
-  Import took 0.014029 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000145 seconds.
-  path: Assets/texture/3 Objects/Boxes/4.asset
-  artifactKey: Guid(1003e4295f662de448c51a6307d3f199) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/texture/3 Objects/Boxes/4.asset using Guid(1003e4295f662de448c51a6307d3f199) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9c135ad31a9842150d3c98e27eb424c4') in 0.011081 seconds 
-  Import took 0.014486 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000157 seconds.
-  path: Assets/texture/3 Objects/Trees/3.asset
-  artifactKey: Guid(9ffdb3ab5b94e2a41bf1522ebe4d766c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/texture/3 Objects/Trees/3.asset using Guid(9ffdb3ab5b94e2a41bf1522ebe4d766c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0afcc6c5b045d18cc9d68b9fbfba7465') in 0.011529 seconds 
-  Import took 0.014768 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000140 seconds.
-  path: Assets/Favna/PNG/Bushes2/Bush2_2.asset
-  artifactKey: Guid(664001baf3d2abb43967727794868c31) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Favna/PNG/Bushes2/Bush2_2.asset using Guid(664001baf3d2abb43967727794868c31) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c000aae19e864d4a9a7075ac523fef38') in 0.010230 seconds 
-  Import took 0.013678 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000146 seconds.
-  path: Assets/Favna/PNG/Bushes2/Bush2_1.asset
-  artifactKey: Guid(7bdbe820fa12c3e41b368541a819a757) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Favna/PNG/Bushes2/Bush2_1.asset using Guid(7bdbe820fa12c3e41b368541a819a757) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9d52480c1c54841114a8b39c96c6b2f9') in 0.011043 seconds 
-  Import took 0.015034 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000156 seconds.
-  path: Assets/texture/3 Objects/Pointers/3.asset
-  artifactKey: Guid(13870612dc7882244ad3460e41bf6867) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/texture/3 Objects/Pointers/3.asset using Guid(13870612dc7882244ad3460e41bf6867) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5537a158e490ec75e414dc26e6736e4a') in 0.010753 seconds 
-  Import took 0.014682 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000147 seconds.
-  path: Assets/texture/3 Objects/Pointers/5.asset
-  artifactKey: Guid(9560c9e313a441945b4f5462475e3c95) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/texture/3 Objects/Pointers/5.asset using Guid(9560c9e313a441945b4f5462475e3c95) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd67ad1e564518e6572a9de4c6e45ca5f') in 0.015616 seconds 
-  Import took 0.019070 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 1.073819 seconds.
-  path: Assets/Favna/PNG/Bushes3/Bush3_1.asset
-  artifactKey: Guid(a44b67136667a7b47a9ac6306cdea6ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Favna/PNG/Bushes3/Bush3_1.asset using Guid(a44b67136667a7b47a9ac6306cdea6ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b49f126c2c3e31dd5419ae0e13c231ea') in 0.012960 seconds 
-  Import took 0.016418 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000152 seconds.
-  path: Assets/Favna/PNG/Bushes3/Bush3_3.asset
-  artifactKey: Guid(f118be36ed562c74d80a49ec1ddb3653) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Favna/PNG/Bushes3/Bush3_3.asset using Guid(f118be36ed562c74d80a49ec1ddb3653) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '85de82da39ddc1a60559996943f37a0f') in 0.018008 seconds 
-  Import took 0.021050 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000165 seconds.
-  path: Assets/Favna/PNG/Bushes3/Bush3_2.asset
-  artifactKey: Guid(025d0cd9641d8c24eaca01a9e0f2978b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Favna/PNG/Bushes3/Bush3_2.asset using Guid(025d0cd9641d8c24eaca01a9e0f2978b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '33dbae29fa750648614275757ad0e430') in 0.014944 seconds 
-  Import took 0.018032 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.024763 seconds.
-  path: Assets/Favna/PNG/Bushes3/Bush3_4.asset
-  artifactKey: Guid(f4a1e1c2c8cf8fa4b96a9ebf0b51fd9b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Favna/PNG/Bushes3/Bush3_4.asset using Guid(f4a1e1c2c8cf8fa4b96a9ebf0b51fd9b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'df48b556dfec9864d02839c3c098aa87') in 0.010011 seconds 
-  Import took 0.013398 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000172 seconds.
-  path: Assets/Favna/PNG/Bushes4/Bush4_1.asset
-  artifactKey: Guid(c0aa7add5d186ca44874724b3b8687ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Favna/PNG/Bushes4/Bush4_1.asset using Guid(c0aa7add5d186ca44874724b3b8687ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '79feb109a42dfd918757919b88801594') in 0.011332 seconds 
-  Import took 0.015169 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000151 seconds.
-  path: Assets/Favna/PNG/Bushes4/Bush4_2.asset
-  artifactKey: Guid(649d634eb9fcf6b4b98a7f254b29288c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Favna/PNG/Bushes4/Bush4_2.asset using Guid(649d634eb9fcf6b4b98a7f254b29288c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b0f340f32f0bb9eb46a10ce29953b431') in 0.022789 seconds 
-  Import took 0.026286 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000170 seconds.
-  path: Assets/Favna/PNG/Bushes4/Bush4_3.asset
-  artifactKey: Guid(9827f4e8bc6ba1d40be7adb7dad6bc7f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Favna/PNG/Bushes4/Bush4_3.asset using Guid(9827f4e8bc6ba1d40be7adb7dad6bc7f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8b16f93cc47aeffb1ed2fc3dd5f4fb54') in 0.019553 seconds 
-  Import took 0.022730 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000169 seconds.
-  path: Assets/Favna/PNG/Bushes5/Bush5_1.asset
-  artifactKey: Guid(45a16c2cb867fed43927ecfd16381df2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Favna/PNG/Bushes5/Bush5_1.asset using Guid(45a16c2cb867fed43927ecfd16381df2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '59bcf2cb442702307194790acde7edae') in 0.027533 seconds 
-  Import took 0.030964 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000172 seconds.
-  path: Assets/Favna/PNG/Bushes4/Bush4_4.asset
-  artifactKey: Guid(257a002fb296e0f4ba40e1cee5b797a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Favna/PNG/Bushes4/Bush4_4.asset using Guid(257a002fb296e0f4ba40e1cee5b797a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bb69d1db4d5d874176fe5234ced56507') in 0.012485 seconds 
-  Import took 0.015761 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.283427 seconds.
-  path: Assets/Favna/PNG/Bushes5/Bush5_2.asset
-  artifactKey: Guid(f871c1206e73f384d9bb3b6eb7ae82c8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Favna/PNG/Bushes5/Bush5_2.asset using Guid(f871c1206e73f384d9bb3b6eb7ae82c8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b5ea88b0e4c1954dcccb6991ffd65150') in 0.011605 seconds 
-  Import took 0.015291 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000155 seconds.
-  path: Assets/Favna/PNG/Bushes5/Bush5_4.asset
-  artifactKey: Guid(401d5321e8bfde446994fb91ef64fbdf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Favna/PNG/Bushes5/Bush5_4.asset using Guid(401d5321e8bfde446994fb91ef64fbdf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ba28981065114e44d5d3dd927113333d') in 0.009735 seconds 
-  Import took 0.013018 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000167 seconds.
-  path: Assets/Favna/PNG/Bushes5/Bush5_3.asset
-  artifactKey: Guid(c56935d6fe569d343994f6e39a61bf8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Favna/PNG/Bushes5/Bush5_3.asset using Guid(c56935d6fe569d343994f6e39a61bf8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '79c95839c2389d27364c17a807c75809') in 0.011250 seconds 
-  Import took 0.015125 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000141 seconds.
-  path: Assets/Favna/PNG/Bushes6/Bush6_2.asset
-  artifactKey: Guid(3c8622e8bc71396439ca7440a7dc805e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Favna/PNG/Bushes6/Bush6_2.asset using Guid(3c8622e8bc71396439ca7440a7dc805e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4e7037dc98e3a79d8055f74e58d0ea71') in 0.010454 seconds 
-  Import took 0.013697 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000154 seconds.
-  path: Assets/Favna/PNG/Bushes6/Bush6_3.asset
-  artifactKey: Guid(b2048e83c85da5a4f84aa7fd5e75aa80) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Favna/PNG/Bushes6/Bush6_3.asset using Guid(b2048e83c85da5a4f84aa7fd5e75aa80) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2577088d35a476a4aca7d1a18abc3db6') in 0.010080 seconds 
-  Import took 0.014016 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000195 seconds.
-  path: Assets/Favna/PNG/Bushes6/Bush6_1.asset
-  artifactKey: Guid(d77a9615ddca4e544984aa28263ea426) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Favna/PNG/Bushes6/Bush6_1.asset using Guid(d77a9615ddca4e544984aa28263ea426) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8f8e1d4c514fc187d3c328c230af38fa') in 0.010624 seconds 
-  Import took 0.014577 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.006813 seconds.
-  path: Assets/Favna/PNG/Bushes6/Bush6_4.asset
-  artifactKey: Guid(5eb9f140223acb648a4d696d6647262b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Favna/PNG/Bushes6/Bush6_4.asset using Guid(5eb9f140223acb648a4d696d6647262b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '16f83ba065d9ca88377a2ceb0a31b287') in 0.009493 seconds 
-  Import took 0.013707 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000193 seconds.
-  path: Assets/Favna/PNG/Bushes7/Bush7_2.asset
-  artifactKey: Guid(f7916f9fe06a61f47a892b3c9c064fbb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Favna/PNG/Bushes7/Bush7_2.asset using Guid(f7916f9fe06a61f47a892b3c9c064fbb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'acaf3ca5f3b4a7f40bb03e8ed140e845') in 0.010411 seconds 
-  Import took 0.013846 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000180 seconds.
-  path: Assets/Favna/PNG/Bushes7/Bush7_1.asset
-  artifactKey: Guid(fd368708b06a7fb44b1e0ef19cf2a976) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Favna/PNG/Bushes7/Bush7_1.asset using Guid(fd368708b06a7fb44b1e0ef19cf2a976) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '81901529829830aca2334f7dde0d15f0') in 0.010346 seconds 
-  Import took 0.013911 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.269630 seconds.
-  path: Assets/Favna/PNG/Bushes7/Bush7_3.asset
-  artifactKey: Guid(8795e8155ec019b4fbea31532798dd41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Favna/PNG/Bushes7/Bush7_3.asset using Guid(8795e8155ec019b4fbea31532798dd41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '90561f24b2fed5a05f13cb8f7d78396c') in 0.011500 seconds 
-  Import took 0.014986 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000162 seconds.
-  path: Assets/Favna/PNG/Bushes7/Bush7_4.asset
-  artifactKey: Guid(6e2701bfaa277aa44ada0bb004dcceb8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Favna/PNG/Bushes7/Bush7_4.asset using Guid(6e2701bfaa277aa44ada0bb004dcceb8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '26997a1fb838ec139baed67e3fddf7db') in 0.010821 seconds 
-  Import took 0.013988 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000342 seconds.
-  path: Assets/Favna/PNG/Bushes8/Bush8_1.asset
-  artifactKey: Guid(0b47685e03b119e4d94e359819961ed4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Favna/PNG/Bushes8/Bush8_1.asset using Guid(0b47685e03b119e4d94e359819961ed4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '914da2cdb63e84f9a6267a77832a7e10') in 0.010467 seconds 
-  Import took 0.014139 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000150 seconds.
-  path: Assets/Favna/PNG/Bushes8/Bush8_2.asset
-  artifactKey: Guid(805fe07ce1592a14691baefbf0dbda9a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Favna/PNG/Bushes8/Bush8_2.asset using Guid(805fe07ce1592a14691baefbf0dbda9a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '50701cac33509ede0abb278777a5936a') in 0.009416 seconds 
-  Import took 0.012935 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000159 seconds.
-  path: Assets/Favna/PNG/Bushes9/Bush9_3.asset
-  artifactKey: Guid(e9bda3d3f16212040af06df9818d4d92) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Favna/PNG/Bushes9/Bush9_3.asset using Guid(e9bda3d3f16212040af06df9818d4d92) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '747a7f6c7dcd6e7cf8c8103f9735eaa3') in 0.009716 seconds 
-  Import took 0.013133 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000169 seconds.
-  path: Assets/Favna/PNG/Bushes9/Bush9_2.asset
-  artifactKey: Guid(e61c1c0b48a30d644baedabb9ad61150) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Favna/PNG/Bushes9/Bush9_2.asset using Guid(e61c1c0b48a30d644baedabb9ad61150) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c514c4a42dc027a9bb12cdf47f363bb2') in 0.009918 seconds 
-  Import took 0.013458 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000170 seconds.
-  path: Assets/Favna/PNG/Bushes8/Bush8_4.asset
-  artifactKey: Guid(281a1596d8cc6084d89bad4d6138ae69) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Favna/PNG/Bushes8/Bush8_4.asset using Guid(281a1596d8cc6084d89bad4d6138ae69) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '982bfde4c961b9170ad697865a6627b9') in 0.013540 seconds 
-  Import took 0.017042 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000148 seconds.
-  path: Assets/Favna/PNG/Bushes9/Bush9_1.asset
-  artifactKey: Guid(090ad9b2414522742949dccf9c6d7556) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Favna/PNG/Bushes9/Bush9_1.asset using Guid(090ad9b2414522742949dccf9c6d7556) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a5ffdab1580dfe4da6370b10c66e2f78') in 0.011881 seconds 
-  Import took 0.014965 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000150 seconds.
-  path: Assets/Favna/PNG/Bushes8/Bush8_3.asset
-  artifactKey: Guid(1dcf6b2d8a2e9be43a8d7a8af208f40e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Favna/PNG/Bushes8/Bush8_3.asset using Guid(1dcf6b2d8a2e9be43a8d7a8af208f40e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b274a79b32eeca811181152e70dc73ad') in 0.010708 seconds 
-  Import took 0.013942 seconds .
-
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file
