@@ -26,7 +26,7 @@ public class UI : MonoBehaviour
     {
         hp.text = playerStats.hpCurrent.ToString();
         sp.text = playerStats.spCurrent.ToString();
-        var pie = playerClass.player.pieces.ToString(); 
+        var pie = playerClass.pieces.ToString(); 
         pieces.text = "Pieces: " + pie;
     }
 }

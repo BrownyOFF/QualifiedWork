@@ -12,6 +12,7 @@ public class RestButton : MonoBehaviour
     //PlayerRelated
     private PlayerChara player;
     private PlayerInventory inventory;
+    private GameObject plClass;
     
     private Button bttn;
     void Start()
@@ -21,6 +22,7 @@ public class RestButton : MonoBehaviour
         bttn = GetComponent<Button>();
         bttn.onClick.AddListener(onClickFunc);
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerChara>();
+        plClass = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void onClickFunc()
@@ -36,7 +38,10 @@ public class RestButton : MonoBehaviour
         player.assignStats();
         
         // Reset Flask
-        inventory.ResetFlask();
+        // inventory.ResetFlask();
+
+        //save player
+        SaveSystem.SavePlayer(plClass.GetComponent<PlayerClass>());
     }
     void Update()
     {

@@ -11,7 +11,7 @@ public class newGameSRC : MonoBehaviour
     private string path;
     void Start()
     {
-        path = Application.persistentDataPath + "/save.json";
+        path = Application.persistentDataPath + "/player.json";
         bttn = GetComponent<Button>();
         bttn.onClick.AddListener(NewGame);
     }
@@ -22,8 +22,9 @@ public class newGameSRC : MonoBehaviour
         {
             File.Delete(path);
         }
-        PlayerPrefs.SetInt("PlayerPos", 0);
+        PlayerPrefs.SetInt("newGame", 0);
         SceneManager.LoadScene("lvl_0");
+        
     }
     void Update()
     {

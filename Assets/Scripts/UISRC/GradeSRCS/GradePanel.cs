@@ -67,45 +67,43 @@ void PrintText()
     {
         hp.text = "Health: " + stats.hpMax;
         sp.text = "Stamina: " + stats.spMax;
-        lvl.text = "Level: " + playerClass.player.level;
-        pieces.text = "Pieces: " + playerClass.player.pieces;
-        piecesCost.text = "Cost: " + playerClass.player.piecesToGrade;
+        lvl.text = "Level: " + playerClass.level;
+        pieces.text = "Pieces: " + playerClass.pieces;
+        piecesCost.text = "Cost: " + playerClass.piecesToGrade;
     }
 
     void HpGrade()
     {
-        if (playerClass.player.pieces < playerClass.player.piecesToGrade)
+        if (playerClass.pieces < playerClass.piecesToGrade)
         {
             Debug.Log("Not Enough Pieces");
             return;
         }
         else
         {
-            playerClass.player.hpPerc += 0.2f;
-            stats.CalcStats();
+            playerClass.hpMax += 10f;
             stats.assignStats();
-            playerClass.player.pieces -= playerClass.player.piecesToGrade;
-            playerClass.player.piecesToGrade += playerClass.player.piecesToGrade / 2;
-            playerClass.player.level += 1;
+            playerClass.pieces -= playerClass.piecesToGrade;
+            playerClass.piecesToGrade += playerClass.piecesToGrade / 2;
+            playerClass.level += 1;
             PrintText();
         }
     }
 
     void SpGrade()
     {
-        if (playerClass.player.pieces < playerClass.player.piecesToGrade)
+        if (playerClass.pieces < playerClass.piecesToGrade)
         {
             Debug.Log("Not Enough Pieces");
             return;
         }
         else
         {
-            playerClass.player.spPerc += 0.2f;
-            stats.CalcStats();
+            playerClass.spMax += 10f;
             stats.assignStats();
-            playerClass.player.pieces -= playerClass.player.piecesToGrade;
-            playerClass.player.piecesToGrade += playerClass.player.piecesToGrade / 2;
-            playerClass.player.level += 1;
+            playerClass.pieces -= playerClass.piecesToGrade;
+            playerClass.piecesToGrade += playerClass.piecesToGrade / 2;
+            playerClass.level += 1;
             PrintText();
         }
     }

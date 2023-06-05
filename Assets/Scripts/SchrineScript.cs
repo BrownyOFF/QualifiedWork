@@ -40,7 +40,6 @@ public class SchrineScript : MonoBehaviour
 
     void Start()
     {
-        savemngr = GameObject.FindWithTag("saveManager");
         player = GameObject.FindWithTag("Player");
         questionMark = player.transform.GetChild(3).gameObject;
         camera = GameObject.FindWithTag("MainCamera");
@@ -53,7 +52,6 @@ public class SchrineScript : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.E) && canEnter && inShrine)
         {
-            savemngr.GetComponent<SaveManager>().Save();
             playerColl.GetComponent<PlayerMovement>().rb.velocity = Vector2.zero;
             playerColl.GetComponent<PlayerMovement>().animator.SetFloat("Speed", 0);
             playerColl.GetComponent<PlayerChara>().RespawnPointAssign(respPoint);

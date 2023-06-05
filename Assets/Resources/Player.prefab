@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 4260113326295581170}
   - component: {fileID: 4260113326295581171}
   - component: {fileID: 4260113326295581168}
-  - component: {fileID: 6586663945968350849}
+  - component: {fileID: 9001326853086204394}
   - component: {fileID: 4260113326295581135}
   - component: {fileID: 4260113326295581132}
   - component: {fileID: 4260113326295581134}
@@ -243,7 +243,7 @@ CapsuleCollider2D:
   m_Offset: {x: -0.05210698, y: -0.04324951}
   m_Size: {x: 0.19472021, y: 0.33807647}
   m_Direction: 0
---- !u!114 &6586663945968350849
+--- !u!114 &9001326853086204394
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -255,20 +255,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48544a12b9b164e4b95446dacda5743b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player:
-    hpPerc: 1
-    spPerc: 1
-    piecesToGrade: 10
-    pieces: 0
-    level: 1
-    resPos: {x: 0, y: 0, z: 0}
-    damage: 10
-    speed: 8
-    jumpPower: 16
-    spintMult: 1.5
-    flaskMax: 2
-    inv: 02000000
-    amount: 02000000
+  hpMax: 100
+  spMax: 50
+  piecesToGrade: 100
+  pieces: 0
+  level: 1
+  damage: 10
+  speed: 8
+  jumpPower: 16
+  spintMult: 1
+  flaskMax: 2
+  inv: 
+  amount: 
+  currScene: 
 --- !u!114 &4260113326295581135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,13 +287,13 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  dashingVelocity: 0
-  dashingTime: 0
+  dashingVelocity: 100
+  dashingTime: 0.35
   dashingDir: {x: 0, y: 0}
-  speedChill: 8
-  jumpPowerChill: 16
-  dashingVelocityChill: 50
-  dashingTimeChill: 0.05
+  dashForce: 100
+  dashCost: 25
+  dashCD: 1
+  dashCDcurr: 0
   stats: {fileID: 0}
   fight: {fileID: 0}
   playerClass: {fileID: 0}
@@ -311,10 +310,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpCurrent: 100
-  hpBase: 100
   hpMax: 100
   spCurrent: 50
-  spBase: 50
   spMax: 50
   isStunned: 0
   RespawnPoint: {fileID: 0}

@@ -30,23 +30,22 @@ public class LevelCreate : MonoBehaviour
 
         shrines = GameObject.FindGameObjectsWithTag("shrine");
 
-        playerTP = PlayerPrefs.GetInt("PlayerPos");
-        if (playerTP != -1)
-        {
-            SpawnObject(Player, shrines[playerTP]);
-            PlayerPos.transform.position = shrines[playerTP].transform.position;
-            Player.transform.position = PlayerPos.transform.position;
-            PlayerPrefs.SetInt("PlayerPos", -1);
-        }
-        else if (PlayerPrefs.GetInt("IsLoaded") == 0)
-        {
-            PlayerPos.transform.position = new Vector3(PlayerPrefs.GetInt("PosX"),PlayerPrefs.GetInt("PosY"), 0);
-            Player.transform.position = PlayerPos.transform.position;
-        }
-
         if (SceneManager.GetActiveScene().name != "lvl_hub")
         {
             foreachCycle(Enemy, EnemyPos);
+        }
+
+        if (PlayerPrefs.GetInt("newGame") != 0)
+        {
+            SaveClass data = SaveSystem.LoadPlayer();
+            Player.GetComponent<PlayerClass>().hpMax = data.hpMax;
+            Player.GetComponent<PlayerClass>().spMax = data.spMax;
+            Player.GetComponent<PlayerClass>().level = data.level;
+            Player.GetComponent<PlayerClass>().damage = data.damage;
+            Player.GetComponent<PlayerClass>().piecesToGrade = data.piecesToGrade;
+            Player.GetComponent<PlayerClass>().pieces = data.pieces;
+            Player.GetComponent<PlayerClass>().flaskMax = data.flaskMax;
+            Player.GetComponent<PlayerClass>().currScene = data.currScene;
         }
     }
 
@@ -78,10 +77,5 @@ public class LevelCreate : MonoBehaviour
     {
         var posVec = new Vector2(pos.transform.position.x, pos.transform.position.y);
         Instantiate(obj, posVec, Quaternion.identity);
-    }
-    
-    void Update()
-    {
-        
     }
 }

@@ -6,12 +6,10 @@ public class PlayerChara : MonoBehaviour
 {
     #region BasicStats
     public float hpCurrent = 100f;
-    public float hpBase = 100f;
-    public float hpMax;
+    public float hpMax = 100f;
 
     public float spCurrent = 50f;
-    public float spBase = 50f;
-    public float spMax;
+    public float spMax = 50f;
 
     private bool spRegenerating = false;
     private bool enduranceRegenerating = false;
@@ -78,8 +76,8 @@ public class PlayerChara : MonoBehaviour
     
     public void getPieces(float amount)
     {
-        var target = player.player.pieces + amount;
-        player.player.pieces = Mathf.Lerp(player.player.pieces, target, 1);
+        var target = player.pieces + amount;
+        player.pieces = Mathf.Lerp(player.pieces, target, 1);
     }
     
     public bool canJump()
@@ -107,22 +105,14 @@ public class PlayerChara : MonoBehaviour
         levelCreateSRC = GameObject.FindWithTag("lvlScr").GetComponent<LevelCreate>();
         RespawnPoint = GameObject.FindWithTag("playerPos");
         fight = GetComponent<FightBehaviour>();
-        CalcStats();
         assignStats();
     }
 
     public void RespawnPointAssign(GameObject pos)
     {
         RespawnPoint = pos;
-        player.player.resPos = new Vector3(pos.transform.position.x, pos.transform.position.y, 0);
     }
-    
-    public void CalcStats()
-    {
-        hpMax = hpBase * player.player.hpPerc;
-        spMax = spBase * player.player.spPerc;
-    }
-    
+
     public void assignStats()
     {
         hpCurrent = hpMax;
@@ -159,7 +149,7 @@ public class PlayerChara : MonoBehaviour
         animCont.SetBool("isDead", false);
         yield return new WaitForSeconds(3f);
         assignStats();
-        player.player.pieces = 0f;
+        player.pieces = 0f;
         gameObject.transform.position = RespawnPoint.transform.position;
         cam.GetComponent<CameraFollow>().YouDied.SetActive(false);
 

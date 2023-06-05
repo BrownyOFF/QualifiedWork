@@ -41,54 +41,54 @@ public class PlayerInventory : MonoBehaviour
     }
     public void TakeItem(int id)
     {
-        if (playerClass.player.inv.Contains(id))
+        if (playerClass.inv.Contains(id))
         {
-            int i = playerClass.player.inv.IndexOf(id);
-            playerClass.player.amount[i]++;
+            int i = playerClass.inv.IndexOf(id);
+            playerClass.amount[i]++;
         }else
         {
-            playerClass.player.inv.Add(id);
-            playerClass.player.amount.Add(1);
+            playerClass.inv.Add(id);
+            playerClass.amount.Add(1);
         }
     }
 
     public void UseItem(int index)
     {
-        var tmpID = playerClass.player.inv.IndexOf(index);
-        if (playerClass.player.inv[index] == 2 && playerClass.player.amount[index] > 0)
+        var tmpID = playerClass.inv.IndexOf(index);
+        if (playerClass.inv[index] == 2 && playerClass.amount[index] > 0)
         {
             chara.hpCurrent += 25;
-            playerClass.player.amount[index]--;
+            playerClass.amount[index]--;
         }
-        else if (playerClass.player.inv[index] == 3 && playerClass.player.amount[index] > 0)
+        else if (playerClass.inv[index] == 3 && playerClass.amount[index] > 0)
         {
             var tmppos = new Vector2(posItemUse.position.x, posItemUse.position.y);
             GameObject knife_throw = Instantiate(knife, tmppos, Quaternion.identity);
-            playerClass.player.amount[index]--;
+            playerClass.amount[index]--;
         }
-        else if (playerClass.player.inv[index] == 4 && playerClass.player.amount[index] > 0)
+        else if (playerClass.inv[index] == 4 && playerClass.amount[index] > 0)
         {
             var tmppos = new Vector2(posItemUse.position.x, posItemUse.position.y);
             GameObject bomb_throw = Instantiate(bomb, tmppos, Quaternion.identity);
-            playerClass.player.amount[index]--;
+            playerClass.amount[index]--;
         }
     }
 
     public void ResetFlask()
     {
-        playerClass.player.amount[0] = playerClass.player.flaskMax;
+        playerClass.amount[0] = playerClass.flaskMax;
     }
 
     private void ChangeItem(int n)
     {
-        if (quickCurrent == playerClass.player.inv.Count-1 && n == 1)
+        if (quickCurrent == playerClass.inv.Count-1 && n == 1)
         {
             quickCurrent = 0;
             return;
         }
         else if (quickCurrent == 0 && n == -1)
         {
-            quickCurrent = playerClass.player.inv.Count-1;
+            quickCurrent = playerClass.inv.Count-1;
             return;
         }
 
@@ -98,7 +98,7 @@ public class PlayerInventory : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
-            Debug.Log(playerClass.player.inv);
+            Debug.Log(playerClass.inv);
         }
         else if (Input.GetKeyDown(KeyCode.Q) && !fight.isAttacking && !fight.isBlocking)
         {
@@ -118,12 +118,12 @@ public class PlayerInventory : MonoBehaviour
 
     private void ChangeSprite()
     {
-        var tmp = playerClass.player.inv[quickCurrent];
-        var tmp2 = playerClass.player.inv.IndexOf(tmp);
+        var tmp = playerClass.inv[quickCurrent];
+        var tmp2 = playerClass.inv.IndexOf(tmp);
         var text = itemsSprite.text;
-        var spr_path = getBetween(text,playerClass.player.inv[quickCurrent].ToString() + ":" , "\r");
+        var spr_path = getBetween(text,playerClass.inv[quickCurrent].ToString() + ":" , "\r");
         Sprite itmSpr = LoadSpriteFromFile(spr_path);
-        itemBar.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = playerClass.player.amount[tmp2].ToString();
+        itemBar.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = playerClass.amount[tmp2].ToString();
         itemBar.transform.GetChild(0).GetComponent<Image>().sprite = itmSpr;
     }
     private static string getBetween(string file, string strStart, string strEnd)

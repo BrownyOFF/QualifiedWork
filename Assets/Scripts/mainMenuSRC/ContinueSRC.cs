@@ -19,14 +19,7 @@ public class ContinueSRC : MonoBehaviour
 
     void Continue()
     {
-        string json = File.ReadAllText(path);
-        SaveManager.DataSave data = JsonUtility.FromJson<SaveManager.DataSave>(json);
-        PlayerPrefs.SetInt("IsLoaded", 0);
-        var x = Mathf.RoundToInt(data.resPos.x);
-        var y = Mathf.RoundToInt(data.resPos.y);
-        PlayerPrefs.SetInt("PosX", x);
-        PlayerPrefs.SetInt("PosY", y);
-        SceneManager.LoadScene(data.currScene);
+        
     }
     void Update()
     {

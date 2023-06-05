@@ -10,9 +10,6 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer sprite;
     #region Variables
     private float horizontal;
-    //private float speed;
-    //private float jumpPower;
-    //private float spintMult = 1.5f;
     public float faceDir;
     
     [SerializeField] public Rigidbody2D rb;
@@ -22,16 +19,15 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float dashingVelocity;
     [SerializeField] private float dashingTime;
     public Vector2 dashingDir;
+    public float dashForce = 5f;
+    public float dashCost = 25f;
+    public float dashCD = 1f;
+    public float dashCDcurr = 0f;
+    private float lastDodgeTime = -1f;
     private bool isDashing;
     private bool _canDash = true;
     #endregion
-
-    #region ChillStats
-    public float speedChill = 8f;
-    public float jumpPowerChill = 16f;
-    public float dashingVelocityChill = 50f;
-    public float dashingTimeChill = 0.05f;
-    #endregion
+    
 
     [SerializeField] private PlayerChara stats;
     [SerializeField] private FightBehaviour fight;
@@ -49,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (stats.isDead || stats.isStunned || stats.inDialogue || fight.isParry)
+        if (stats.isDead || stats.isStunned || stats.inDialogue || fight.isParry || fight.isAttacking)
         {
             rb.velocity = Vector2.zero;      
             return;
@@ -57,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
 
         var inputX = Input.GetAxisRaw("Horizontal");
         var jumpInput = Input.GetKeyDown(KeyCode.W);
+        var dodgeInput = Input.GetKeyDown(KeyCode.F);
 
         if (fight.isBlocking)
         {
@@ -77,35 +74,18 @@ public class PlayerMovement : MonoBehaviour
 
         if (!fight.isBlocking)
         {
-            rb.velocity = new Vector2(inputX * playerClass.player.speed, rb.velocity.y);
+            rb.velocity = new Vector2(inputX * playerClass.speed, rb.velocity.y);
             if (jumpInput && isGrounded() && stats.canJump()) 
             { 
-                rb.velocity = new Vector2(rb.velocity.x, playerClass.player.jumpPower); 
+                rb.velocity = new Vector2(rb.velocity.x, playerClass.jumpPower); 
                 stats.spCurrent -= stats.jumpCost; 
             }
-
-            var dashInput = Input.GetKeyDown(KeyCode.F); 
-            if (dashInput && _canDash && stats.canDash()) 
-            { 
-                isDashing = true; 
-                _canDash = false; 
-                dashingDir = new Vector2(Input.GetAxisRaw("Horizontal"),0); 
-                if (dashingDir == Vector2.zero) 
-                { 
-                    dashingDir = new Vector2(transform.localScale.x, 0);
-                }
-                
-                stats.spCurrent -= stats.dashCost; 
-                animator.SetBool("isDash", true); 
-                StartCoroutine(StopDashing());
+        
+            if (dodgeInput && CanDodge())
+            {
+                Dodge();
             }
-            
-            if (isDashing) 
-            { 
-                rb.velocity = dashingDir.normalized * dashingVelocity; 
-                return;
-            }
-            
+        
             if (isGrounded()) 
             { 
                 _canDash = true;
@@ -116,10 +96,6 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetBool("isJump", true);
             }
             
-            if (isSprinting()) 
-            { 
-                rb.velocity = new Vector2(inputX * playerClass.player.speed * playerClass.player.spintMult, rb.velocity.y);
-            }
 
             if (!fight.isFighting) 
             { 
@@ -130,20 +106,32 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+
+    private bool CanDodge()
+    {
+        return Time.time - lastDodgeTime > dashCD && stats.spCurrent >= dashCost && rb.velocity != Vector2.zero;
+    }
+
+    private void Dodge()
+    {
+        lastDodgeTime = Time.time;
+        stats.spCurrent -= dashCost;
+        isDashing = true;
+        rb.velocity = FaceDirection() * dashForce;
+        animator.SetBool("isDash", true);
+        StartCoroutine(StopDashing());
+    }
+
     private IEnumerator StopDashing()
     {
         yield return new WaitForSeconds(dashingTime);
         isDashing = false;
         animator.SetBool("isDash", false);
     }
+
     public bool isGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.transform.position, 1f,groundLayer);
-    }
-
-    public bool isSprinting()
-    {
-        return Input.GetKey(KeyCode.LeftShift);
     }
 
     public Vector2 FaceDirection()
