@@ -49,6 +49,15 @@ public class LevelCreate : MonoBehaviour
             Player.GetComponent<PlayerClass>().inv = data.inv;
             Player.GetComponent<PlayerClass>().amount = data.amount;
         }
+        else
+        {
+            Player.GetComponent<PlayerClass>().inv.Add(0);
+            Player.GetComponent<PlayerClass>().inv.Add(1);
+            Player.GetComponent<PlayerClass>().inv.Add(5);
+            Player.GetComponent<PlayerClass>().amount.Add(0);
+            Player.GetComponent<PlayerClass>().amount.Add(0);
+            Player.GetComponent<PlayerClass>().amount.Add(0);
+        }
     }
 
     public void foreachCycle(GameObject obj, GameObject[] pos)

@@ -123,8 +123,8 @@ public class PlayerInventory : MonoBehaviour
         var text = itemsSprite.text;
         var spr_path = getBetween(text,playerClass.inv[quickCurrent].ToString() + ":" , "\r");
         Sprite itmSpr = LoadSpriteFromFile(spr_path);
-        itemBar.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = playerClass.amount[tmp2].ToString();
-        itemBar.transform.GetChild(0).GetComponent<Image>().sprite = itmSpr;
+        itemBar.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = playerClass.amount[tmp2].ToString();
+        itemBar.transform.GetChild(1).GetComponent<Image>().sprite = itmSpr;
     }
     private static string getBetween(string file, string strStart, string strEnd)
     {
