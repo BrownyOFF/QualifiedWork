@@ -27,13 +27,15 @@ public class PlayerMovement : MonoBehaviour
     private bool isDashing;
     private bool _canDash = true;
     #endregion
-    
 
+
+    public GameObject player; 
     [SerializeField] private PlayerChara stats;
     [SerializeField] private FightBehaviour fight;
     public PlayerClass playerClass;
     private void Start()
     {
+        player = GameObject.FindWithTag("Player");
         playerClass = GetComponent<PlayerClass>();
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
@@ -65,11 +67,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (inputX > 0)
         {
-            sprite.flipX = false;
+            player.transform.localScale = new Vector3(6,6,1);
         }
         else if (inputX < 0)
         {
-            sprite.flipX = true;
+            player.transform.localScale = new Vector3(-6,6,1);
+
         }
 
         if (!fight.isBlocking)
