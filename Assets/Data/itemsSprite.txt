@@ -3,3 +3,4 @@
 2:Assets\sprites\flask_spr.png
 3:Assets\sprites\knife_spr.png
 4:Assets\sprites\bomb.png
+5:Assets\sprites\

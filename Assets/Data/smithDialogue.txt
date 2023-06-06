@@ -1,4 +1,5 @@
 name:Кузнець
+itemID:0
 sprite:Assets\sprites\smith_spr.png
 bg:Assets\sprites\smith_bg.jpg
 msg_00:Вітаю!

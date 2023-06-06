@@ -45,6 +45,11 @@ public class PlayerClass : MonoBehaviour
             flaskMax = flask;
             currScene = SceneManager.GetActiveScene().name;
         }
-        
+
+        public string updateScene()
+        {
+            currScene = SceneManager.GetActiveScene().name;
+            return currScene;
+        }
         
 }

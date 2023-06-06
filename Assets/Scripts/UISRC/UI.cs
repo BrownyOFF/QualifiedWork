@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Image = Microsoft.Unity.VisualStudio.Editor.Image;
 
 public class UI : MonoBehaviour
 {
     [SerializeField] private Canvas canvas;
-    [SerializeField] private TextMeshProUGUI hp;
-    [SerializeField] private TextMeshProUGUI sp;
+    [SerializeField] private GameObject hp;
+    [SerializeField] private GameObject sp;
     [SerializeField] private TextMeshProUGUI pieces;
 
     [SerializeField] private PlayerChara playerStats;
@@ -24,9 +25,10 @@ public class UI : MonoBehaviour
     
     void Update()
     {
-        hp.text = playerStats.hpCurrent.ToString();
-        sp.text = playerStats.spCurrent.ToString();
+        hp.GetComponent<UnityEngine.UI.Image>().fillAmount = playerStats.hpCurrent / playerClass.hpMax;
+        sp.GetComponent<UnityEngine.UI.Image>().fillAmount = playerStats.spCurrent / playerClass.spMax;
+
         var pie = playerClass.pieces.ToString(); 
-        pieces.text = "Pieces: " + pie;
+        pieces.text = pie;
     }
 }

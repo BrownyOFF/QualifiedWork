@@ -58,6 +58,7 @@ public class DialogueSRC : MonoBehaviour
         camSCR.changeCanvas(3);
         var text = textFile.text;
         var name = getBetween(text, "name:", "\r");
+        var itemID = getBetween(text, "itemID:", "\r");
         var message = getBetween(text, "msg_00:", "\r");
         var spr_path = getBetween(text, "sprite:", "\r");
         var bg_path = getBetween(text, "bg:", "\r");
@@ -68,7 +69,7 @@ public class DialogueSRC : MonoBehaviour
             queType.Add(queID);
         }
         
-        if (GameObject.FindWithTag("Player").GetComponent<PlayerClass>().amount[GameObject.FindWithTag("Player").GetComponent<PlayerClass>().inv.IndexOf(0)] > 0)
+        if (GameObject.FindWithTag("Player").GetComponent<PlayerClass>().amount[GameObject.FindWithTag("Player").GetComponent<PlayerClass>().inv.IndexOf(Int32.Parse(itemID))] > 0)
         {
             var que_grade = getBetween(text, "que_grade_00:", "\r");
             que.Add(que_grade);

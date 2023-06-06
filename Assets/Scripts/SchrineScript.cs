@@ -7,7 +7,6 @@ public class SchrineScript : MonoBehaviour
 {
     public string name;
     private GameObject camera;
-    private GameObject btnShow;
     private GameObject respPoint;
     private bool canEnter = false;
     private bool inShrine = false;
@@ -22,7 +21,6 @@ public class SchrineScript : MonoBehaviour
             inShrine = true;
             playerColl = col;
             canEnter = true;
-            btnShow.SetActive(true);
             questionMark.SetActive(true);
         }
     }
@@ -32,7 +30,6 @@ public class SchrineScript : MonoBehaviour
         {
             inShrine = false;
             canEnter = false;
-            btnShow.SetActive(false);
             camera.GetComponent<CameraFollow>().changeCanvas(0);
             questionMark.SetActive(false);
         }
@@ -43,9 +40,7 @@ public class SchrineScript : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         questionMark = player.transform.GetChild(3).gameObject;
         camera = GameObject.FindWithTag("MainCamera");
-        btnShow = gameObject.transform.GetChild(0).gameObject;
-        respPoint = gameObject.transform.GetChild(1).gameObject;
-        btnShow.SetActive(false);
+        respPoint = gameObject.transform.GetChild(0).gameObject;
     }
 
     void Update()

@@ -13,18 +13,12 @@ public class PlayerInventory : MonoBehaviour
     private PlayerClass playerClass;
     private GameObject itemBar;
     private Transform posItemUse;
-    //public int flowerAmount;
-    //public int shardAmount;
     public int quickCurrent = 0;
-    // public int quickCurrentID = 3;
-    //public List<int> inv;
-    //public List<int> amount;
     private GameObject knife;
     private GameObject bomb;
     public TextAsset itemsList;
     public TextAsset itemsSprite;
     private string itemsListString;
-    //private int flaskMax = 2;
     
     void Start()
     {
@@ -37,6 +31,11 @@ public class PlayerInventory : MonoBehaviour
         move = GetComponent<PlayerMovement>();
         fight = GetComponent<FightBehaviour>();
         itemsListString = itemsList.text;
+        if (!playerClass.inv.Contains(2))
+        {
+            playerClass.inv.Add(2);
+            playerClass.amount.Add(playerClass.flaskMax);
+        }
         ChangeSprite();
     }
     public void TakeItem(int id)
@@ -72,6 +71,7 @@ public class PlayerInventory : MonoBehaviour
             GameObject bomb_throw = Instantiate(bomb, tmppos, Quaternion.identity);
             playerClass.amount[index]--;
         }
+        ChangeSprite();
     }
 
     public void ResetFlask()

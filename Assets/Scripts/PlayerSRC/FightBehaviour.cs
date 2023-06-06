@@ -45,7 +45,7 @@ public class FightBehaviour : MonoBehaviour
 
     public bool canBlockCheck()
     {
-        if (!isAttacking && !isBlocking)
+        if (!isAttacking)
         {
             return true;
         }
@@ -99,11 +99,11 @@ public class FightBehaviour : MonoBehaviour
         if(chara.isDead || chara.isStunned || chara.inDialogue)
             return;
 
-        if (Input.GetKeyDown(KeyCode.Mouse0) && canAttack)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && canAttack && move.rb.velocity == Vector2.zero)
         {
             StartCoroutine(attack());
         }
-        else if (Input.GetKey(KeyCode.Mouse1) && !isBlocking)
+        else if (Input.GetKey(KeyCode.Mouse1))
         {
             if (canBlockCheck())
             {
@@ -112,7 +112,7 @@ public class FightBehaviour : MonoBehaviour
                 StartCoroutine(CanParry());
             }
         }
-        else if (Input.GetKey(KeyCode.E) && parryCan && move.rb.velocity != Vector2.zero)
+        else if (Input.GetKey(KeyCode.E) && parryCan && move.rb.velocity == Vector2.zero)
         {
             StartCoroutine(CanParry());
         }

@@ -11,7 +11,7 @@ public class mainMenuSRC : MonoBehaviour
     void Start()
     {
         continueBttn = GameObject.Find("ContinueBttn");
-        path = Application.persistentDataPath + "/save.json";
+        path = Application.persistentDataPath + "/player.json";
         if (File.Exists(path))
         {
             continueBttn.SetActive(true);

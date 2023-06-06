@@ -17,9 +17,6 @@ public class PlayerChara : MonoBehaviour
     public bool isStunned = false;
     private float stunTime = 1f;
     
-    //public int level = 1;
-
-    //public Vector3 resPos;
     public GameObject RespawnPoint;
     private LevelCreate levelCreateSRC;
     private FightBehaviour fight;
@@ -34,14 +31,6 @@ public class PlayerChara : MonoBehaviour
     [SerializeField] public float jumpCost = 10f;
     [SerializeField] public float dashCost = 25f;
     #endregion
-    /*
-    #region Grade Stats
-    public float pieces = 0f;
-    public float piecesToGrade = 10f;
-    public float hpPerc = 1f;
-    public float spPerc = 1f;
-    #endregion
-    */
     public PlayerClass player;
     public bool deacrese = false;
     public Camera cam;

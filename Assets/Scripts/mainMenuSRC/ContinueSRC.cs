@@ -12,14 +12,17 @@ public class ContinueSRC : MonoBehaviour
     private string path;
     void Start()
     {
-        path = Application.persistentDataPath + "/save.json";
+        path = Application.persistentDataPath + "/player.json";
         bttn = GetComponent<Button>();
         bttn.onClick.AddListener(Continue);
     }
 
     void Continue()
     {
-        
+        SaveClass tmpdata = SaveSystem.LoadPlayer();
+        PlayerPrefs.SetInt("newGame", 1);
+        SceneManager.LoadScene(tmpdata.currScene);
+
     }
     void Update()
     {

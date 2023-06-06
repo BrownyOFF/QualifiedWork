@@ -46,6 +46,8 @@ public class LevelCreate : MonoBehaviour
             Player.GetComponent<PlayerClass>().pieces = data.pieces;
             Player.GetComponent<PlayerClass>().flaskMax = data.flaskMax;
             Player.GetComponent<PlayerClass>().currScene = data.currScene;
+            Player.GetComponent<PlayerClass>().inv = data.inv;
+            Player.GetComponent<PlayerClass>().amount = data.amount;
         }
     }
 

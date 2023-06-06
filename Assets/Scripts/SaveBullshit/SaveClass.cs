@@ -15,6 +15,8 @@ public class SaveClass
     public string currScene;
     public float[] position;
     public int flaskMax;
+    public List<int> inv;
+    public List<int> amount;
     #endregion
 
     public SaveClass(PlayerClass player)
@@ -25,11 +27,13 @@ public class SaveClass
         damage = player.damage;
         piecesToGrade = player.piecesToGrade;
         pieces = player.pieces;
-        currScene = player.currScene;
+        currScene = player.updateScene();
         position = new float[3];
         position[0] = GameObject.FindWithTag("Player").transform.position.x;
         position[1] = GameObject.FindWithTag("Player").transform.position.y;
         position[2] = GameObject.FindWithTag("Player").transform.position.z;
         flaskMax = player.flaskMax;
+        inv = player.inv;
+        amount = player.amount;
     }
 }
