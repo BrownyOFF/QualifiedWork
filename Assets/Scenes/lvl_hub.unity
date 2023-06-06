@@ -212,6 +212,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1179550681028899623, guid: 8023d799f4cb2534ba6578ee35a576cd, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3337885288962486486, guid: 8023d799f4cb2534ba6578ee35a576cd, type: 3}
       propertyPath: m_UiScaleMode
       value: 1
@@ -287,6 +291,14 @@ PrefabInstance:
     - target: {fileID: 3337885289912282341, guid: 8023d799f4cb2534ba6578ee35a576cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6902325704977749291, guid: 8023d799f4cb2534ba6578ee35a576cd, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6962636429290368942, guid: 8023d799f4cb2534ba6578ee35a576cd, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8023d799f4cb2534ba6578ee35a576cd, type: 3}
@@ -736,6 +748,7 @@ GameObject:
   - component: {fileID: 1432121147}
   - component: {fileID: 1432121146}
   - component: {fileID: 1432121145}
+  - component: {fileID: 1432121148}
   m_Layer: 3
   m_Name: Earth
   m_TagString: Ground
@@ -764,7 +777,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1432121143}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -53413,6 +53426,22 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!19719996 &1432121148
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432121143}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0.00001
 --- !u!1 &1468696909
 GameObject:
   m_ObjectHideFlags: 0
