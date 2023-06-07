@@ -190,6 +190,26 @@ MonoBehaviour:
   Player: {fileID: 0}
   Enemy: {fileID: 0}
   EnemyPos: []
+  data:
+    hpMax: 0
+    spMax: 0
+    level: 0
+    damage: 0
+    piecesToGrade: 0
+    pieces: 0
+    currScene: 
+    position: []
+    flaskMax: 0
+    inv: 
+    amount: 
+    lvl_0_open: 0
+    lvl_hub_open: 0
+    lvl_1_open: 0
+    lvl_2_open: 0
+    lvl_0_completed: 0
+    lvl_hub_completed: 0
+    lvl_1_completed: 0
+    lvl_2_completed: 0
 --- !u!4 &94981833
 Transform:
   m_ObjectHideFlags: 0
@@ -216,6 +236,14 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1616795115163259976, guid: 8023d799f4cb2534ba6578ee35a576cd, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3337885288375671024, guid: 8023d799f4cb2534ba6578ee35a576cd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3337885288962486486, guid: 8023d799f4cb2534ba6578ee35a576cd, type: 3}
       propertyPath: m_UiScaleMode
       value: 1
@@ -227,6 +255,18 @@ PrefabInstance:
     - target: {fileID: 3337885288962486486, guid: 8023d799f4cb2534ba6578ee35a576cd, type: 3}
       propertyPath: m_ReferenceResolution.y
       value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 3337885289680869022, guid: 8023d799f4cb2534ba6578ee35a576cd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3337885289686078484, guid: 8023d799f4cb2534ba6578ee35a576cd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3337885289736272171, guid: 8023d799f4cb2534ba6578ee35a576cd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3337885289912282137, guid: 8023d799f4cb2534ba6578ee35a576cd, type: 3}
       propertyPath: m_Name
@@ -299,6 +339,14 @@ PrefabInstance:
     - target: {fileID: 6962636429290368942, guid: 8023d799f4cb2534ba6578ee35a576cd, type: 3}
       propertyPath: m_SortingOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7133465734802134126, guid: 8023d799f4cb2534ba6578ee35a576cd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7709702942173615766, guid: 8023d799f4cb2534ba6578ee35a576cd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8023d799f4cb2534ba6578ee35a576cd, type: 3}
