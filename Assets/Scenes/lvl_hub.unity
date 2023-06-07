@@ -378,6 +378,16 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1693524701174051410, guid: 8023d799f4cb2534ba6578ee35a576cd, type: 3}
   m_PrefabInstance: {fileID: 232187347}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &232187350 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7645122469644464880, guid: 8023d799f4cb2534ba6578ee35a576cd, type: 3}
+  m_PrefabInstance: {fileID: 232187347}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &232187351 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1175048883016846922, guid: 8023d799f4cb2534ba6578ee35a576cd, type: 3}
+  m_PrefabInstance: {fileID: 232187347}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &536290138
 GameObject:
   m_ObjectHideFlags: 0
@@ -54924,6 +54934,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadingScreen: {fileID: 232187349}
   progressBar: {fileID: 232187348}
+  hintObj: {fileID: 232187351}
+  input: {fileID: 232187350}
+  hints_file: {fileID: 4900000, guid: ef5e25eeb5644d5da7f8847b99bc5411, type: 3}
 --- !u!4 &1587428871
 Transform:
   m_ObjectHideFlags: 0

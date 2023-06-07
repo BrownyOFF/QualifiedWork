@@ -396,6 +396,10 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1693524701174051410, guid: 8023d799f4cb2534ba6578ee35a576cd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3337885288231276421, guid: 8023d799f4cb2534ba6578ee35a576cd, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -520,6 +524,16 @@ MonoBehaviour:
 --- !u!1 &743520126 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1693524701174051410, guid: 8023d799f4cb2534ba6578ee35a576cd, type: 3}
+  m_PrefabInstance: {fileID: 743520124}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &743520127 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7645122469644464880, guid: 8023d799f4cb2534ba6578ee35a576cd, type: 3}
+  m_PrefabInstance: {fileID: 743520124}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &743520128 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1175048883016846922, guid: 8023d799f4cb2534ba6578ee35a576cd, type: 3}
   m_PrefabInstance: {fileID: 743520124}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &975235314
@@ -1994,6 +2008,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadingScreen: {fileID: 743520126}
   progressBar: {fileID: 743520125}
+  hintObj: {fileID: 743520128}
+  input: {fileID: 743520127}
+  hints_file: {fileID: 4900000, guid: ef5e25eeb5644d5da7f8847b99bc5411, type: 3}
 --- !u!4 &1240859197
 Transform:
   m_ObjectHideFlags: 0

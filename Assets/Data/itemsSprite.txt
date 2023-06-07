@@ -2,5 +2,5 @@
 1:Assets\sprites\flower_spr.png
 2:Assets\sprites\flask_spr.png
 3:Assets\sprites\knife_spr.png
-4:Assets\sprites\bomb.png
-5:Assets\sprites\scroll.jpg
+4:Assets\sprites\bomb_spr.png
+5:Assets\sprites\scroll_spr.png
