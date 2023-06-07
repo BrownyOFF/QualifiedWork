@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     private bool _canDash = true;
     #endregion
 
-    public BoxCollider2D coll;
+    public CapsuleCollider2D coll;
 
     public GameObject player; 
     [SerializeField] private PlayerChara stats;
@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
     public PlayerClass playerClass;
     private void Start()
     {
-        coll = GetComponent<BoxCollider2D>();
+        coll = GetComponent<CapsuleCollider2D>();
         player = GameObject.FindWithTag("Player");
         playerClass = GetComponent<PlayerClass>();
         sprite = GetComponent<SpriteRenderer>();
@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (stats.isDead || stats.isStunned || stats.inDialogue || fight.isParry || fight.isAttacking)
+        if (stats.isDead || stats.isStunned || stats.inDialogue || fight.isParry || fight.isAttacking )
         {
             rb.velocity = Vector2.zero;      
             return;
@@ -61,6 +61,9 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = Vector2.zero;
             return;
         }
+        
+        if(isDashing)
+            return;
         
         var inputX = Input.GetAxisRaw("Horizontal");
         var jumpInput = Input.GetKeyDown(KeyCode.W);
