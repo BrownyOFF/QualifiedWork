@@ -10,7 +10,9 @@ public class GradePanel : MonoBehaviour
     private Button hpGrade;
     private Button spGrade;
     private Button conf;
+    private Button exit;
 
+    
     public TextMeshProUGUI lvl;
     public TextMeshProUGUI hp;
     public TextMeshProUGUI sp;
@@ -43,6 +45,7 @@ public class GradePanel : MonoBehaviour
         hpGrade = GameObject.Find("HealthBtn").GetComponent<Button>();
         spGrade = GameObject.Find("StaminaBtn").GetComponent<Button>();
         conf = GameObject.Find("ConfBtn").GetComponent<Button>();
+        exit = GameObject.Find("Exit").GetComponent<Button>();
 
         //text Find
         lvl = GameObject.Find("Level").GetComponent<TextMeshProUGUI>();
@@ -62,14 +65,16 @@ public class GradePanel : MonoBehaviour
         hpGrade.onClick.AddListener(HpGrade);
         spGrade.onClick.AddListener(SpGrade);
         conf.onClick.AddListener(ConfAction);
+        exit.onClick.AddListener(ConfAction);
+        
     }
-void PrintText()
+    void PrintText()
     {
-        hp.text = "Health: " + stats.hpMax;
-        sp.text = "Stamina: " + stats.spMax;
-        lvl.text = "Level: " + playerClass.level;
-        pieces.text = "Pieces: " + playerClass.pieces;
-        piecesCost.text = "Cost: " + playerClass.piecesToGrade;
+        hp.text = playerClass.hpMax.ToString();
+        sp.text = playerClass.spMax.ToString();
+        lvl.text = "Рівень: " + playerClass.level.ToString();
+        pieces.text = playerClass.pieces.ToString();
+        piecesCost.text = "Вартість: " + playerClass.piecesToGrade.ToString();
     }
 
     void HpGrade()
@@ -84,7 +89,7 @@ void PrintText()
             playerClass.hpMax += 10f;
             stats.assignStats();
             playerClass.pieces -= playerClass.piecesToGrade;
-            playerClass.piecesToGrade += playerClass.piecesToGrade / 2;
+            playerClass.piecesToGrade += 10f;
             playerClass.level += 1;
             PrintText();
         }

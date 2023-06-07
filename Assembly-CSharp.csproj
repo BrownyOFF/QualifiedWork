@@ -88,6 +88,7 @@
      <Compile Include="Assets\Scripts\SaveBullshit\SaveClass.cs" />
      <Compile Include="Assets\Scripts\LevelCreate.cs" />
      <Compile Include="Assets\Scripts\UISRC\TravelSRCS\Shrine_bttnSRC.cs" />
+     <Compile Include="Assets\Scripts\UISRC\TravelSRCS\ConfScript.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\texture\Font.txt" />

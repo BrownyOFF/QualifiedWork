@@ -30,6 +30,17 @@ public class PlayerClass : MonoBehaviour
         public List<int> amount;
         #endregion
 
+        #region Progress
+        public bool lvl_0_open = true;
+        public bool lvl_hub_open = true;
+        public bool lvl_1_open = true;
+        public bool lvl_2_open = false;
+
+        public bool lvl_0_completed = false;
+        public bool lvl_hub_completed = false;
+        public bool lvl_1_completed = false;
+        public bool lvl_2_completed = false;
+        #endregion
         public string currScene;
 
         public PlayerClass(float hp, float sp, int lvl, float dmg, float piecesGrade, float piece, List<int>invent, List<int> am, int flask)

@@ -11,73 +11,124 @@ public class TravelPanel : MonoBehaviour
     public TextAsset lvl_names;
     private string lvl_names_string;
     public TextAsset shrine_names;
-    private string shrine_names_string;
+    public List<GameObject> lvl_bttns_pos;
     public List<GameObject> lvl_bttns;
-    private List<GameObject> shrine_bttns;
     public List<string> scenes_list;
 
+    private SaveClass save;
+
+    public GameObject bttn_granted;
+    public GameObject bttn_denied;
+    public GameObject conf;
+    public GameObject lvl_image;
+
+    public string lvl_chosen;
+
+    public PlayerClass player;
+    
     void Start()
     {
+        player = GameObject.FindWithTag("Player").GetComponent<PlayerClass>();
+        bttn_granted = Resources.Load("lvl_bttn_granted") as GameObject;
+        bttn_denied = Resources.Load("lvl_bttn_denied") as GameObject;
+        conf = GameObject.Find("conf_bttn_travel");
+        lvl_image = GameObject.Find("lvl_image");
+        conf.SetActive(false);
+        lvl_image.SetActive(false);
         scenes_list = Get_all_lvls();
         Debug.Log(scenes_list);
-        shrine_bttns = new List<GameObject>();
-        lvl_bttns = new List<GameObject>();
+        lvl_bttns_pos = new List<GameObject>();
         
         var tmp = transform.GetChild(0);
         foreach (Transform child in tmp)
         {
-            lvl_bttns.Add(child.gameObject);
+            lvl_bttns_pos.Add(child.gameObject);
         }
 
-        tmp = transform.GetChild(1);
-        foreach (Transform child in tmp)
-        {
-            shrine_bttns.Add(child.gameObject);
-        }
-
-        SetShrineFalse();
-            
         lvl_names_string = lvl_names.ToString();
-        shrine_names_string = shrine_names.ToString();
-        
-        Print_lvl_names();
+
+        save = GameObject.FindWithTag("lvlScr").GetComponent<LevelCreate>().data;
+
+        CreateBttns();
     }
 
-    public void SetShrineFalse()
+    public void CreateBttns()
     {
-        foreach (var i in shrine_bttns)
+        if (player.lvl_0_open)
         {
-            i.SetActive(false);
+            var posVec = new Vector2(lvl_bttns_pos[0].transform.position.x, lvl_bttns_pos[0].transform.position.y);
+            lvl_bttns.Add(Instantiate(bttn_granted, posVec, Quaternion.identity));
+            var lvl_name = getBetween(lvl_names_string, 0 + ":", "\r");
+            lvl_bttns[0].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = lvl_name;
+            lvl_bttns[0].GetComponent<Lvl_bttnSRC>().lvl_name = "lvl_0";
         }
-    }
-    public void Print_shrine_names(string id)
-    {
-        int countTMP = 0;
-        foreach (var i in shrine_bttns)
+        else
         {
-            var tmpName = getBetween(shrine_names_string, id + "_" + countTMP + ":", "\r");
-            if (tmpName == "")
+            var posVec = new Vector2(lvl_bttns_pos[0].transform.position.x, lvl_bttns_pos[0].transform.position.y);
+            lvl_bttns.Add(Instantiate(bttn_denied, posVec, Quaternion.identity));
+            lvl_bttns[0].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "??????";
+        }
+        
+        if (player.lvl_hub_open)
+        {
+            var posVec = new Vector2(lvl_bttns_pos[1].transform.position.x, lvl_bttns_pos[1].transform.position.y);
+            lvl_bttns.Add(Instantiate(bttn_granted, posVec, Quaternion.identity));
+            var lvl_name = getBetween(lvl_names_string,  "hub:", "\r");
+            lvl_bttns[1].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = lvl_name;
+            lvl_bttns[1].GetComponent<Lvl_bttnSRC>().lvl_name = "lvl_hub";
+        }
+        else
+        {
+            var posVec = new Vector2(lvl_bttns_pos[1].transform.position.x, lvl_bttns_pos[1].transform.position.y);
+            lvl_bttns.Add(Instantiate(bttn_denied, posVec, Quaternion.identity));
+            lvl_bttns[1].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "??????";
+        }
+        
+        if (player.lvl_1_open)
+        {
+            var posVec = new Vector2(lvl_bttns_pos[2].transform.position.x, lvl_bttns_pos[2].transform.position.y);
+            lvl_bttns.Add(Instantiate(bttn_granted, posVec, Quaternion.identity));
+            var lvl_name = getBetween(lvl_names_string, 2 + ":", "\r");
+            lvl_bttns[2].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = lvl_name;
+            lvl_bttns[2].GetComponent<Lvl_bttnSRC>().lvl_name = "lvl_1";
+        }
+        else
+        {
+            var posVec = new Vector2(lvl_bttns_pos[2].transform.position.x, lvl_bttns_pos[2].transform.position.y);
+            lvl_bttns.Add(Instantiate(bttn_denied, posVec, Quaternion.identity));
+            lvl_bttns[2].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "??????";
+        }
+        
+        if (player.lvl_2_open)
+        {
+            var posVec = new Vector2(lvl_bttns_pos[3].transform.position.x, lvl_bttns_pos[3].transform.position.y);
+            lvl_bttns.Add(Instantiate(bttn_granted, posVec, Quaternion.identity));
+            var lvl_name = getBetween(lvl_names_string, 3 + ":", "\r");
+            lvl_bttns[3].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = lvl_name;
+            lvl_bttns[3].GetComponent<Lvl_bttnSRC>().lvl_name = "lvl_2";
+        }
+        else
+        {
+            var posVec = new Vector2(lvl_bttns_pos[3].transform.position.x, lvl_bttns_pos[3].transform.position.y);
+            lvl_bttns.Add(Instantiate(bttn_denied, posVec, Quaternion.identity));
+            lvl_bttns[3].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "??????";
+        }
+
+        var count = 0;
+        foreach (var i in lvl_bttns)
+        {
+            lvl_bttns[count].transform.parent = gameObject.transform;
+            if (count >= lvl_bttns.Count)
             {
                 break;
             }
-            i.SetActive(true);
-            i.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = tmpName;
-            i.GetComponent<Shrine_bttnSRC>().scene_name = id;
-            i.GetComponent<Shrine_bttnSRC>().shrine_name = id + "_" + countTMP;
-            countTMP++;
+            else
+            {
+                count++;
+            }
         }
     }
-    private void Print_lvl_names()
-    {
-        int count = 0;
-        foreach (var i in scenes_list)
-        {
-            var lvl_name = getBetween(lvl_names_string, i + ":", "\r");
-            lvl_bttns[count].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = lvl_name;
-            lvl_bttns[count].GetComponent<Lvl_bttnSRC>().lvl_name = i;
-            count++;
-        }
-    }
+    
     private List<string> Get_all_lvls()
     {
         List<string> tmpList = new List<string>();
@@ -99,7 +150,8 @@ public class TravelPanel : MonoBehaviour
     void Update()
     {
         
-    } public static string getBetween(string file, string strStart, string strEnd)
+    } 
+    public static string getBetween(string file, string strStart, string strEnd)
     {
         if (file.Contains(strStart) && file.Contains(strEnd))
         {

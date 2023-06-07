@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     
     [SerializeField] public Rigidbody2D rb;
     [SerializeField] private GameObject groundCheck;
+    [SerializeField] private GameObject wallCheck;
     [SerializeField] private LayerMask groundLayer;
 
     [SerializeField] private float dashingVelocity;
@@ -28,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     private bool _canDash = true;
     #endregion
 
+    public BoxCollider2D coll;
 
     public GameObject player; 
     [SerializeField] private PlayerChara stats;
@@ -35,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
     public PlayerClass playerClass;
     private void Start()
     {
+        coll = GetComponent<BoxCollider2D>();
         player = GameObject.FindWithTag("Player");
         playerClass = GetComponent<PlayerClass>();
         sprite = GetComponent<SpriteRenderer>();
@@ -53,6 +56,12 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
+        if (isDashing && AtWall())
+        {
+            rb.velocity = Vector2.zero;
+            return;
+        }
+        
         var inputX = Input.GetAxisRaw("Horizontal");
         var jumpInput = Input.GetKeyDown(KeyCode.W);
         var dodgeInput = Input.GetKeyDown(KeyCode.F);
@@ -112,7 +121,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool CanDodge()
     {
-        return Time.time - lastDodgeTime > dashCD && stats.spCurrent >= dashCost && rb.velocity != Vector2.zero;
+        return Time.time - lastDodgeTime > dashCD && stats.spCurrent >= dashCost && rb.velocity != Vector2.zero && !isDashing;
     }
 
     private void Dodge()
@@ -120,7 +129,9 @@ public class PlayerMovement : MonoBehaviour
         lastDodgeTime = Time.time;
         stats.spCurrent -= dashCost;
         isDashing = true;
-        rb.velocity = FaceDirection() * dashForce;
+        coll.isTrigger = true;
+        rb.constraints = RigidbodyConstraints2D.FreezePositionY;
+        rb.AddForce(FaceDirection() * dashForce, ForceMode2D.Impulse);
         animator.SetBool("isDash", true);
         StartCoroutine(StopDashing());
     }
@@ -130,11 +141,19 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(dashingTime);
         isDashing = false;
         animator.SetBool("isDash", false);
+        coll.isTrigger = false;
+        rb.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
     public bool isGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.transform.position, 1f,groundLayer);
+        return Physics2D.OverlapCircle(groundCheck.transform.position, 0.5f,groundLayer);
+    }
+
+    public bool AtWall()
+    {
+        return Physics2D.OverlapCircle(wallCheck.transform.position, 0.1f, groundLayer);
     }
 
     public Vector2 FaceDirection()

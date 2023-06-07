@@ -19,6 +19,19 @@ public class SaveClass
     public List<int> amount;
     #endregion
 
+    #region ProgresVars
+    public bool lvl_0_open;
+    public bool lvl_hub_open;
+    public bool lvl_1_open;
+    public bool lvl_2_open;
+
+    public bool lvl_0_completed;
+    public bool lvl_hub_completed;
+    public bool lvl_1_completed;
+    public bool lvl_2_completed;
+
+    #endregion
+
     public SaveClass(PlayerClass player)
     {
         hpMax = player.hpMax;
@@ -35,5 +48,13 @@ public class SaveClass
         flaskMax = player.flaskMax;
         inv = player.inv;
         amount = player.amount;
+        lvl_0_open = player.lvl_hub_open;
+        lvl_hub_open = player.lvl_hub_open;
+        lvl_1_open = player.lvl_1_open;
+        lvl_2_open = player.lvl_2_open;
+        lvl_0_completed = player.lvl_0_completed;
+        lvl_hub_completed = player.lvl_hub_completed;
+        lvl_1_completed = player.lvl_1_completed;
+        lvl_2_completed = player.lvl_2_completed;
     }
 }

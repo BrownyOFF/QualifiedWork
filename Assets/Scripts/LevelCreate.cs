@@ -18,6 +18,7 @@ public class LevelCreate : MonoBehaviour
 
     #endregion
 
+    public SaveClass data; 
     private int playerTP;
     private GameObject[] shrines;
     void Awake()
@@ -37,7 +38,7 @@ public class LevelCreate : MonoBehaviour
 
         if (PlayerPrefs.GetInt("newGame") != 0)
         {
-            SaveClass data = SaveSystem.LoadPlayer();
+            data = SaveSystem.LoadPlayer();
             Player.GetComponent<PlayerClass>().hpMax = data.hpMax;
             Player.GetComponent<PlayerClass>().spMax = data.spMax;
             Player.GetComponent<PlayerClass>().level = data.level;

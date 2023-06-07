@@ -6,10 +6,8 @@ public class PlayerChara : MonoBehaviour
 {
     #region BasicStats
     public float hpCurrent = 100f;
-    public float hpMax = 100f;
 
     public float spCurrent = 50f;
-    public float spMax = 50f;
 
     private bool spRegenerating = false;
     private bool enduranceRegenerating = false;
@@ -104,8 +102,8 @@ public class PlayerChara : MonoBehaviour
 
     public void assignStats()
     {
-        hpCurrent = hpMax;
-        spCurrent = spMax;
+        hpCurrent = player.hpMax;
+        spCurrent = player.spMax;
     }
     
     private IEnumerator RegenSP()
@@ -114,7 +112,7 @@ public class PlayerChara : MonoBehaviour
         yield return new WaitForSeconds(3f);
         while (true)
         {
-            if (spCurrent < spMax)
+            if (spCurrent < player.spMax)
             {
                 spCurrent += 4;
                 yield return new WaitForSeconds(0.3f);
@@ -162,18 +160,18 @@ public class PlayerChara : MonoBehaviour
         {
             StartCoroutine(Death());
         }
-        if (hpCurrent > hpMax)
+        if (hpCurrent > player.hpMax)
         {
-            hpCurrent = hpMax;
+            hpCurrent = player.hpMax;
         }
             
         if (spCurrent < 0)
             spCurrent = 0;
-        if (spCurrent < spMax && !spRegenerating)
+        if (spCurrent < player.spMax && !spRegenerating)
         {
             StartCoroutine(RegenSP());
         }
-        if (spCurrent > spMax)
-            spCurrent = spMax;
+        if (spCurrent > player.spMax)
+            spCurrent = player.spMax;
     }
 }

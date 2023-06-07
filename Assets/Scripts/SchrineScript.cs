@@ -53,6 +53,7 @@ public class SchrineScript : MonoBehaviour
             camera.GetComponent<CameraFollow>().changeCanvas(1);
             GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().enabled = false;
             GameObject.FindWithTag("Player").GetComponent<FightBehaviour>().enabled = false;
+            questionMark.SetActive(false);
             inShrine = true;
         }
         else if (Input.GetKey(KeyCode.Escape) && inShrine)
@@ -60,6 +61,7 @@ public class SchrineScript : MonoBehaviour
             camera.GetComponent<CameraFollow>().changeCanvas(0);
             GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().enabled = true;
             GameObject.FindWithTag("Player").GetComponent<FightBehaviour>().enabled = true;
+            questionMark.SetActive(false);
             inShrine = false;
         }
         
