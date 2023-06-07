@@ -24,12 +24,11 @@ public class ConfScript : MonoBehaviour
     IEnumerator ChangeLevel()
     {
         GameObject.FindWithTag("MainCamera").GetComponent<CameraFollow>().BlackScreenTransparency(1);
-        yield return new WaitForSeconds(1f);
         GameObject.FindWithTag("Player").GetComponent<PlayerChara>().inDialogue = false;
         GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().enabled = true;
         GameObject.FindWithTag("Player").GetComponent<FightBehaviour>().enabled = true;
         SaveSystem.SavePlayer(GameObject.FindWithTag("Player").GetComponent<PlayerClass>());
-        SceneManager.LoadScene(panel_src.GetComponent<TravelPanel>().lvl_chosen);
-
+        GameObject.Find("LoadManager").GetComponent<Load>().LoadScene(panel_src.GetComponent<TravelPanel>().lvl_chosen);
+        yield return null;
     }
 }

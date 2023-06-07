@@ -23,7 +23,7 @@ public class newGameSRC : MonoBehaviour
             File.Delete(path);
         }
         PlayerPrefs.SetInt("newGame", 0);
-        SceneManager.LoadScene("lvl_0");
+        GameObject.Find("LoadManager").GetComponent<Load>().LoadScene("lvl_0");
         
     }
     void Update()

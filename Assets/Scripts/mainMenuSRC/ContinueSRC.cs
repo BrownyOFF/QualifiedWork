@@ -21,7 +21,7 @@ public class ContinueSRC : MonoBehaviour
     {
         SaveClass tmpdata = SaveSystem.LoadPlayer();
         PlayerPrefs.SetInt("newGame", 1);
-        SceneManager.LoadScene(tmpdata.currScene);
+        GameObject.Find("LoadManager").GetComponent<Load>().LoadScene(tmpdata.currScene);
 
     }
     void Update()
