@@ -64,7 +64,7 @@ public class PlayerChara : MonoBehaviour
     public void getPieces(float amount)
     {
         var target = player.pieces + amount;
-        player.pieces = Mathf.Lerp(player.pieces, target, 1);
+        player.pieces += (int)amount;
     }
     
     public bool canJump()
@@ -128,15 +128,15 @@ public class PlayerChara : MonoBehaviour
 
     public IEnumerator Death()
     {
-        animCont.SetBool("isDead", true);
         deathCourotine = true;
         isDead = true;
+        animCont.SetBool("isDead", true);
         cam.GetComponent<CameraFollow>().YouDied.SetActive(true);
         camSRC.BlackScreenTransparency(1);
         animCont.SetBool("isDead", false);
         yield return new WaitForSeconds(3f);
         assignStats();
-        player.pieces = 0f;
+        player.pieces /= 2;
         gameObject.transform.position = RespawnPoint.transform.position;
         cam.GetComponent<CameraFollow>().YouDied.SetActive(false);
 

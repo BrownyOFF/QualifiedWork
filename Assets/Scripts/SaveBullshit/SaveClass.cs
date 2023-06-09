@@ -10,8 +10,8 @@ public class SaveClass
     public float spMax;
     public int level;
     public float damage;
-    public float piecesToGrade;
-    public float pieces;
+    public int piecesToGrade;
+    public int pieces;
     public string currScene;
     public float[] position;
     public int flaskMax;

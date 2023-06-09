@@ -38,7 +38,7 @@ public class RestButton : MonoBehaviour
         player.assignStats();
         
         // Reset Flask
-        // inventory.ResetFlask();
+        inventory.ResetFlask();
 
         //save player
         SaveSystem.SavePlayer(plClass.GetComponent<PlayerClass>());

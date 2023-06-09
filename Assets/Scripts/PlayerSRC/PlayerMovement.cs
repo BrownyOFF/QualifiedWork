@@ -35,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private PlayerChara stats;
     [SerializeField] private FightBehaviour fight;
     public PlayerClass playerClass;
+    public GameObject interestPoint;
     private void Start()
     {
         coll = GetComponent<CapsuleCollider2D>();
@@ -55,7 +56,12 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = Vector2.zero;      
             return;
         }
-
+        
+        if (GameObject.FindWithTag("MainCamera").GetComponent<CameraFollow>().inPause)
+        {
+            return;
+        }
+        
         if (isDashing && AtWall())
         {
             rb.velocity = Vector2.zero;
@@ -84,7 +90,6 @@ public class PlayerMovement : MonoBehaviour
         else if (inputX < 0)
         {
             player.transform.localScale = new Vector3(-6,6,1);
-
         }
 
         if (!fight.isBlocking)

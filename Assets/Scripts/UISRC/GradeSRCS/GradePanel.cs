@@ -89,7 +89,7 @@ public class GradePanel : MonoBehaviour
             playerClass.hpMax += 10f;
             stats.assignStats();
             playerClass.pieces -= playerClass.piecesToGrade;
-            playerClass.piecesToGrade += 10f;
+            playerClass.piecesToGrade += 10;
             playerClass.level += 1;
             PrintText();
         }

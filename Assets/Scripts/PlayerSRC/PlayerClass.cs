@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,8 +11,8 @@ public class PlayerClass : MonoBehaviour
         #region PlayerChara
         public float hpMax = 100f;
         public float spMax = 50f;
-        public float piecesToGrade = 10f;
-        public float pieces = 0;
+        public int piecesToGrade = 10;
+        public int pieces = 0;
         public int level = 1;
         #endregion
 
@@ -43,7 +45,9 @@ public class PlayerClass : MonoBehaviour
         #endregion
         public string currScene;
 
-        public PlayerClass(float hp, float sp, int lvl, float dmg, float piecesGrade, float piece, List<int>invent, List<int> am, int flask)
+        public Vector3 respPos;
+
+        public PlayerClass(float hp, float sp, int lvl, float dmg, int piecesGrade, int piece, List<int>invent, List<int> am, int flask, float x, float y, float z)
         {
             hpMax = hp;
             spMax = sp;
@@ -55,12 +59,19 @@ public class PlayerClass : MonoBehaviour
             amount = am;
             flaskMax = flask;
             currScene = SceneManager.GetActiveScene().name;
+            respPos = new Vector3(x, y, z);
         }
 
         public string updateScene()
         {
             currScene = SceneManager.GetActiveScene().name;
             return currScene;
+        }
+
+        public void GetPos()
+        {
+            var tmpPlayer = GameObject.FindWithTag("Player");
+            respPos = new Vector3(transform.position.x,transform.position.y,transform.position.z);
         }
         
 }

@@ -24,7 +24,6 @@ public class BombThrow : MonoBehaviour
         yield return new WaitForSeconds(time);
         Boom();
     }
-
     void Boom()
     {
         Collider2D[] colliders = Physics2D.OverlapBoxAll(explColl.bounds.center, explColl.bounds.size, 0);
@@ -37,6 +36,8 @@ public class BombThrow : MonoBehaviour
         }
         Destroy(gameObject);
     }
+
+    
     void Update()
     {
         

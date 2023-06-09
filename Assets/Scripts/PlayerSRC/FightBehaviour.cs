@@ -17,7 +17,7 @@ public class FightBehaviour : MonoBehaviour
     public bool isRecentlyHit = false;
     private float unHitTime = 3f;
     private float startUnHitTime = 0f;
-    public Camera cam;
+    public GameObject cam;
     private float timeBtwAttack;
     private float startTimeBtwAttack = 0.5f;
     private int attackCount = 0;
@@ -40,7 +40,7 @@ public class FightBehaviour : MonoBehaviour
         move = GetComponent<PlayerMovement>();
         enemyMask = LayerMask.GetMask("Enemy");
         attackPos = GameObject.Find("attackPos");
-        cam = GameObject.Find("Main Camera").GetComponent<Camera>();
+        cam = GameObject.Find("Main Camera");
     }
 
     public bool canBlockCheck()
@@ -94,12 +94,13 @@ public class FightBehaviour : MonoBehaviour
         yield return new WaitForSeconds(parryTime);
         parryCan = true;
     }
+
     void Update()
     {
-        if(chara.isDead || chara.isStunned || chara.inDialogue)
-            return;
+        if (chara.isDead || chara.isStunned || chara.inDialogue || cam.GetComponent<CameraFollow>().inPause)
+    return;
 
-        if (Input.GetKeyDown(KeyCode.Mouse0) && canAttack && move.rb.velocity == Vector2.zero)
+    if (Input.GetKeyDown(KeyCode.Mouse0) && canAttack && move.rb.velocity == Vector2.zero)
         {
             StartCoroutine(attack());
         }

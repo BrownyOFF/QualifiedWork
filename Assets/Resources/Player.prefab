@@ -277,6 +277,7 @@ MonoBehaviour:
   lvl_1_completed: 0
   lvl_2_completed: 0
   currScene: 
+  respPos: {x: 0, y: 0, z: 0}
 --- !u!114 &4260113326295581135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,6 +310,7 @@ MonoBehaviour:
   stats: {fileID: 0}
   fight: {fileID: 0}
   playerClass: {fileID: 0}
+  interestPoint: {fileID: 606798679339094491}
 --- !u!114 &4260113326295581132
 MonoBehaviour:
   m_ObjectHideFlags: 0

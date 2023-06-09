@@ -76,7 +76,7 @@ public class PlayerInventory : MonoBehaviour
 
     public void ResetFlask()
     {
-        playerClass.amount[0] = playerClass.flaskMax;
+        playerClass.amount[playerClass.inv.IndexOf(2)] = playerClass.flaskMax;
     }
 
     private void ChangeItem(int n)
@@ -96,6 +96,11 @@ public class PlayerInventory : MonoBehaviour
     }
     void Update()
     {
+        if (GameObject.FindWithTag("MainCamera").GetComponent<CameraFollow>().inPause)
+        {
+            return;
+        }
+        
         if (Input.GetKeyDown(KeyCode.I))
         {
             Debug.Log(playerClass.inv);
