@@ -33,15 +33,42 @@ public class PlayerClass : MonoBehaviour
         #endregion
 
         #region Progress
-        public bool lvl_0_open = true;
-        public bool lvl_hub_open = true;
-        public bool lvl_1_open = true;
-        public bool lvl_2_open = false;
+        public bool lvl_0_open;
+        public bool lvl_hub_open;
+        public bool lvl_1_open;
+        public bool lvl_2_open;
 
-        public bool lvl_0_completed = false;
-        public bool lvl_hub_completed = false;
-        public bool lvl_1_completed = false;
-        public bool lvl_2_completed = false;
+        public bool lvl_0_completed;
+        public bool lvl_1_completed;
+        public bool lvl_2_completed;
+
+        //smith
+        public bool que_01_00_smith_open;
+        public bool que_01_00_smith_completed;
+        public bool que_01_01_smith_open;
+        public bool que_01_01_smith_completed;
+    
+        //reaper
+        public bool que_01_00_reaper_open;
+        public bool que_01_00_reaper_completed;
+        public bool que_01_01_reaper_open;
+        public bool que_01_01_reaper_completed;
+    
+        //alchemist
+        public bool que_01_00_alchemist_open;
+        public bool que_01_00_alchemist_completed;
+        public bool que_01_01_alchemist_open;
+        public bool que_01_01_alchemist_completed;
+        
+        //lvl_0_items
+        public bool lvl_0_shard_picked;
+        public bool lvl_0_flower_picked;
+        public bool lvl_0_scroll_picked;
+    
+        //lvl_1_items
+        public bool lvl_1_shard_picked;
+        public bool lvl_1_flower_picked;
+        public bool lvl_1_scroll_picked;
         #endregion
         public string currScene;
 

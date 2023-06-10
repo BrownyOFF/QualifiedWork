@@ -115,6 +115,7 @@ public class CameraFollow : MonoBehaviour
                 Shrine.SetActive(false);
                 Dialogue.SetActive(false);
                 Travel.SetActive(true);
+                GameObject.Find("Panel Travel").GetComponent<TravelPanel>().CreateBttns();
                 pauseMenu.SetActive(false);
                 Cursor.visible = true;
                 break;

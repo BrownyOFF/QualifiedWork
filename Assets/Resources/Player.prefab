@@ -270,12 +270,29 @@ MonoBehaviour:
   amount: 
   lvl_0_open: 1
   lvl_hub_open: 1
-  lvl_1_open: 1
+  lvl_1_open: 0
   lvl_2_open: 0
   lvl_0_completed: 0
-  lvl_hub_completed: 0
   lvl_1_completed: 0
   lvl_2_completed: 0
+  que_01_00_smith_open: 1
+  que_01_00_smith_completed: 0
+  que_01_01_smith_open: 0
+  que_01_01_smith_completed: 0
+  que_01_00_reaper_open: 1
+  que_01_00_reaper_completed: 0
+  que_01_01_reaper_open: 0
+  que_01_01_reaper_completed: 0
+  que_01_00_alchemist_open: 1
+  que_01_00_alchemist_completed: 0
+  que_01_01_alchemist_open: 0
+  que_01_01_alchemist_completed: 0
+  lvl_0_shard_picked: 0
+  lvl_0_flower_picked: 0
+  lvl_0_scroll_picked: 0
+  lvl_1_shard_picked: 0
+  lvl_1_flower_picked: 0
+  lvl_1_scroll_picked: 0
   currScene: 
   respPos: {x: 0, y: 0, z: 0}
 --- !u!114 &4260113326295581135

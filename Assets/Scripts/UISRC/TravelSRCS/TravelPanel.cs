@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -25,8 +26,13 @@ public class TravelPanel : MonoBehaviour
     public string lvl_chosen;
 
     public PlayerClass player;
-    
-    void Start()
+
+    private void OnEnable()
+    {
+        
+    }
+
+    public void Awake()
     {
         player = GameObject.FindWithTag("Player").GetComponent<PlayerClass>();
         bttn_granted = Resources.Load("lvl_bttn_granted") as GameObject;
@@ -36,7 +42,6 @@ public class TravelPanel : MonoBehaviour
         conf.SetActive(false);
         lvl_image.SetActive(false);
         scenes_list = Get_all_lvls();
-        Debug.Log(scenes_list);
         lvl_bttns_pos = new List<GameObject>();
         
         var tmp = transform.GetChild(0);
@@ -48,10 +53,7 @@ public class TravelPanel : MonoBehaviour
         lvl_names_string = lvl_names.ToString();
 
         save = GameObject.FindWithTag("lvlScr").GetComponent<LevelCreate>().data;
-
-        CreateBttns();
     }
-
     public void CreateBttns()
     {
         if (player.lvl_0_open)

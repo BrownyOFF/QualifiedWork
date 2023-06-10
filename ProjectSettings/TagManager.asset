@@ -14,6 +14,7 @@ TagManager:
   - InterestPoint
   - shrine
   - saveManager
+  - travelBttn
   layers:
   - Default
   - TransparentFX

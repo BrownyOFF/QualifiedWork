@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 5044579838548482082}
   m_Layer: 5
   m_Name: Lvl_bttn_denied
-  m_TagString: Untagged
+  m_TagString: travelBttn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -13,6 +13,7 @@ using Image = UnityEngine.UI.Image;
 
 public class DialogueSRC : MonoBehaviour
 {
+    private PlayerClass player;
     private Camera cam;
     private GameObject Dialogue;
     private CameraFollow camSCR;
@@ -27,9 +28,12 @@ public class DialogueSRC : MonoBehaviour
     private List<string> que;
     private List<string> queType;
     private string messageText;
+    private string nameStr;
+    private string itemID;
     
     void Start()
     {
+        player = GameObject.FindWithTag("Player").GetComponent<PlayerClass>();
         sayButtonPrefab = Resources.Load("sayBttn") as GameObject;
         cam = GetComponent<Camera>();
         Dialogue = GameObject.Find("DialogueUI");
@@ -57,29 +61,80 @@ public class DialogueSRC : MonoBehaviour
         camSCR.BlackScreenTransparency(2);
         camSCR.changeCanvas(3);
         var text = textFile.text;
-        var name = getBetween(text, "name:", "\r");
-        var itemID = getBetween(text, "itemID:", "\r");
+        nameStr = getBetween(text, "name:", "\r");
+        itemID = getBetween(text, "itemID:", "\r");
         var message = getBetween(text, "msg_00:", "\r");
         var spr_path = getBetween(text, "sprite:", "\r");
         var bg_path = getBetween(text, "bg:", "\r");
-        if (queID != "")
-        {
-            var que_01 = getBetween(text, queID + ":", "\r");
-            que.Add(que_01);
-            queType.Add(queID);
-        }
-        
-        if (GameObject.FindWithTag("Player").GetComponent<PlayerClass>().amount[GameObject.FindWithTag("Player").GetComponent<PlayerClass>().inv.IndexOf(Int32.Parse(itemID))] > 0)
-        {
-            var que_grade = getBetween(text, "que_grade_00:", "\r");
-            que.Add(que_grade);
-            queType.Add("que_grade_00");
-        }
-        
-        var que_exit = getBetween(text, "que_exit:", "\r");
-        que.Add(que_exit);
-        queType.Add("que_exit");
 
+        switch (nameStr)
+        {
+            case "Кузнець":
+                if (player.que_01_00_smith_open && !player.que_01_00_smith_completed)
+                {
+                    var que_01 = getBetween(text, "que_01_00:", "\r");
+                    que.Add(que_01);
+                    queType.Add("que_01_00");
+                }
+                else if (player.que_01_01_smith_open && !player.que_01_01_smith_completed)
+                {
+                    var que_01 = getBetween(text, "que_02_00:", "\r");
+                    que.Add(que_01);
+                    queType.Add("que_02_00");
+                }
+                if (player.amount[player.inv.IndexOf(0)] > 0)
+                {
+                    var que_grade = getBetween(text, "que_grade_00:", "\r");
+                    que.Add(que_grade);
+                    queType.Add("que_grade_00");
+                }
+                break;
+            case "Алхімік":
+                if (player.que_01_00_alchemist_open && !player.que_01_00_alchemist_completed)
+                {
+                    var que_01 = getBetween(text, "que_01_00:", "\r");
+                    que.Add(que_01);
+                    queType.Add("que_01_00");
+                }
+                else if (player.que_01_01_alchemist_open && !player.que_01_01_alchemist_completed)
+                {
+                    var que_01 = getBetween(text, "que_02_00:", "\r");
+                    que.Add(que_01);
+                    queType.Add("que_02_00");
+                }
+                if (player.amount[player.inv.IndexOf(1)] > 0)
+                {
+                    var que_grade = getBetween(text, "que_grade_00:", "\r");
+                    que.Add(que_grade);
+                    queType.Add("que_grade_00");
+                }
+                break;
+            case "Жнець полювання":
+                if (player.que_01_00_reaper_open && !player.que_01_00_reaper_completed)
+                {
+                    var que_01 = getBetween(text, "que_01_00:", "\r");
+                    que.Add(que_01);
+                    queType.Add("que_01_00");
+                }
+                else if (player.que_01_01_reaper_open && !player.que_01_01_reaper_completed)
+                {
+                    var que_01 = getBetween(text, "que_02_00:", "\r");
+                    que.Add(que_01);
+                    queType.Add("que_02_00");
+                }
+                if (player.amount[player.inv.IndexOf(5)] > 0)
+                {
+                    var que_grade = getBetween(text, "que_grade_00:", "\r");
+                    que.Add(que_grade);
+                    queType.Add("que_grade_00");
+                }
+                break;
+        }
+        
+        var que_ex = getBetween(text, "que_exit:", "\r");
+        que.Add(que_ex);
+        queType.Add("que_exit");
+        
         Sprite spr = LoadSpriteFromFile(spr_path);
         Sprite bg = LoadSpriteFromFile(bg_path);
         spriteObj.GetComponent<Image>().sprite = spr;
@@ -111,6 +166,7 @@ public class DialogueSRC : MonoBehaviour
                 bttnSay.GetComponent<BttnDialogueSRC>().messageObj = messageObj;
                 bttnSay.GetComponent<BttnDialogueSRC>().bttnList = bttnList;
                 bttnSay.GetComponent<BttnDialogueSRC>().isGrade = true;
+                bttnSay.GetComponent<BttnDialogueSRC>().name = nameStr;
             }
             else
             {
@@ -121,6 +177,8 @@ public class DialogueSRC : MonoBehaviour
                 bttnSay.GetComponent<BttnDialogueSRC>().messageObj = messageObj;
                 bttnSay.GetComponent<BttnDialogueSRC>().bttnList = bttnList;
                 bttnSay.GetComponent<BttnDialogueSRC>().isGrade = false;
+                bttnSay.GetComponent<BttnDialogueSRC>().idOpen = itemID;
+                bttnSay.GetComponent<BttnDialogueSRC>().isText = true;
             }
             bttnSay.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = que[i];
         }

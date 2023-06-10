@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Net.NetworkInformation;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,7 +10,10 @@ public class LevelCreate : MonoBehaviour
 {
     #region PreFabs
 
-
+    public GameObject flower;
+    public GameObject shard;
+    public GameObject scroll;
+    
     public GameObject Player;
     public GameObject Enemy;
     
@@ -50,7 +54,7 @@ public class LevelCreate : MonoBehaviour
             foreachCycle(Goblin, GoblinPos);
         }
 
-        if (PlayerPrefs.GetInt("newGame") != 0)
+        if (PlayerPrefs.GetInt("newGame") != 0) //load game
         {
             data = SaveSystem.LoadPlayer();
             Player.GetComponent<PlayerClass>().hpMax = data.hpMax;
@@ -64,10 +68,75 @@ public class LevelCreate : MonoBehaviour
             Player.GetComponent<PlayerClass>().inv = data.inv;
             Player.GetComponent<PlayerClass>().amount = data.amount;
             Player.GetComponent<PlayerClass>().respPos = new Vector3(data.position[0],data.position[1],data.position[2]);
-
+            
             if (Player.transform.position != Player.GetComponent<PlayerClass>().respPos)
             {
                 Player.transform.position = Player.GetComponent<PlayerClass>().respPos;
+            }
+
+            #region ProggressData
+            Player.GetComponent<PlayerClass>().lvl_0_open = data.lvl_0_open;
+            Player.GetComponent<PlayerClass>().lvl_hub_open = data.lvl_hub_open;
+            Player.GetComponent<PlayerClass>().lvl_1_open = data.lvl_hub_open;
+            Player.GetComponent<PlayerClass>().lvl_2_open = data.lvl_hub_open;
+
+            Player.GetComponent<PlayerClass>().lvl_0_completed = data.lvl_0_completed;
+            Player.GetComponent<PlayerClass>().lvl_1_completed = data.lvl_1_completed;
+            Player.GetComponent<PlayerClass>().lvl_2_completed = data.lvl_2_completed;
+
+            Player.GetComponent<PlayerClass>().que_01_00_smith_open = data.que_01_00_smith_open;
+            Player.GetComponent<PlayerClass>().que_01_00_smith_completed = data.que_01_00_smith_completed;
+            Player.GetComponent<PlayerClass>().que_01_01_smith_open = data.que_01_01_smith_open;
+            Player.GetComponent<PlayerClass>().que_01_01_smith_completed = data.que_01_01_smith_completed;
+
+            Player.GetComponent<PlayerClass>().que_01_00_reaper_open = data.que_01_00_reaper_open;
+            Player.GetComponent<PlayerClass>().que_01_00_reaper_completed = data.que_01_00_reaper_completed;
+            Player.GetComponent<PlayerClass>().que_01_01_reaper_open = data.que_01_01_reaper_open;
+            Player.GetComponent<PlayerClass>().que_01_01_reaper_completed = data.que_01_01_reaper_completed;
+
+            Player.GetComponent<PlayerClass>().que_01_00_alchemist_open = data.que_01_00_alchemist_open;
+            Player.GetComponent<PlayerClass>().que_01_00_alchemist_completed = data.que_01_00_alchemist_completed;
+            Player.GetComponent<PlayerClass>().que_01_01_alchemist_open = data.que_01_01_alchemist_open;
+            Player.GetComponent<PlayerClass>().que_01_01_alchemist_completed = data.que_01_01_alchemist_completed;
+
+            Player.GetComponent<PlayerClass>().lvl_0_shard_picked = data.lvl_0_shard_picked;
+            Player.GetComponent<PlayerClass>().lvl_0_flower_picked = data.lvl_0_flower_picked;
+            Player.GetComponent<PlayerClass>().lvl_0_scroll_picked = data.lvl_0_scroll_picked;
+            
+            Player.GetComponent<PlayerClass>().lvl_1_shard_picked = data.lvl_1_shard_picked;
+            Player.GetComponent<PlayerClass>().lvl_1_flower_picked = data.lvl_1_flower_picked;
+            Player.GetComponent<PlayerClass>().lvl_1_scroll_picked = data.lvl_1_scroll_picked;
+            #endregion
+
+            if (SceneManager.GetActiveScene().name == "lvl_0")
+            {
+                if (Player.GetComponent<PlayerClass>().lvl_0_flower_picked)
+                {
+                    flower.SetActive(false);
+                }
+                if (Player.GetComponent<PlayerClass>().lvl_0_shard_picked)
+                {
+                    shard.SetActive(false);
+                }
+                if (Player.GetComponent<PlayerClass>().lvl_0_scroll_picked)
+                {
+                    scroll.SetActive(false);
+                }
+            }
+            else if (SceneManager.GetActiveScene().name == "lvl_1")
+            {
+                if (Player.GetComponent<PlayerClass>().lvl_1_flower_picked)
+                {
+                    flower.SetActive(false);
+                }
+                if (Player.GetComponent<PlayerClass>().lvl_1_shard_picked)
+                {
+                    shard.SetActive(false);
+                }
+                if (Player.GetComponent<PlayerClass>().lvl_1_scroll_picked)
+                {
+                    scroll.SetActive(false);
+                }
             }
         }
         else
@@ -78,7 +147,7 @@ public class LevelCreate : MonoBehaviour
             Player.GetComponent<PlayerClass>().amount.Add(0);
             Player.GetComponent<PlayerClass>().amount.Add(0);
             Player.GetComponent<PlayerClass>().amount.Add(0);
-        }
+        } //new game
     }
 
     public void foreachCycle(GameObject obj, GameObject[] pos)

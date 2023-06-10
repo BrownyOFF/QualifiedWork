@@ -13,8 +13,9 @@ public class BttnDialogueSRC : MonoBehaviour
     private Button bttn;
     public List<GameObject> bttnList;
     public bool isGrade;
-    
-    
+    public bool isText;
+    public string name;
+    public string idOpen;
     private bool isPrinting = false;
     private int strCount = 1;
     private bool isClicked = false;
@@ -48,10 +49,71 @@ public class BttnDialogueSRC : MonoBehaviour
             return;
         }
 
+        if (isText)
+        {
+            switch (idOpen)
+            {
+                case "0":
+                    if (!GameObject.FindWithTag("Player").GetComponent<PlayerClass>().que_01_00_smith_completed)
+                    {
+                        GameObject.FindWithTag("Player").GetComponent<PlayerClass>().que_01_00_smith_completed = true;
+                    }
+                    else if (!GameObject.FindWithTag("Player").GetComponent<PlayerClass>().que_01_01_smith_completed)
+                    {
+                        GameObject.FindWithTag("Player").GetComponent<PlayerClass>().que_01_01_smith_completed = true;
+                    }
+                    break;
+                case "5":
+                    if (!GameObject.FindWithTag("Player").GetComponent<PlayerClass>().que_01_00_reaper_completed)
+                    {
+                        GameObject.FindWithTag("Player").GetComponent<PlayerClass>().que_01_00_reaper_completed = true;
+                    }
+                    else if (!GameObject.FindWithTag("Player").GetComponent<PlayerClass>().que_01_01_reaper_completed)
+                    {
+                        GameObject.FindWithTag("Player").GetComponent<PlayerClass>().que_01_01_reaper_completed = true;
+                    }
+                    break;
+                case "1":
+                    if (!GameObject.FindWithTag("Player").GetComponent<PlayerClass>().que_01_00_alchemist_completed)
+                    {
+                        GameObject.FindWithTag("Player").GetComponent<PlayerClass>().que_01_00_alchemist_completed = true;
+                    }
+                    else if (!GameObject.FindWithTag("Player").GetComponent<PlayerClass>().que_01_01_alchemist_completed)
+                    {
+                        GameObject.FindWithTag("Player").GetComponent<PlayerClass>().que_01_01_alchemist_completed = true;
+                    }
+                    break;
+            }
+            isText = false;
+        }
+        
         if (isGrade)
         {
-            GameObject.FindWithTag("Player").GetComponent<PlayerClass>().damage += 5;
-            GameObject.FindWithTag("Player").GetComponent<PlayerClass>().amount[GameObject.FindWithTag("Player").GetComponent<PlayerClass>().inv.IndexOf(0)]--;
+            switch (name)
+            {
+                case "Кузнець":
+                    GameObject.FindWithTag("Player").GetComponent<PlayerClass>().damage += 5;
+                    GameObject.FindWithTag("Player").GetComponent<PlayerClass>()
+                        .amount[GameObject.FindWithTag("Player").GetComponent<PlayerClass>().inv.IndexOf(0)]--;
+                    break;
+                case "Жнець полювання":
+                    if (!GameObject.FindWithTag("Player").GetComponent<PlayerClass>().lvl_1_open)
+                    {
+                        GameObject.FindWithTag("Player").GetComponent<PlayerClass>().lvl_1_open = true;
+                    }
+                    else if (!GameObject.FindWithTag("Player").GetComponent<PlayerClass>().lvl_2_open)
+                    {
+                        GameObject.FindWithTag("Player").GetComponent<PlayerClass>().lvl_2_open = true;
+                    }
+                    GameObject.FindWithTag("Player").GetComponent<PlayerClass>()
+                        .amount[GameObject.FindWithTag("Player").GetComponent<PlayerClass>().inv.IndexOf(5)]--;
+                    break;
+                case "Алхімік":
+                    GameObject.FindWithTag("Player").GetComponent<PlayerClass>().flaskMax++;
+                    GameObject.FindWithTag("Player").GetComponent<PlayerClass>()
+                        .amount[GameObject.FindWithTag("Player").GetComponent<PlayerClass>().inv.IndexOf(1)]--;
+                    break;
+            }
             isGrade = false;
         }
         isClicked = true;
