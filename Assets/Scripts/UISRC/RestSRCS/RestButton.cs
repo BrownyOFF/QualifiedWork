@@ -32,8 +32,11 @@ public class RestButton : MonoBehaviour
         enemys = GameObject.FindGameObjectsWithTag("Enemy");
         levelCreateSRC.GetComponent<LevelCreate>().forEachEnemyFindDestroy();
         //spawn them again
-        levelCreateSRC.GetComponent<LevelCreate>().foreachCycle(levelCreateSRC.GetComponent<LevelCreate>().Enemy, levelCreateSRC.GetComponent<LevelCreate>().EnemyPos);
-        
+        levelCreateSRC.GetComponent<LevelCreate>().foreachCycle(levelCreateSRC.GetComponent<LevelCreate>().MushRoom, levelCreateSRC.GetComponent<LevelCreate>().MushRoomPos);
+        levelCreateSRC.GetComponent<LevelCreate>().foreachCycle(levelCreateSRC.GetComponent<LevelCreate>().Goblin, levelCreateSRC.GetComponent<LevelCreate>().GoblinPos);
+        levelCreateSRC.GetComponent<LevelCreate>().foreachCycle(levelCreateSRC.GetComponent<LevelCreate>().Skeleton, levelCreateSRC.GetComponent<LevelCreate>().SkeletonPos);
+        levelCreateSRC.GetComponent<LevelCreate>().foreachCycle(levelCreateSRC.GetComponent<LevelCreate>().FlyingEye, levelCreateSRC.GetComponent<LevelCreate>().FlyingEyePos);
+
         //Player reset stats
         player.assignStats();
         

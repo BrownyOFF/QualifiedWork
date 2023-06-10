@@ -26,7 +26,7 @@ public class FightBehaviour : MonoBehaviour
     private float parryTime = 0.5f;
     private GameObject attackPos;
     private bool parryCan = true;
-    public float attackRange = 3f;
+    public float attackRange = 2f;
     //public float damage = 10f;
     private bool isBlockClicked = false;
     private bool canAttack = true;
@@ -113,7 +113,7 @@ public class FightBehaviour : MonoBehaviour
                 StartCoroutine(CanParry());
             }
         }
-        else if (Input.GetKey(KeyCode.E) && parryCan && move.rb.velocity == Vector2.zero)
+        else if (Input.GetMouseButtonDown(2) && parryCan && move.rb.velocity == Vector2.zero)
         {
             StartCoroutine(CanParry());
         }

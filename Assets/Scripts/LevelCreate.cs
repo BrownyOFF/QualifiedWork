@@ -38,7 +38,7 @@ public class LevelCreate : MonoBehaviour
         Enemy = Resources.Load("Enemy") as GameObject;
         
         MushRoom = Resources.Load("MushRoomEnemy") as GameObject;
-        
+        Goblin = Resources.Load("GoblinEnemy") as GameObject;
 
         PlayerPos = GameObject.FindWithTag("playerPos");
 
@@ -47,6 +47,7 @@ public class LevelCreate : MonoBehaviour
         if (SceneManager.GetActiveScene().name != "lvl_hub")
         {
             foreachCycle(MushRoom, MushRoomPos);
+            foreachCycle(Goblin, GoblinPos);
         }
 
         if (PlayerPrefs.GetInt("newGame") != 0)

@@ -282,20 +282,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb9bf5fec2641f94f968bd0c1dacca3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpMax: 50
+  hpMax: 30
   hpCurrent: 50
   speed: 3
   isDead: 0
   pieces: 10
   dmg: 20
-  range: 3
+  range: 2
   attackCd: 3
   attackDelay: 0.5
   isStunned: 0
-  canOnlyDodge: 1
-  canOnlyParry: 1
+  canOnlyDodge: 0
+  canOnlyParry: 0
   distanceToSee: 8
-  distanceToAttack: 3
+  distanceToAttack: 2
   distanceToPlayer: 0
   isAttacking: 0
   canAttack: 1

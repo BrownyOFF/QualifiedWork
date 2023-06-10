@@ -11,6 +11,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         enemyClass = GetComponent<EnemyClass>();
         enemyClass.playerObj = GameObject.FindWithTag("Player");
+        enemyClass.animController.SetTrigger("start");
     }
 
     void Update()

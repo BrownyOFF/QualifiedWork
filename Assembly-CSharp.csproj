@@ -91,11 +91,14 @@
      <Compile Include="Assets\Scripts\SaveBullshit\SaveClass.cs" />
      <Compile Include="Assets\Scripts\LevelCreate.cs" />
      <Compile Include="Assets\Scripts\UISRC\TravelSRCS\Shrine_bttnSRC.cs" />
+     <Compile Include="Assets\Scripts\UISRC\AdviceSRC.cs" />
+     <Compile Include="Assets\AdviceTriggerSRC.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\texture\Font.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
      <None Include="Assets\Data\smithDialogue.txt" />
+     <None Include="Assets\Data\Advises.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
      <None Include="Assets\Data\itemsID.txt" />
      <None Include="Assets\Warrior\Contact.txt" />

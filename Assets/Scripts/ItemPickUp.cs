@@ -40,6 +40,7 @@ public class ItemPickUp : MonoBehaviour
         {
             player.GetComponent<PlayerInventory>().TakeItem(id);
             Debug.Log("Picked Item " + id);
+            GameObject.Find("AdvisePanel").GetComponent<AdviceSRC>().CheckInt(id, true);
             questionMark.SetActive(false);
             gameObject.SetActive(false);
         }
