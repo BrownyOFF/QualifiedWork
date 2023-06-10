@@ -12,8 +12,19 @@ public class LevelCreate : MonoBehaviour
 
     public GameObject Player;
     public GameObject Enemy;
+    
+    public GameObject MushRoom;
+    public GameObject Goblin;
+    public GameObject Skeleton;
+    public GameObject FlyingEye;
 
     public GameObject[] EnemyPos;
+    
+    public GameObject[] MushRoomPos;
+    public GameObject[] GoblinPos;
+    public GameObject[] SkeletonPos;
+    public GameObject[] FlyingEyePos;
+    
     private GameObject PlayerPos;
 
     #endregion
@@ -26,14 +37,16 @@ public class LevelCreate : MonoBehaviour
         Player = GameObject.FindWithTag("Player");
         Enemy = Resources.Load("Enemy") as GameObject;
         
-        EnemyPos = GameObject.FindGameObjectsWithTag("enemyPos");
+        MushRoom = Resources.Load("MushRoomEnemy") as GameObject;
+        
+
         PlayerPos = GameObject.FindWithTag("playerPos");
 
         shrines = GameObject.FindGameObjectsWithTag("shrine");
 
         if (SceneManager.GetActiveScene().name != "lvl_hub")
         {
-            foreachCycle(Enemy, EnemyPos);
+            foreachCycle(MushRoom, MushRoomPos);
         }
 
         if (PlayerPrefs.GetInt("newGame") != 0)
@@ -86,7 +99,7 @@ public class LevelCreate : MonoBehaviour
             foreach (var i in enemy)
             {
                 i.SetActive(true);
-                i.GetComponent<EnemySRC>().destroy();
+                i.GetComponent<EnemyClass>().DestroyObj();
             }
         }
     }

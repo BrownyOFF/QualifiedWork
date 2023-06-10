@@ -65,7 +65,7 @@ public class FightBehaviour : MonoBehaviour
         Collider2D[] enemyToDamage = Physics2D.OverlapCircleAll(attackPos.transform.position, attackRange, enemyMask);
         for (int i = 0; i < enemyToDamage.Length; i++)
         {
-            enemyToDamage[i].GetComponent<EnemySRC>().TakeDamage(playerClass.damage);
+            enemyToDamage[i].GetComponent<EnemyClass>().TakeDamage(playerClass.damage);
         }
         isAttacking = false;
         StartCoroutine(AttackCD());
@@ -98,9 +98,9 @@ public class FightBehaviour : MonoBehaviour
     void Update()
     {
         if (chara.isDead || chara.isStunned || chara.inDialogue || cam.GetComponent<CameraFollow>().inPause)
-    return;
+            return;
 
-    if (Input.GetKeyDown(KeyCode.Mouse0) && canAttack && move.rb.velocity == Vector2.zero)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && canAttack && move.rb.velocity == Vector2.zero)
         {
             StartCoroutine(attack());
         }

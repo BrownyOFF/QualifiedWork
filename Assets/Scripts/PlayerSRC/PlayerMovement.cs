@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
     public float dashCD = 1f;
     public float dashCDcurr = 0f;
     private float lastDodgeTime = -1f;
-    private bool isDashing;
+    public bool isDashing;
     private bool _canDash = true;
     #endregion
 

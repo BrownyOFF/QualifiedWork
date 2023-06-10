@@ -118,7 +118,7 @@ public class EnemySRC : MonoBehaviour
             
         }else
         {
-            playerObj.GetComponent<PlayerChara>().takeDmg(damage);
+            playerObj.GetComponent<PlayerChara>().takeDmg(damage, 0);
         }
     }
 
@@ -176,6 +176,7 @@ public class EnemySRC : MonoBehaviour
         }
         else if (CanAttack() && !isAttacking)
         {
+            rb.velocity = Vector2.zero;
             animCont.SetTrigger("Attack");
             StartCoroutine(Attack());
         }

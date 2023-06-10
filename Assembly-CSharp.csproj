@@ -58,7 +58,6 @@
      <Compile Include="Assets\Scripts\UISRC\RestSRCS\RestButton.cs" />
      <Compile Include="Assets\Scripts\mainMenuSRC\ContinueSRC.cs" />
      <Compile Include="Assets\Scripts\mainMenuSRC\newGameSRC.cs" />
-     <Compile Include="Assets\Scripts\EnemyStat.cs" />
      <Compile Include="Assets\Scripts\HubSRC\LeaveDialogue.cs" />
      <Compile Include="Assets\Scripts\BombThrow.cs" />
      <Compile Include="Assets\Scripts\HubSRC\EnterSRC.cs" />
@@ -74,11 +73,13 @@
      <Compile Include="Assets\Scripts\UISRC\UI.cs" />
      <Compile Include="Assets\Scripts\SaveBullshit\SaveSystem.cs" />
      <Compile Include="Assets\Scripts\Camera_HUD\DialogueSRC.cs" />
+     <Compile Include="Assets\Scripts\EnemySRC\EnemyClass.cs" />
      <Compile Include="Assets\Scripts\ItemPickUp.cs" />
      <Compile Include="Assets\Scripts\PlayerSRC\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\Camera_HUD\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\EnemySRC.cs" />
      <Compile Include="Assets\Scripts\mainMenuSRC\exitGameSRC.cs" />
+     <Compile Include="Assets\Scripts\EnemySRC\EnemyBehavior.cs" />
      <Compile Include="Assets\Scripts\UISRC\GradeSRCS\GradePanel.cs" />
      <Compile Include="Assets\Scripts\UISRC\TravelSRCS\Lvl_bttnSRC.cs" />
      <Compile Include="Assets\Scripts\knifeThrow.cs" />

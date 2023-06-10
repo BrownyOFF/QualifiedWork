@@ -8,19 +8,14 @@ public class SpikeDamage : MonoBehaviour
     public bool IsTakingDamage = false;
     private Collider2D check;
     public PlayerChara chara;
-    public EnemySRC enChara;
+    public EnemyClass enChara;
     private bool inTrigger = false;
     private float damage = 10f;
     void Start()
     {
         
     }
-
-    private IEnumerator Delay()
-    {
-        yield return new WaitForSeconds(1f);
-        IsTakingDamage = false;
-    }
+    
     private void OnTriggerEnter2D(Collider2D col)
     {
         check = col;
@@ -30,23 +25,21 @@ public class SpikeDamage : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other)
     {
         inTrigger = false;
-        IsTakingDamage = false;
     }
 
     void Update()
     {
         if (inTrigger)
         {
-            if (check.CompareTag("Player") && !IsTakingDamage)
+            if (check.CompareTag("Player"))
             {
                 chara = check.GetComponent<PlayerChara>();
                 IsTakingDamage = true;
-                chara.hpCurrent -= damage;
-                StartCoroutine(Delay());
+                chara.hpCurrent -= chara.hpCurrent;
             }
-            else if (check.CompareTag("Enemy") && !IsTakingDamage)
+            else if (check.CompareTag("Enemy") && !check.GetComponent<EnemyClass>().isDead)
             {
-                enChara = check.GetComponent<EnemySRC>();
+                enChara = check.GetComponent<EnemyClass>();
                 enChara.Death();
             }
         }

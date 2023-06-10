@@ -35,30 +35,32 @@ public class PlayerChara : MonoBehaviour
     public CameraFollow camSRC;
     private Animator animCont;
     
-    public void takeDmg(float dmg)
+    public bool takeDmg(float dmg, int type)
     {
-        if (fight.isBlocking && !fight.isParry)
+        if(GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().isDashing && (type == 0 || type == 1))  // if dodging && onlyDodge attack or default attack
+            return true;
+
+        if (GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().isDashing && type == 2) // if dodging && onlyParry attack
+        {
+            hpCurrent -= dmg;
+            return false;
+        }
+
+        if (fight.isBlocking && type == 0 && !fight.isParry) // if block default attack
         {
             spCurrent -= dmg;
+            return false;
         }
-        else if (fight.isBlocking && fight.isParry)
+
+        if (fight.isParry && (type == 0 || type == 2)) // if parry default or parryOnly attack 
         {
-            animCont.SetTrigger("Parry");
-            fight.isBlocking = false;
             StopCoroutine(fight.CanParry());
+            return true;
         }
-        else if(isStunned)
-        {
-            StopCoroutine(Stun());
-            isStunned = false;
-            hpCurrent -= 1.25f * dmg;
-        }
-        else
-        {
-            animCont.SetTrigger("Hurt");
-            hpCurrent -= dmg;
-        }
-        fight.isRecentlyHit = true;
+            
+        animCont.SetTrigger("Hurt"); // others
+        hpCurrent -= dmg;
+        return false;
     }
     
     public void getPieces(float amount)
