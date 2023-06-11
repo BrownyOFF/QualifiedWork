@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -12,6 +13,7 @@ public class EnemyBehavior : MonoBehaviour
         enemyClass = GetComponent<EnemyClass>();
         enemyClass.playerObj = GameObject.FindWithTag("Player");
         enemyClass.animController.SetTrigger("start");
+        transform.localScale = new Vector3(1, 1, 0);
     }
 
     void Update()

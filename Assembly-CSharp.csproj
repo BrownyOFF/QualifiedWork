@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\PlayerSRC\PlayerInventory.cs" />
      <Compile Include="Assets\Scripts\UISRC\RestSRCS\RestButton.cs" />
      <Compile Include="Assets\Scripts\mainMenuSRC\ContinueSRC.cs" />
+     <Compile Include="Assets\Scripts\UISRC\TravelSRCS\exitTravel.cs" />
      <Compile Include="Assets\Scripts\mainMenuSRC\newGameSRC.cs" />
      <Compile Include="Assets\Scripts\HubSRC\LeaveDialogue.cs" />
      <Compile Include="Assets\Scripts\BombThrow.cs" />
@@ -69,7 +70,7 @@
      <Compile Include="Assets\Scripts\UISRC\TravelSRCS\TravelPanel.cs" />
      <Compile Include="Assets\Scripts\KillBoxSRC.cs" />
      <Compile Include="Assets\Scripts\mainMenuSRC\mainMenuSRC.cs" />
-     <Compile Include="Assets\unlockNextLVL.cs" />
+     <Compile Include="Assets\Scripts\unlockNextLVL.cs" />
      <Compile Include="Assets\Scripts\PlayerSRC\FightBehaviour.cs" />
      <Compile Include="Assets\Scripts\UISRC\UI.cs" />
      <Compile Include="Assets\Scripts\SaveBullshit\SaveSystem.cs" />
@@ -83,7 +84,7 @@
      <Compile Include="Assets\Scripts\mainMenuSRC\exitGameSRC.cs" />
      <Compile Include="Assets\Scripts\EnemySRC\EnemyBehavior.cs" />
      <Compile Include="Assets\Scripts\UISRC\GradeSRCS\GradePanel.cs" />
-     <Compile Include="Assets\AdviceTriggerSRC.cs" />
+     <Compile Include="Assets\Scripts\PlayerSRC\AdviceTriggerSRC.cs" />
      <Compile Include="Assets\Scripts\UISRC\TravelSRCS\Lvl_bttnSRC.cs" />
      <Compile Include="Assets\Scripts\knifeThrow.cs" />
      <Compile Include="Assets\Scripts\UISRC\Load.cs" />
@@ -94,7 +95,7 @@
      <Compile Include="Assets\Scripts\SaveBullshit\SaveClass.cs" />
      <Compile Include="Assets\Scripts\LevelCreate.cs" />
      <Compile Include="Assets\Scripts\UISRC\TravelSRCS\Shrine_bttnSRC.cs" />
-     <Compile Include="Assets\exitTravel.cs" />
+     <Compile Include="Assets\SettingsScript.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\texture\Font.txt" />

@@ -26,13 +26,14 @@ public class TravelPanel : MonoBehaviour
     public string lvl_chosen;
 
     public PlayerClass player;
+    private bool created = false;
 
     private void OnEnable()
     {
         
     }
 
-    public void Awake()
+    public void Start()
     {
         player = GameObject.FindWithTag("Player").GetComponent<PlayerClass>();
         bttn_granted = Resources.Load("lvl_bttn_granted") as GameObject;
@@ -53,6 +54,7 @@ public class TravelPanel : MonoBehaviour
         lvl_names_string = lvl_names.ToString();
 
         save = GameObject.FindWithTag("lvlScr").GetComponent<LevelCreate>().data;
+        CreateBttns();
     }
     public void CreateBttns()
     {
@@ -70,6 +72,7 @@ public class TravelPanel : MonoBehaviour
             lvl_bttns.Add(Instantiate(bttn_denied, posVec, Quaternion.identity));
             lvl_bttns[0].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "??????";
         }
+        lvl_bttns[0].transform.SetParent(this.transform);
         
         if (player.lvl_hub_open)
         {
@@ -85,6 +88,7 @@ public class TravelPanel : MonoBehaviour
             lvl_bttns.Add(Instantiate(bttn_denied, posVec, Quaternion.identity));
             lvl_bttns[1].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "??????";
         }
+        lvl_bttns[1].transform.SetParent(this.transform);
         
         if (player.lvl_1_open)
         {
@@ -100,7 +104,9 @@ public class TravelPanel : MonoBehaviour
             lvl_bttns.Add(Instantiate(bttn_denied, posVec, Quaternion.identity));
             lvl_bttns[2].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "??????";
         }
-        
+        lvl_bttns[2].transform.SetParent(this.transform);
+
+
         if (player.lvl_2_open)
         {
             var posVec = new Vector2(lvl_bttns_pos[3].transform.position.x, lvl_bttns_pos[3].transform.position.y);
@@ -115,20 +121,8 @@ public class TravelPanel : MonoBehaviour
             lvl_bttns.Add(Instantiate(bttn_denied, posVec, Quaternion.identity));
             lvl_bttns[3].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "??????";
         }
-
-        var count = 0;
-        foreach (var i in lvl_bttns)
-        {
-            lvl_bttns[count].transform.parent = gameObject.transform;
-            if (count >= lvl_bttns.Count)
-            {
-                break;
-            }
-            else
-            {
-                count++;
-            }
-        }
+        lvl_bttns[3].transform.SetParent(this.transform);
+        
     }
     
     private List<string> Get_all_lvls()
@@ -149,10 +143,6 @@ public class TravelPanel : MonoBehaviour
 
         return tmpList;
     }
-    void Update()
-    {
-        
-    } 
     public static string getBetween(string file, string strStart, string strEnd)
     {
         if (file.Contains(strStart) && file.Contains(strEnd))

@@ -86,6 +86,11 @@ public class CameraFollow : MonoBehaviour
                 Grade.SetActive(false);
                 Default.SetActive(false);
                 Shrine.SetActive(true);
+                if (!GameObject.FindWithTag("Player").GetComponent<PlayerClass>().lvl_0_completed)
+                {
+                    GameObject tmp = Shrine.transform.GetChild(2).gameObject;
+                    tmp.SetActive(false);
+                }
                 Travel.SetActive(false);
                 Dialogue.SetActive(false);
                 pauseMenu.SetActive(false);
@@ -115,7 +120,6 @@ public class CameraFollow : MonoBehaviour
                 Shrine.SetActive(false);
                 Dialogue.SetActive(false);
                 Travel.SetActive(true);
-                GameObject.Find("Panel Travel").GetComponent<TravelPanel>().CreateBttns();
                 pauseMenu.SetActive(false);
                 Cursor.visible = true;
                 break;

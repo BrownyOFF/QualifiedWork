@@ -28,15 +28,13 @@ public class GradePanel : MonoBehaviour
 
     void OnEnable()
     {
+        GetObj();
+        isGet = true;
         PrintText();
     }
 
     private void Start()
     {
-        GetObj();
-        PrintText();
-        isGet = true;
-        playerClass = GameObject.FindWithTag("Player").GetComponent<PlayerClass>();
     }
 
     void GetObj()
