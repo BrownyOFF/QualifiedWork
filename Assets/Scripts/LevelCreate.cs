@@ -72,12 +72,6 @@ public class LevelCreate : MonoBehaviour
             Player.GetComponent<PlayerClass>().currScene = data.currScene;
             Player.GetComponent<PlayerClass>().inv = data.inv;
             Player.GetComponent<PlayerClass>().amount = data.amount;
-            Player.GetComponent<PlayerClass>().respPos = new Vector3(data.position[0],data.position[1],data.position[2]);
-            
-            if (Player.transform.position != Player.GetComponent<PlayerClass>().respPos)
-            {
-                Player.transform.position = Player.GetComponent<PlayerClass>().respPos;
-            }
 
             #region ProggressData
             Player.GetComponent<PlayerClass>().lvl_0_open = data.lvl_0_open;

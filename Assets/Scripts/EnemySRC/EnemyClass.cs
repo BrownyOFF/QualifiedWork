@@ -73,6 +73,7 @@ public class EnemyClass : MonoBehaviour
     public void Death()
     {
         StopAllCoroutines();
+        rb.velocity = Vector2.zero;
         enemyBehavior.enabled = false;
         GetComponent<CapsuleCollider2D>().isTrigger = true;
         rb.isKinematic = true;
