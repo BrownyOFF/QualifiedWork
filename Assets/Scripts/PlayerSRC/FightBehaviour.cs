@@ -32,6 +32,7 @@ public class FightBehaviour : MonoBehaviour
     private bool canAttack = true;
     private Animator animCont;
 
+    public AudioSource attacksfx;
     void Start()
     {
         playerClass = GetComponent<PlayerClass>();
@@ -57,6 +58,7 @@ public class FightBehaviour : MonoBehaviour
 
     public IEnumerator attack()
     {
+        attacksfx.Play();
         animCont.SetTrigger("Attack");
         isAttacking = true;
         canAttack = false;

@@ -35,6 +35,10 @@ public class PlayerChara : MonoBehaviour
     public CameraFollow camSRC;
     private Animator animCont;
     
+    public AudioSource blocksfx;
+    public AudioSource parrysfx;
+    public AudioSource hitSFX;
+    
     public bool takeDmg(float dmg, int type)
     {
         if(GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().isDashing && (type == 0 || type == 1))  // if dodging && onlyDodge attack or default attack
@@ -49,17 +53,20 @@ public class PlayerChara : MonoBehaviour
         if (fight.isBlocking && type == 0 && !fight.isParry) // if block default attack
         {
             spCurrent -= dmg;
+            blocksfx.Play();
             return false;
         }
 
         if (fight.isParry && (type == 0 || type == 2)) // if parry default or parryOnly attack 
         {
+            parrysfx.Play();
             StopCoroutine(fight.CanParry());
             return true;
         }
             
         animCont.SetTrigger("Hurt"); // others
         hpCurrent -= dmg;
+        hitSFX.Play();
         return false;
     }
     

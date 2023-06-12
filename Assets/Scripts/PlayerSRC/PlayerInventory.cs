@@ -19,7 +19,10 @@ public class PlayerInventory : MonoBehaviour
     public TextAsset itemsList;
     public TextAsset itemsSprite;
     private string itemsListString;
-    
+
+    public AudioSource bombsfx;
+    public AudioSource knifesfx;
+    public AudioSource potionsfx;
     void Start()
     {
         playerClass = GetComponent<PlayerClass>();
@@ -57,12 +60,14 @@ public class PlayerInventory : MonoBehaviour
         if (playerClass.inv[index] == 2 && playerClass.amount[index] > 0)
         {
             chara.hpCurrent += 25;
+            potionsfx.Play();
             playerClass.amount[index]--;
         }
         else if (playerClass.inv[index] == 3 && playerClass.amount[index] > 0)
         {
             var tmppos = new Vector2(posItemUse.position.x, posItemUse.position.y);
             GameObject knife_throw = Instantiate(knife, tmppos, Quaternion.identity);
+            knifesfx.Play();
             playerClass.amount[index]--;
         }
         else if (playerClass.inv[index] == 4 && playerClass.amount[index] > 0)
@@ -70,6 +75,7 @@ public class PlayerInventory : MonoBehaviour
             var tmppos = new Vector2(posItemUse.position.x, posItemUse.position.y);
             GameObject bomb_throw = Instantiate(bomb, tmppos, Quaternion.identity);
             playerClass.amount[index]--;
+            bombsfx.Play();
         }
         ChangeSprite();
     }

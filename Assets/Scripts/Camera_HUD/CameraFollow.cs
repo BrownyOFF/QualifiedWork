@@ -91,6 +91,11 @@ public class CameraFollow : MonoBehaviour
                     GameObject tmp = Shrine.transform.GetChild(2).gameObject;
                     tmp.SetActive(false);
                 }
+                else
+                {
+                    GameObject tmp = Shrine.transform.GetChild(2).gameObject;
+                    tmp.SetActive(true);
+                }
                 Travel.SetActive(false);
                 Dialogue.SetActive(false);
                 pauseMenu.SetActive(false);

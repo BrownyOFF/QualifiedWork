@@ -140,7 +140,7 @@ public class DialogueSRC : MonoBehaviour
         spriteObj.GetComponent<Image>().sprite = spr;
         bgObj.GetComponent<Image>().sprite = bg;
         messageObj.GetComponent<TextMeshProUGUI>().text = message;
-        namObj.GetComponent<TextMeshProUGUI>().text = name;
+        namObj.GetComponent<TextMeshProUGUI>().text = nameStr;
         quePrint(que, queType, text);
     }
 
@@ -191,7 +191,15 @@ public class DialogueSRC : MonoBehaviour
         string id = getBetween(messID, "que_", "_0");
         while (true)
         {
-            var tmpText = getBetween(text, "mess_" + id + "_0" + lstDgt + ":", "\r");
+            var tmpText = "";
+            if (lstDgt >= 10)
+            {
+                tmpText = getBetween(text, "mess_" + id + "_" + lstDgt + ":", "\r");
+            }
+            else
+            { 
+                tmpText = getBetween(text, "mess_" + id + "_0" + lstDgt + ":", "\r");
+            }
             if (tmpText == "")
             {
                 break;

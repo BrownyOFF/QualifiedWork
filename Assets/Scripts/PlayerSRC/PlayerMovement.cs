@@ -36,6 +36,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private FightBehaviour fight;
     public PlayerClass playerClass;
     public GameObject interestPoint;
+    public AudioSource dashSFX;
+    public AudioSource jumpSFX;
+    
     private void Start()
     {
         coll = GetComponent<CapsuleCollider2D>();
@@ -67,13 +70,13 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = Vector2.zero;
             return;
         }
-        
+
         if(isDashing)
             return;
         
         var inputX = Input.GetAxisRaw("Horizontal");
         var jumpInput = Input.GetKeyDown(KeyCode.W);
-        var dodgeInput = Input.GetKeyDown(KeyCode.F);
+        var dodgeInput = Input.GetKeyDown(KeyCode.Space);
 
         if (fight.isBlocking)
         {
@@ -97,6 +100,7 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector2(inputX * playerClass.speed, rb.velocity.y);
             if (jumpInput && isGrounded() && stats.canJump()) 
             { 
+                jumpSFX.Play();
                 rb.velocity = new Vector2(rb.velocity.x, playerClass.jumpPower); 
                 stats.spCurrent -= stats.jumpCost; 
             }
@@ -134,6 +138,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Dodge()
     {
+        dashSFX.Play();
         lastDodgeTime = Time.time;
         stats.spCurrent -= dashCost;
         isDashing = true;

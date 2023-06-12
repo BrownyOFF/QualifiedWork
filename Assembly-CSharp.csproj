@@ -89,6 +89,7 @@
      <Compile Include="Assets\Scripts\UISRC\TravelSRCS\Lvl_bttnSRC.cs" />
      <Compile Include="Assets\Scripts\knifeThrow.cs" />
      <Compile Include="Assets\Scripts\UISRC\Load.cs" />
+     <Compile Include="Assets\ToMenu.cs" />
      <Compile Include="Assets\Scripts\UISRC\TravelSRCS\ConfScript.cs" />
      <Compile Include="Assets\Scripts\PlayerSRC\PlayerClass.cs" />
      <Compile Include="Assets\Scripts\HubSRC\GradeBttnSRC.cs" />
@@ -96,7 +97,7 @@
      <Compile Include="Assets\Scripts\SaveBullshit\SaveClass.cs" />
      <Compile Include="Assets\Scripts\LevelCreate.cs" />
      <Compile Include="Assets\Scripts\UISRC\TravelSRCS\Shrine_bttnSRC.cs" />
-     <Compile Include="Assets\ToMenu.cs" />
+     <Compile Include="Assets\BGMSript.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\texture\Font.txt" />
@@ -124,6 +125,7 @@
      <None Include="Assets\castle\License.txt" />
      <None Include="Assets\Data\reaperDialogue.txt" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+     <None Include="Assets\Data\AlchemistDialogue.txt" />
      <None Include="Assets\Data\levelNames.txt" />
      <None Include="Assets\Favna\readme.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />

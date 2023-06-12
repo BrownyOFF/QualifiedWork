@@ -6,7 +6,7 @@ public class BombThrow : MonoBehaviour
 {
     private float dmg = 40f;
     private float speed = 30f;
-    private float time = 3f;
+    private float time = 2f;
     private Vector2 dir;
     private Collider2D explColl;
     private Rigidbody2D rb;

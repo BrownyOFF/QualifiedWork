@@ -9,8 +9,10 @@ public class EnterSRC : MonoBehaviour
     [SerializeField] private TextAsset textFile;
     private bool inside = false;
     private bool inShop = false;
+    private AudioSource entersfx;
     void Start()
     {
+        entersfx = GetComponent<AudioSource>();
         questionMark = GameObject.FindWithTag("Player").transform.GetChild(3).gameObject;
     }
 
@@ -37,6 +39,7 @@ public class EnterSRC : MonoBehaviour
     {
         if (inside && Input.GetKeyDown(KeyCode.E) && !inShop)
         {
+            entersfx.Play();
             GameObject.FindWithTag("Player").GetComponent<PlayerChara>().inDialogue = true;
             StartCoroutine(GameObject.FindWithTag("MainCamera").GetComponent<DialogueSRC>().DialogueSrc(textFile, "que_01_00"));
             inShop = true;
