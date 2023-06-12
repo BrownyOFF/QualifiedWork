@@ -43,6 +43,9 @@ public class LevelCreate : MonoBehaviour
         
         MushRoom = Resources.Load("MushRoomEnemy") as GameObject;
         Goblin = Resources.Load("GoblinEnemy") as GameObject;
+        Skeleton = Resources.Load("SkeletonEnemy") as GameObject;
+        FlyingEye = Resources.Load("EyeEnemy") as GameObject;
+        
 
         PlayerPos = GameObject.FindWithTag("playerPos");
 
@@ -52,6 +55,8 @@ public class LevelCreate : MonoBehaviour
         {
             foreachCycle(MushRoom, MushRoomPos);
             foreachCycle(Goblin, GoblinPos);
+            foreachCycle(Skeleton, SkeletonPos);
+            foreachCycle(FlyingEye, FlyingEyePos);
         }
 
         if (PlayerPrefs.GetInt("newGame") != 0) //load game

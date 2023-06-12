@@ -20,7 +20,6 @@ public class mainMenuSRC : MonoBehaviour
         {
             continueBttn.SetActive(false);
         }
-        
     }
     
     void Update()

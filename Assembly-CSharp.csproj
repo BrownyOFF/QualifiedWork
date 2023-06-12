@@ -82,6 +82,7 @@
      <Compile Include="Assets\Scripts\Camera_HUD\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\EnemySRC.cs" />
      <Compile Include="Assets\Scripts\mainMenuSRC\exitGameSRC.cs" />
+     <Compile Include="Assets\SettingsScript.cs" />
      <Compile Include="Assets\Scripts\EnemySRC\EnemyBehavior.cs" />
      <Compile Include="Assets\Scripts\UISRC\GradeSRCS\GradePanel.cs" />
      <Compile Include="Assets\Scripts\PlayerSRC\AdviceTriggerSRC.cs" />
@@ -95,7 +96,7 @@
      <Compile Include="Assets\Scripts\SaveBullshit\SaveClass.cs" />
      <Compile Include="Assets\Scripts\LevelCreate.cs" />
      <Compile Include="Assets\Scripts\UISRC\TravelSRCS\Shrine_bttnSRC.cs" />
-     <Compile Include="Assets\SettingsScript.cs" />
+     <Compile Include="Assets\ToMenu.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\texture\Font.txt" />

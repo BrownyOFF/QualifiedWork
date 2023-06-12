@@ -283,14 +283,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpMax: 30
-  hpCurrent: 50
+  hpCurrent: 30
   speed: 3
   isDead: 0
   pieces: 10
   dmg: 20
   range: 2
   attackCd: 3
-  attackDelay: 0.5
+  attackDelay: 1
   isStunned: 0
   canOnlyDodge: 0
   canOnlyParry: 0

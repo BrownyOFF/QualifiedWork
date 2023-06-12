@@ -2,3 +2,4 @@ lvl_0:Ліс Спогадів
 lvl_hub:Ван
 lvl_1:Замок Волкихар
 lvl_2:TEST MOSHOMNKI
+Main_Menu:Меню

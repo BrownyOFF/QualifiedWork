@@ -27,6 +27,7 @@ public class Load : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
+        
         var hints_str = hints_file.text;
         var hints_amount = hints_str.Split('\r').Length;
         Random rng = new Random();
@@ -42,6 +43,7 @@ public class Load : MonoBehaviour
 
     private IEnumerator LoadSceneAsync(string sceneName)
     {
+        
         loadingScreen.SetActive(true);
         input.SetActive(false);
         
