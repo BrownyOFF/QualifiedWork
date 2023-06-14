@@ -28,6 +28,7 @@ public class ConfScript : MonoBehaviour
         GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().enabled = true;
         GameObject.FindWithTag("Player").GetComponent<FightBehaviour>().enabled = true;
         SaveSystem.SavePlayer(GameObject.FindWithTag("Player").GetComponent<PlayerClass>());
+        PlayerPrefs.SetInt("newGame", 1);
         GameObject.Find("LoadManager").GetComponent<Load>().LoadScene(panel_src.GetComponent<TravelPanel>().lvl_chosen);
         yield return null;
     }

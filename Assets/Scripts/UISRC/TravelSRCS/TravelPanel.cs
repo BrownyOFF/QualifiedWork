@@ -30,7 +30,15 @@ public class TravelPanel : MonoBehaviour
 
     private void OnEnable()
     {
-        
+        if (!player.lvl_1_open)
+        {
+            lvl_bttns[2].SetActive(false);
+        }
+
+        if (!player.lvl_2_open)
+        {
+            lvl_bttns[3].SetActive(false);
+        }
     }
 
     public void Start()
@@ -58,71 +66,37 @@ public class TravelPanel : MonoBehaviour
     }
     public void CreateBttns()
     {
-        if (player.lvl_0_open)
-        {
-            var posVec = new Vector2(lvl_bttns_pos[0].transform.position.x, lvl_bttns_pos[0].transform.position.y);
-            lvl_bttns.Add(Instantiate(bttn_granted, posVec, Quaternion.identity));
-            var lvl_name = getBetween(lvl_names_string, 0 + ":", "\r");
-            lvl_bttns[0].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = lvl_name;
-            lvl_bttns[0].GetComponent<Lvl_bttnSRC>().lvl_name = "lvl_0";
-        }
-        else
-        {
-            var posVec = new Vector2(lvl_bttns_pos[0].transform.position.x, lvl_bttns_pos[0].transform.position.y);
-            lvl_bttns.Add(Instantiate(bttn_denied, posVec, Quaternion.identity));
-            lvl_bttns[0].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "??????";
-        }
-        lvl_bttns[0].transform.SetParent(this.transform);
+        var posVec = new Vector2(lvl_bttns_pos[0].transform.position.x, lvl_bttns_pos[0].transform.position.y);
+        lvl_bttns.Add(Instantiate(bttn_granted, posVec, Quaternion.identity));
+        var lvl_name = getBetween(lvl_names_string, 0 + ":", "\r");
+        lvl_bttns[0].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = lvl_name;
+        lvl_bttns[0].GetComponent<Lvl_bttnSRC>().lvl_name = "lvl_0";
         
-        if (player.lvl_hub_open)
-        {
-            var posVec = new Vector2(lvl_bttns_pos[1].transform.position.x, lvl_bttns_pos[1].transform.position.y);
-            lvl_bttns.Add(Instantiate(bttn_granted, posVec, Quaternion.identity));
-            var lvl_name = getBetween(lvl_names_string,  "hub:", "\r");
-            lvl_bttns[1].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = lvl_name;
-            lvl_bttns[1].GetComponent<Lvl_bttnSRC>().lvl_name = "lvl_hub";
-        }
-        else
-        {
-            var posVec = new Vector2(lvl_bttns_pos[1].transform.position.x, lvl_bttns_pos[1].transform.position.y);
-            lvl_bttns.Add(Instantiate(bttn_denied, posVec, Quaternion.identity));
-            lvl_bttns[1].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "??????";
-        }
+        lvl_bttns[0].transform.SetParent(this.transform);
+
+        posVec = new Vector2(lvl_bttns_pos[1].transform.position.x, lvl_bttns_pos[1].transform.position.y);
+        lvl_bttns.Add(Instantiate(bttn_granted, posVec, Quaternion.identity));
+        lvl_name = getBetween(lvl_names_string,  "hub:", "\r");
+        lvl_bttns[1].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = lvl_name;
+        lvl_bttns[1].GetComponent<Lvl_bttnSRC>().lvl_name = "lvl_hub";
+        
         lvl_bttns[1].transform.SetParent(this.transform);
         
-        if (player.lvl_1_open)
-        {
-            var posVec = new Vector2(lvl_bttns_pos[2].transform.position.x, lvl_bttns_pos[2].transform.position.y);
-            lvl_bttns.Add(Instantiate(bttn_granted, posVec, Quaternion.identity));
-            var lvl_name = getBetween(lvl_names_string, 1 + ":", "\r");
-            lvl_bttns[2].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = lvl_name;
-            lvl_bttns[2].GetComponent<Lvl_bttnSRC>().lvl_name = "lvl_1";
-        }
-        else
-        {
-            var posVec = new Vector2(lvl_bttns_pos[2].transform.position.x, lvl_bttns_pos[2].transform.position.y);
-            lvl_bttns.Add(Instantiate(bttn_denied, posVec, Quaternion.identity));
-            lvl_bttns[2].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "??????";
-        }
+        posVec = new Vector2(lvl_bttns_pos[2].transform.position.x, lvl_bttns_pos[2].transform.position.y);
+        lvl_bttns.Add(Instantiate(bttn_granted, posVec, Quaternion.identity));
+        lvl_name = getBetween(lvl_names_string, 1 + ":", "\r");
+        lvl_bttns[2].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = lvl_name;
+        lvl_bttns[2].GetComponent<Lvl_bttnSRC>().lvl_name = "lvl_1";
+        
         lvl_bttns[2].transform.SetParent(this.transform);
 
+        posVec = new Vector2(lvl_bttns_pos[3].transform.position.x, lvl_bttns_pos[3].transform.position.y);
+        lvl_bttns.Add(Instantiate(bttn_granted, posVec, Quaternion.identity));
+        lvl_name = getBetween(lvl_names_string, 3 + ":", "\r");
+        lvl_bttns[3].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = lvl_name;
+        lvl_bttns[3].GetComponent<Lvl_bttnSRC>().lvl_name = "lvl_2";
 
-        if (player.lvl_2_open)
-        {
-            var posVec = new Vector2(lvl_bttns_pos[3].transform.position.x, lvl_bttns_pos[3].transform.position.y);
-            lvl_bttns.Add(Instantiate(bttn_granted, posVec, Quaternion.identity));
-            var lvl_name = getBetween(lvl_names_string, 3 + ":", "\r");
-            lvl_bttns[3].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = lvl_name;
-            lvl_bttns[3].GetComponent<Lvl_bttnSRC>().lvl_name = "lvl_2";
-        }
-        else
-        {
-            var posVec = new Vector2(lvl_bttns_pos[3].transform.position.x, lvl_bttns_pos[3].transform.position.y);
-            lvl_bttns.Add(Instantiate(bttn_denied, posVec, Quaternion.identity));
-            lvl_bttns[3].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "??????";
-        }
         lvl_bttns[3].transform.SetParent(this.transform);
-        
     }
     
     private List<string> Get_all_lvls()

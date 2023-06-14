@@ -55291,6 +55291,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1554043616}
+  - component: {fileID: 1554043615}
   m_Layer: 0
   m_Name: saveManager
   m_TagString: saveManager
@@ -55298,6 +55299,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1554043615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554043614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c0ff431d8d0b5f448fb5811ad5d8f73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1554043616
 Transform:
   m_ObjectHideFlags: 0
@@ -55491,6 +55504,10 @@ PrefabInstance:
     - target: {fileID: 4260113326295581169, guid: 019b0ee9f19a5eb4dab12db733c70559, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 9001326853086204394, guid: 019b0ee9f19a5eb4dab12db733c70559, type: 3}
+      propertyPath: lvl_0_completed
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 019b0ee9f19a5eb4dab12db733c70559, type: 3}

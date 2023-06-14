@@ -72,12 +72,17 @@ public class LevelCreate : MonoBehaviour
             Player.GetComponent<PlayerClass>().currScene = data.currScene;
             Player.GetComponent<PlayerClass>().inv = data.inv;
             Player.GetComponent<PlayerClass>().amount = data.amount;
+            Player.GetComponent<PlayerClass>().respPos = new Vector3(data.position[0],data.position[1],data.position[2]);
+            if (Player.GetComponent<PlayerClass>().currScene == SceneManager.GetActiveScene().name)
+            {
+                GameObject.FindWithTag("Player").transform.position = Player.GetComponent<PlayerClass>().respPos;
+            }
 
             #region ProggressData
             Player.GetComponent<PlayerClass>().lvl_0_open = data.lvl_0_open;
             Player.GetComponent<PlayerClass>().lvl_hub_open = data.lvl_hub_open;
-            Player.GetComponent<PlayerClass>().lvl_1_open = data.lvl_hub_open;
-            Player.GetComponent<PlayerClass>().lvl_2_open = data.lvl_hub_open;
+            Player.GetComponent<PlayerClass>().lvl_1_open = data.lvl_1_open;
+            Player.GetComponent<PlayerClass>().lvl_2_open = data.lvl_2_open;
 
             Player.GetComponent<PlayerClass>().lvl_0_completed = data.lvl_0_completed;
             Player.GetComponent<PlayerClass>().lvl_1_completed = data.lvl_1_completed;
