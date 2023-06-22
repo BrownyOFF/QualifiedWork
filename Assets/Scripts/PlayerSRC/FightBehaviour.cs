@@ -67,7 +67,10 @@ public class FightBehaviour : MonoBehaviour
         Collider2D[] enemyToDamage = Physics2D.OverlapCircleAll(attackPos.transform.position, attackRange, enemyMask);
         for (int i = 0; i < enemyToDamage.Length; i++)
         {
-            enemyToDamage[i].GetComponent<EnemyClass>().TakeDamage(playerClass.damage);
+            if (!enemyToDamage[i].GetComponent<EnemyClass>().isDead)
+            {
+                enemyToDamage[i].GetComponent<EnemyClass>().TakeDamage(playerClass.damage);
+            }
         }
         isAttacking = false;
         StartCoroutine(AttackCD());

@@ -92,7 +92,7 @@ public class TravelPanel : MonoBehaviour
 
         posVec = new Vector2(lvl_bttns_pos[3].transform.position.x, lvl_bttns_pos[3].transform.position.y);
         lvl_bttns.Add(Instantiate(bttn_granted, posVec, Quaternion.identity));
-        lvl_name = getBetween(lvl_names_string, 3 + ":", "\r");
+        lvl_name = getBetween(lvl_names_string, 2 + ":", "\r");
         lvl_bttns[3].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = lvl_name;
         lvl_bttns[3].GetComponent<Lvl_bttnSRC>().lvl_name = "lvl_2";
 
