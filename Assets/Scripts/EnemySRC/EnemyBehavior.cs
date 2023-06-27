@@ -27,6 +27,8 @@ public class EnemyBehavior : MonoBehaviour
         if (enemyClass.hpCurrent <= 0 && !enemyClass.isDead)
         {
             enemyClass.rb.velocity = Vector2.zero;
+            StopAllCoroutines();
+            enemyClass.StopAllCoroutines();
             enemyClass.Death();
         }
         

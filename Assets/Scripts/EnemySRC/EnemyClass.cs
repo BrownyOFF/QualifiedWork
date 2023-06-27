@@ -72,6 +72,7 @@ public class EnemyClass : MonoBehaviour
     }
     public void Death()
     {
+        GetComponent<EnemyBehavior>().StopAllCoroutines();
         StopAllCoroutines();
         rb.velocity = Vector2.zero;
         enemyBehavior.enabled = false;
@@ -96,6 +97,7 @@ public class EnemyClass : MonoBehaviour
             }
         }
         playerObj.GetComponent<PlayerChara>().getPieces(pieces);
+        GetComponent<EnemyBehavior>().enabled = false;
         this.enabled = false;
     }
 
